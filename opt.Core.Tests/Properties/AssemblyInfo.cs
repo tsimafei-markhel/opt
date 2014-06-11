@@ -1,13 +1,12 @@
-﻿using System;
-using System.Reflection;
+﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("opt.Domain")]
-[assembly: AssemblyDescription("Domain classes for opt")]
+[assembly: AssemblyTitle("opt.Core.Tests")]
+[assembly: AssemblyDescription("Unit tests for opt.Core library")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("opt")]
@@ -21,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("533c71a7-414a-4fc4-9c6e-3e5c0900357a")]
+[assembly: Guid("6c8feb88-00c2-4e92-9a55-ca77a8a9209b")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -35,6 +34,3 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
-
-// TODO: Find a way to validate CLS compliance
-[assembly: CLSCompliant(true)]

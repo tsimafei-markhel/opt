@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A68E4EFE-43E4-46D9-A165-488FC2F4EEB3}</ProjectGuid>
+    <ProjectGuid>{DEDD067C-982D-4520-9F16-5B9DC99815A8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>opt.Domain.Tests</RootNamespace>
-    <AssemblyName>opt.Domain.Tests</AssemblyName>
+    <RootNamespace>opt.Core.Tests</RootNamespace>
+    <AssemblyName>opt.Core.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -53,12 +53,15 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Units\PrefixedUnitTests.cs" />
+    <Compile Include="Units\UnitTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Units\ArbitraryUnitTests.cs" />
-    <Compile Include="Units\UnitBaseTests.cs" />
-    <Compile Include="Units\UnitCollectionTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\opt.Core\opt.Core.csproj">
+      <Project>{bdb0cea7-1902-4376-9bf0-57c81f32610c}</Project>
+      <Name>opt.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\opt.Domain\opt.Domain.csproj">
       <Project>{c933d401-e8e7-4d47-b9f2-7bcab7ca9077}</Project>
       <Name>opt.Domain</Name>
