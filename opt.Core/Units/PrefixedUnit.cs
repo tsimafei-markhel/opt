@@ -20,7 +20,7 @@ namespace opt.Units
                 throw new ArgumentException(string.Empty, "baseUnit");
             }
 
-            if (double.IsNaN(multiplier) || double.IsInfinity(multiplier))
+            if (double.IsNaN(multiplier) || double.IsInfinity(multiplier) || Math.Abs(0.0 - multiplier) < double.Epsilon)
             {
                 throw new ArgumentOutOfRangeException("multiplier");
             }

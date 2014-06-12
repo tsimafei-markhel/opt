@@ -58,6 +58,13 @@ namespace opt.Core.Tests.Units
         }
 
         [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void NoZeroMultiplierAllowed()
+        {
+            PrefixedUnit prefixedUnit = new PrefixedUnit("some name", "some symbol", baseUnit, 0.0);
+        }
+
+        [TestMethod]
         public void NameIsSet()
         {
             PrefixedUnit prefixedUnit = new PrefixedUnit("some name", "some symbol", baseUnit, 1.0);
