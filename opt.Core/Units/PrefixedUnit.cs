@@ -5,9 +5,9 @@ namespace opt.Units
     public class PrefixedUnit : UnitBase, IPrefixedUnit
     {
         public IUnit BaseUnit { get; private set; }
-        public double Multiplier { get; private set; }
+        public Double Multiplier { get; private set; }
 
-        public PrefixedUnit(string name, string symbol, IUnit baseUnit, double multiplier) :
+        public PrefixedUnit(String name, String symbol, IUnit baseUnit, Double multiplier) :
             base(name, symbol)
         {
             if (baseUnit == null)

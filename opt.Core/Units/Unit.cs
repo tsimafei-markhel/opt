@@ -7,7 +7,7 @@ namespace opt.Units
     {
         public ICollection<IPrefixedUnit> PrefixedUnits { get; private set; }
 
-        public Unit(string name, string symbol) :
+        public Unit(String name, String symbol) :
             base(name, symbol)
         {
             PrefixedUnits = new List<IPrefixedUnit>();

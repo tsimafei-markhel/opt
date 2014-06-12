@@ -6,7 +6,7 @@ namespace opt.Units
 {
     public class UnitCollection : ICollection<IUnit>
     {
-        private readonly Dictionary<string, IUnit> units = new Dictionary<string, IUnit>();
+        private readonly Dictionary<String, IUnit> units = new Dictionary<String, IUnit>();
 
         public IUnit this[String key]
         {

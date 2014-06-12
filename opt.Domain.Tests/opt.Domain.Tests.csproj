@@ -56,7 +56,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Units\ArbitraryUnitTests.cs" />
     <Compile Include="Units\UnitBaseTests.cs" />
-    <Compile Include="Units\UnitCollectionTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\opt.Domain\opt.Domain.csproj">

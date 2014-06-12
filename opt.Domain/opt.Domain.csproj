@@ -45,9 +45,10 @@
     <Compile Include="Units\IPrefixedUnit.cs" />
     <Compile Include="Units\IUnit.cs" />
     <Compile Include="Units\ArbitraryUnit.cs" />
+    <Compile Include="Units\IUnitConversionProvider.cs" />
+    <Compile Include="Units\IUnitConverter.cs" />
     <Compile Include="Units\UnitBase.cs" />
-    <Compile Include="Units\UnitConverter.cs" />
-    <Compile Include="Units\UnitCollection.cs" />
+    <Compile Include="Units\UnitConversion.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="opt.Domain.ruleset" />

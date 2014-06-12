@@ -54,6 +54,11 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Units\PrefixedUnitTests.cs" />
+    <Compile Include="Units\UnitCollectionTests.cs" />
+    <Compile Include="Units\AggregateUnitConverterTests.cs" />
+    <Compile Include="Units\DoublePrefixedUnitConversionProviderTests.cs" />
+    <Compile Include="Units\PrefixedUnitConversionProviderBaseTests.cs" />
+    <Compile Include="Units\UnitConversionDictionaryTests.cs" />
     <Compile Include="Units\UnitTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
