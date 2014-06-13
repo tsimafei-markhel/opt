@@ -141,5 +141,39 @@ namespace opt.Domain.Tests.Units
 
             Assert.AreEqual<int>(2, count);
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void ContainsByNameNull()
+        {
+            UnitCollection uc = new UnitCollection();
+            uc.Contains((string)null);
+        }
+
+        [TestMethod]
+        public void ContainsByNameEmptyString()
+        {
+            UnitCollection uc = new UnitCollection();
+
+            Assert.IsFalse(uc.Contains(string.Empty));
+        }
+
+        [TestMethod]
+        public void ContainsByNameContained()
+        {
+            UnitCollection uc = new UnitCollection();
+            uc.Add(unit1);
+
+            Assert.IsTrue(uc.Contains(unit1.Name));
+        }
+
+        [TestMethod]
+        public void ContainsByNameNotContained()
+        {
+            UnitCollection uc = new UnitCollection();
+            uc.Add(unit1);
+
+            Assert.IsFalse(uc.Contains(unit2.Name));
+        }
     }
 }

@@ -8,11 +8,11 @@ namespace opt.Units
     {
         private readonly Dictionary<String, IUnit> units = new Dictionary<String, IUnit>();
 
-        public IUnit this[String key]
+        public IUnit this[String name]
         {
             get
             {
-                return units[key];
+                return units[name];
             }
         }
 
@@ -49,6 +49,16 @@ namespace opt.Units
             }
 
             return units.ContainsKey(item.Name);
+        }
+
+        public Boolean Contains(String name)
+        {
+            if (name == null) // Empty string is fine
+            {
+                throw new ArgumentNullException("name");
+            }
+
+            return units.ContainsKey(name);
         }
 
         public void CopyTo(IUnit[] array, int arrayIndex)
