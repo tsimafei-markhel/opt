@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
@@ -7,8 +8,23 @@ using opt.Units;
 
 namespace Units
 {
+    // Very basic class for parsing SI-Units.xml
     public static class XmlUnitLoader
     {
+        private static class XNames
+        {
+            public static readonly XName AttAddStandardPrefixes = XName.Get("addStandardPrefixes", string.Empty);
+            public static readonly XName AttMultiplier = XName.Get("multiplier", string.Empty);
+            public static readonly XName AttName = XName.Get("name", string.Empty);
+            public static readonly XName AttNamePrefix = XName.Get("namePrefix", string.Empty);
+            public static readonly XName AttSymbol = XName.Get("symbol", string.Empty);
+            public static readonly XName AttSymbolPrefix = XName.Get("symbolPrefix", string.Empty);
+
+            public static readonly XName ElPrefixed = XName.Get("prefixed", string.Empty);
+            public static readonly XName ElStandardPrefixes = XName.Get("standardPrefixes", string.Empty);
+            public static readonly XName ElUnits = XName.Get("units", string.Empty);
+        }
+
         private sealed class StandardPrefix
         {
             public double Multiplier { get; set; }
@@ -32,7 +48,7 @@ namespace Units
 
         private static UnitCollection LoadUnits(XElement documentRoot, List<StandardPrefix> standardPrefixes)
         {
-            XElement unitsEl = documentRoot.Elements(XName.Get("units", string.Empty)).FirstOrDefault();
+            XElement unitsEl = documentRoot.Elements(XNames.ElUnits).FirstOrDefault();
             if (unitsEl == null)
             {
                 throw new InvalidOperationException("No <units> element.");
@@ -50,9 +66,9 @@ namespace Units
 
         private static Unit LoadUnit(XElement unitEl, List<StandardPrefix> standardPrefixes)
         {
-            string unitName = (string)unitEl.Attribute(XName.Get("name", string.Empty));
-            string unitSymbol = (string)unitEl.Attribute(XName.Get("symbol", string.Empty));
-            bool addStandardPrefixes = (bool)unitEl.Attribute(XName.Get("addStandardPrefixes", string.Empty));
+            string unitName = (string)unitEl.Attribute(XNames.AttName);
+            string unitSymbol = (string)unitEl.Attribute(XNames.AttSymbol);
+            bool addStandardPrefixes = (bool)unitEl.Attribute(XNames.AttAddStandardPrefixes);
 
             Unit result = new Unit(unitName, unitSymbol);
             if (addStandardPrefixes)
@@ -67,12 +83,12 @@ namespace Units
 
         private static void TryAddCustomPrefixedUnits(Unit baseUnit, XElement unitEl)
         {
-            IEnumerable<XElement> customPrefixEls = unitEl.Elements(XName.Get("prefixed", string.Empty));
+            IEnumerable<XElement> customPrefixEls = unitEl.Elements(XNames.ElPrefixed);
             foreach (XElement customPrefixEl in customPrefixEls)
             {
-                double multiplier = (double)customPrefixEl.Attribute(XName.Get("multiplier", string.Empty));
-                string name = (string)customPrefixEl.Attribute(XName.Get("name", string.Empty));
-                string symbol = (string)customPrefixEl.Attribute(XName.Get("symbol", string.Empty));
+                double multiplier = Convert.ToDouble((string)customPrefixEl.Attribute(XNames.AttMultiplier), CultureInfo.InvariantCulture);
+                string name = (string)customPrefixEl.Attribute(XNames.AttName);
+                string symbol = (string)customPrefixEl.Attribute(XNames.AttSymbol);
 
                 PrefixedUnit prefixed = new PrefixedUnit(name, symbol, baseUnit, multiplier);
                 baseUnit.PrefixedUnits.Add(prefixed);
@@ -91,7 +107,7 @@ namespace Units
 
         private static List<StandardPrefix> LoadStandardPrefixes(XElement documentRoot)
         {
-            XElement standardPrefixesEl = documentRoot.Elements(XName.Get("standardPrefixes", string.Empty)).FirstOrDefault();
+            XElement standardPrefixesEl = documentRoot.Elements(XNames.ElStandardPrefixes).FirstOrDefault();
             if (standardPrefixesEl == null)
             {
                 throw new InvalidOperationException("No <standardPrefixes> element.");
@@ -102,9 +118,9 @@ namespace Units
             {
                 StandardPrefix prefix = new StandardPrefix()
                 {
-                    Multiplier = (double)prefixEl.Attribute(XName.Get("multiplier", string.Empty)),
-                    NamePrefix = (string)prefixEl.Attribute(XName.Get("namePrefix", string.Empty)),
-                    SymbolPrefix = (string)prefixEl.Attribute(XName.Get("symbolPrefix", string.Empty))
+                    Multiplier = Convert.ToDouble((string)prefixEl.Attribute(XNames.AttMultiplier), CultureInfo.InvariantCulture),
+                    NamePrefix = (string)prefixEl.Attribute(XNames.AttNamePrefix),
+                    SymbolPrefix = (string)prefixEl.Attribute(XNames.AttSymbolPrefix)
                 };
 
                 result.Add(prefix);

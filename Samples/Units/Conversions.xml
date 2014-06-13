@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- Custom source for unit conversion rules -->
+<conversions>
+  <conversion from="kilogram" to="pound" multiplier="2.20462" />
+  <conversion from="pound" to="kilogram" multiplier="0.453592" />
+</conversions>

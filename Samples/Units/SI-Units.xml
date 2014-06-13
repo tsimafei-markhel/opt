@@ -1,4 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- Custom source for units of measurement -->
+<!-- This one includes base and some derived SI units and also prefixed units -->
 <unitCollection>
   <standardPrefixes>
     <prefix multiplier="1000000000000000000000000"  namePrefix="yotta" symbolPrefix="Y" />

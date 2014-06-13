@@ -44,6 +44,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.labelResult = new System.Windows.Forms.Label();
             this.buttonConvert = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.labelDescription = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericValue)).BeginInit();
             this.SuspendLayout();
             // 
@@ -191,11 +193,31 @@
             this.buttonConvert.UseVisualStyleBackColor = true;
             this.buttonConvert.Click += new System.EventHandler(this.buttonConvert_Click);
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(204, 100);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(63, 13);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "Description:";
+            // 
+            // labelDescription
+            // 
+            this.labelDescription.AutoSize = true;
+            this.labelDescription.Location = new System.Drawing.Point(274, 100);
+            this.labelDescription.Name = "labelDescription";
+            this.labelDescription.Size = new System.Drawing.Size(10, 13);
+            this.labelDescription.TabIndex = 17;
+            this.labelDescription.Text = " ";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(624, 442);
+            this.Controls.Add(this.labelDescription);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.buttonConvert);
             this.Controls.Add(this.labelResult);
             this.Controls.Add(this.label6);
@@ -239,6 +261,8 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label labelResult;
         private System.Windows.Forms.Button buttonConvert;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label labelDescription;
     }
 }
 
