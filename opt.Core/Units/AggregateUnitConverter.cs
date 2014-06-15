@@ -3,7 +3,8 @@ using System.Collections.Generic;
 
 namespace opt.Units
 {
-    public class AggregateUnitConverter<TValue> : IUnitConverter<TValue>
+    // TODO: Create AggregateUnitProvider<TValue> and separate it from this class. This class is to be its child.
+    public class AggregateUnitConverter<TValue> : IUnitConverter<TValue>, IUnitConversionProvider<TValue>
     {
         private readonly UnitConversionDictionary<TValue> cachedConvertions = new UnitConversionDictionary<TValue>();
         private readonly List<IUnitConversionProvider<TValue>> userProviders = new List<IUnitConversionProvider<TValue>>();
@@ -43,12 +44,7 @@ namespace opt.Units
                 return value;
             }
 
-            UnitConversion<TValue> conversion = GetCachedConversion(fromUnit, toUnit);
-            if (conversion == null)
-            {
-                conversion = GetUserConversion(fromUnit, toUnit);
-            }
-
+            UnitConversion<TValue> conversion = GetConversion(fromUnit, toUnit);
             if (conversion == null)
             {
                 throw new InvalidOperationException();
@@ -84,6 +80,27 @@ namespace opt.Units
                     CacheConversion(fromUnit, toUnit, conversion);
                     break;
                 }
+            }
+
+            return conversion;
+        }
+
+        public UnitConversion<TValue> GetConversion(IUnit fromUnit, IUnit toUnit)
+        {
+            if (fromUnit == null)
+            {
+                throw new ArgumentNullException("fromUnit");
+            }
+
+            if (toUnit == null)
+            {
+                throw new ArgumentNullException("toUnit");
+            }
+
+            UnitConversion<TValue> conversion = GetCachedConversion(fromUnit, toUnit);
+            if (conversion == null)
+            {
+                conversion = GetUserConversion(fromUnit, toUnit);
             }
 
             return conversion;

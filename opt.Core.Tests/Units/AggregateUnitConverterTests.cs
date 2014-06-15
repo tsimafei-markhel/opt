@@ -109,5 +109,40 @@ namespace opt.Core.Tests.Units
             AggregateUnitConverter<double> agg = new AggregateUnitConverter<double>(userProvider, prefixedProvider);
             double result = agg.Convert(kilogram, metre, 10);
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void GetConversionNoFrom()
+        {
+            AggregateUnitConverter<double> agg = new AggregateUnitConverter<double>(userProvider, prefixedProvider);
+            UnitConversion<double> conversion = agg.GetConversion(null, kilogram);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void GetConversionNoTo()
+        {
+            AggregateUnitConverter<double> agg = new AggregateUnitConverter<double>(userProvider, prefixedProvider);
+            UnitConversion<double> conversion = agg.GetConversion(kilogram, null);
+        }
+
+        [TestMethod]
+        public void GetConversionContained()
+        {
+            AggregateUnitConverter<double> agg = new AggregateUnitConverter<double>(userProvider, prefixedProvider);
+            UnitConversion<double> conversion = agg.GetConversion(pound, kilogram);
+
+            Assert.IsNotNull(conversion);
+            Assert.AreEqual<UnitConversion<double>>(lbToKg, conversion);
+        }
+
+        [TestMethod]
+        public void GetConversioNotContained()
+        {
+            AggregateUnitConverter<double> agg = new AggregateUnitConverter<double>(userProvider, prefixedProvider);
+            UnitConversion<double> conversion = agg.GetConversion(centimetre, kilogram);
+
+            Assert.IsNull(conversion);
+        }
     }
 }
