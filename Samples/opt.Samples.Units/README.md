@@ -23,4 +23,4 @@ Tasks covered by this sample:
 5. Working with conversions and converters.
   - Utilizing prefixed unit conversion provider.
   - Utilizing `UnitConversionDictionary` - to store custom conversions and use it as conversions provider.
-  - Using `AggregateUnitConverter<T>` as a single access point to unit conversion.
+  - Using `UnitConverter<T>` as a single access point to unit conversion.
