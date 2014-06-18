@@ -53,9 +53,10 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Units\UnitConverterTests.cs" />
     <Compile Include="Units\PrefixedUnitTests.cs" />
     <Compile Include="Units\UnitCollectionTests.cs" />
-    <Compile Include="Units\AggregateUnitConverterTests.cs" />
+    <Compile Include="Units\AggregateUnitConversionProviderTests.cs" />
     <Compile Include="Units\DoublePrefixedUnitConversionProviderTests.cs" />
     <Compile Include="Units\PrefixedUnitConversionProviderBaseTests.cs" />
     <Compile Include="Units\UnitConversionDictionaryTests.cs" />

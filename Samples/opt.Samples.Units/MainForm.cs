@@ -39,7 +39,7 @@ namespace opt.Samples.Units
         private DoublePrefixedUnitConversionProvider prefixedConversions;
 
         // Single access point to all existing conversion rules, will be used to convert values
-        private AggregateUnitConverter<double> converter;
+        private UnitConverter<double> converter;
 
         private string conversionResultFormat = "{0} {1}   is   {2} {3}";
 
@@ -105,7 +105,7 @@ namespace opt.Samples.Units
         private void InitializeConverter()
         {
             // Just create a converter and give it all possible sources to look for conversion rules in
-            converter = new AggregateUnitConverter<double>(prefixedConversions, conversions);
+            converter = new UnitConverter<double>(prefixedConversions, conversions);
         }
 
         private void InitializeNumericField()
