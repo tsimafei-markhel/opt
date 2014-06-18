@@ -1,6 +1,6 @@
 ﻿using opt.Units;
 
-namespace Units.CustomUnit
+namespace opt.Samples.Units.CustomUnit
 {
     // It is possible to define custom interfaces for user-typed units
 

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
+using opt.Samples.Units.CustomUnit;
 using opt.Units;
-using Units.CustomUnit;
 
-namespace Units
+namespace opt.Samples.Units
 {
     public partial class MainForm : Form
     {

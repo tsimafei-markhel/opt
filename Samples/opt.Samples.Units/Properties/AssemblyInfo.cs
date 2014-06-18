@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Units")]
+[assembly: AssemblyTitle("opt Samples - Units")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("EPAM Systems")]
-[assembly: AssemblyProduct("Units")]
-[assembly: AssemblyCopyright("Copyright © EPAM Systems 2014")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("opt")]
+[assembly: AssemblyCopyright("Copyright © Tsimafei Markhel 2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

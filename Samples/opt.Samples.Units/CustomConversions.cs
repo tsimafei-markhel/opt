@@ -1,6 +1,6 @@
 ﻿using opt.Units;
 
-namespace Units
+namespace opt.Samples.Units
 {
     // Unit conversion rules can be defined in code
     // Conversion method signature has to correspond opt.Units.UnitConversion<T> delegate

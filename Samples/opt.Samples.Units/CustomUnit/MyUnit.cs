@@ -1,6 +1,6 @@
 ﻿using opt.Units;
 
-namespace Units.CustomUnit
+namespace opt.Samples.Units.CustomUnit
 {
     // UnitBase class is a good choice for deriving custom unit types from
 

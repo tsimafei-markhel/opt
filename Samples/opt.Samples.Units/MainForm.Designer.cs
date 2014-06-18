@@ -1,4 +1,4 @@
-﻿namespace Units
+﻿namespace opt.Samples.Units
 {
     partial class MainForm
     {

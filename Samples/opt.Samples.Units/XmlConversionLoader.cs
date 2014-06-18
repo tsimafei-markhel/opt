@@ -4,7 +4,7 @@ using System.Xml;
 using System.Xml.Linq;
 using opt.Units;
 
-namespace Units
+namespace opt.Samples.Units
 {
     // Very basic class for parsing Conversions.xml
     public class XmlConversionLoader

@@ -6,7 +6,7 @@ using System.Xml;
 using System.Xml.Linq;
 using opt.Units;
 
-namespace Units
+namespace opt.Samples.Units
 {
     // Very basic class for parsing SI-Units.xml
     public static class XmlUnitLoader

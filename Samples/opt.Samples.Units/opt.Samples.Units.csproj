@@ -7,8 +7,8 @@
     <ProjectGuid>{9A8C2B32-338B-46F0-9A8A-9C4C02FD3F96}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Units</RootNamespace>
-    <AssemblyName>Units</AssemblyName>
+    <RootNamespace>opt.Samples.Units</RootNamespace>
+    <AssemblyName>opt.Samples.Units</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -68,6 +68,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

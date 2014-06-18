@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "opt.Core.Tests", "opt.Core.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{A60A2691-EE44-4E61-B94C-A27F864C25EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Units", "Samples\Units\Units.csproj", "{9A8C2B32-338B-46F0-9A8A-9C4C02FD3F96}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "opt.Samples.Units", "Samples\opt.Samples.Units\opt.Samples.Units.csproj", "{9A8C2B32-338B-46F0-9A8A-9C4C02FD3F96}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

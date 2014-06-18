@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace Units
+namespace opt.Samples.Units
 {
     static class Program
     {
