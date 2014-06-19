@@ -7,7 +7,7 @@ namespace opt.Core.Tests.Units
     [TestClass]
     public class UnitConverterTests
     {
-        /*private UnitConversionDictionary<double> userProvider;
+        private UnitConversionDictionary<double> userProvider;
         private DoublePrefixedUnitConversionProvider prefixedProvider;
 
         private IUnit metre;
@@ -46,21 +46,21 @@ namespace opt.Core.Tests.Units
         [ExpectedException(typeof(ArgumentNullException))]
         public void EmptyConstructor()
         {
-            AggregateUnitConversionProvider<double> agg = new AggregateUnitConversionProvider<double>();
+            UnitConverter<double> conv = new UnitConverter<double>();
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         public void ConstructorWithNulls()
         {
-            AggregateUnitConversionProvider<double> agg = new AggregateUnitConversionProvider<double>(null);
+            UnitConverter<double> conv = new UnitConverter<double>(null);
         }
 
         [TestMethod]
         public void PrefixedOnlyValidConversion()
         {
-            AggregateUnitConversionProvider<double> agg = new AggregateUnitConversionProvider<double>(prefixedProvider);
-            double result = agg.Convert(centimetre, metre, 10.0);
+            UnitConverter<double> conv = new UnitConverter<double>(prefixedProvider);
+            double result = conv.Convert(centimetre, metre, 10.0);
 
             Assert.IsTrue(Math.Abs(result - 0.1) < double.Epsilon);
         }
@@ -69,15 +69,15 @@ namespace opt.Core.Tests.Units
         [ExpectedException(typeof(InvalidOperationException))]
         public void PrefixedOnlyInvalidConversion()
         {
-            AggregateUnitConversionProvider<double> agg = new AggregateUnitConversionProvider<double>(prefixedProvider);
-            double result = agg.Convert(kilogram, pound, 10.0);
+            UnitConverter<double> conv = new UnitConverter<double>(prefixedProvider);
+            double result = conv.Convert(kilogram, pound, 10.0);
         }
 
         [TestMethod]
         public void UserOnlyValidConversion()
         {
-            AggregateUnitConverter<double> agg = new AggregateUnitConverter<double>(userProvider);
-            double result = agg.Convert(pound, kilogram, 1.0);
+            UnitConverter<double> conv = new UnitConverter<double>(userProvider);
+            double result = conv.Convert(pound, kilogram, 1.0);
 
             Assert.IsTrue(Math.Abs(Math.Round(result, 5) - 0.45359) < double.Epsilon);
         }
@@ -86,51 +86,66 @@ namespace opt.Core.Tests.Units
         [ExpectedException(typeof(InvalidOperationException))]
         public void UserOnlyInvalidConversion()
         {
-            AggregateUnitConverter<double> agg = new AggregateUnitConverter<double>(userProvider);
-            double result = agg.Convert(centimetre, metre, 10);
+            UnitConverter<double> conv = new UnitConverter<double>(userProvider);
+            double result = conv.Convert(centimetre, metre, 10);
         }
 
         [TestMethod]
         public void BothValidConversions()
         {
-            AggregateUnitConverter<double> agg = new AggregateUnitConverter<double>(userProvider, prefixedProvider);
+            UnitConverter<double> conv = new UnitConverter<double>(userProvider, prefixedProvider);
 
-            double result1 = agg.Convert(pound, kilogram, 1.0);
+            double result1 = conv.Convert(pound, kilogram, 1.0);
             Assert.IsTrue(Math.Abs(Math.Round(result1, 5) - 0.45359) < double.Epsilon);
 
-            double result2 = agg.Convert(centimetre, metre, 10.0);
+            double result2 = conv.Convert(centimetre, metre, 10.0);
             Assert.IsTrue(Math.Abs(result2 - 0.1) < double.Epsilon);
+        }
+
+        [TestMethod]
+        public void ValidConversionTwoTimes()
+        {
+            // Once resolved, conversion is added to internal cache
+            // Need to check that calling same conversion twice does not cause two adding to the cache,
+            // which may lead to exception
+            UnitConverter<double> conv = new UnitConverter<double>(userProvider, prefixedProvider);
+
+            double result1 = conv.Convert(pound, kilogram, 1.0);
+            Assert.IsTrue(Math.Abs(Math.Round(result1, 5) - 0.45359) < double.Epsilon);
+
+            double result2 = conv.Convert(pound, kilogram, 2.0);
+            Assert.IsTrue(Math.Abs(result2 / result1 - 2.0) < double.Epsilon);
         }
 
         [TestMethod]
         [ExpectedException(typeof(InvalidOperationException))]
         public void BothInvalidConversion()
         {
-            AggregateUnitConverter<double> agg = new AggregateUnitConverter<double>(userProvider, prefixedProvider);
-            double result = agg.Convert(kilogram, metre, 10);
+            UnitConverter<double> conv = new UnitConverter<double>(userProvider, prefixedProvider);
+            double result = conv.Convert(kilogram, metre, 10);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         public void GetConversionNoFrom()
         {
-            AggregateUnitConverter<double> agg = new AggregateUnitConverter<double>(userProvider, prefixedProvider);
-            UnitConversion<double> conversion = agg.GetConversion(null, kilogram);
+            UnitConverter<double> conv = new UnitConverter<double>(userProvider, prefixedProvider);
+            UnitConversion<double> conversion = conv.GetConversion(null, kilogram);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         public void GetConversionNoTo()
         {
-            AggregateUnitConverter<double> agg = new AggregateUnitConverter<double>(userProvider, prefixedProvider);
-            UnitConversion<double> conversion = agg.GetConversion(kilogram, null);
+            UnitConverter<double> conv = new UnitConverter<double>(userProvider, prefixedProvider);
+            UnitConversion<double> conversion = conv.GetConversion(kilogram, null);
         }
 
         [TestMethod]
         public void GetConversionContained()
         {
-            AggregateUnitConverter<double> agg = new AggregateUnitConverter<double>(userProvider, prefixedProvider);
-            UnitConversion<double> conversion = agg.GetConversion(pound, kilogram);
+            UnitConverter<double> conv = new UnitConverter<double>(userProvider, prefixedProvider);
+            UnitConversion<double> conversion = conv.GetConversion(pound, kilogram);
 
             Assert.IsNotNull(conversion);
             Assert.AreEqual<UnitConversion<double>>(lbToKg, conversion);
@@ -139,10 +154,10 @@ namespace opt.Core.Tests.Units
         [TestMethod]
         public void GetConversioNotContained()
         {
-            AggregateUnitConverter<double> agg = new AggregateUnitConverter<double>(userProvider, prefixedProvider);
-            UnitConversion<double> conversion = agg.GetConversion(centimetre, kilogram);
+            UnitConverter<double> conv = new UnitConverter<double>(userProvider, prefixedProvider);
+            UnitConversion<double> conversion = conv.GetConversion(centimetre, kilogram);
 
             Assert.IsNull(conversion);
-        }*/
+        }
     }
 }
