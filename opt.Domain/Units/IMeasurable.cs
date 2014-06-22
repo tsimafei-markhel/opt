@@ -5,9 +5,8 @@ namespace opt.Units
     /// <summary>
     /// Represents measurable value: some quantity measured in certain units
     /// </summary>
-    /// <typeparam name="TValue"></typeparam>
+    /// <typeparam name="TValue">Type that represents quantity (e.g. <see cref="Double"/>)</typeparam>
     public interface IMeasurable<TValue> : IComparable<IMeasurable<TValue>>, IEquatable<IMeasurable<TValue>>
-        where TValue : IComparable<TValue>, IEquatable<TValue>
     {
         /// <summary>
         /// Gets unit of measurement
