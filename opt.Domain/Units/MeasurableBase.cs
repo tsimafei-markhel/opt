@@ -1,9 +1,8 @@
 ﻿using System;
 
 // TODO: Add unit tests
-// TODO: Add Equals(MeasurableBase<TValue>, IUnitConverter<TValue>) method?
-// TODO: Add CompareTo(MeasurableBase<TValue>, IUnitConverter<TValue>) method?
-// TODO: Add implicit or explicit cast operator MeasurableBase<TValue> ---> TValue?
+// TODO: Add Equals(MeasurableBase<TValue>, IUnitConverter<TValue>) method? Or IUnitConversionProvider<TValue>? Or predicate?
+// TODO: Add CompareTo(MeasurableBase<TValue>, IUnitConverter<TValue>) method? Or IUnitConversionProvider<TValue>? Or predicate?
 
 namespace opt.Units
 {
@@ -30,19 +29,9 @@ namespace opt.Units
         {
         }
 
-        protected MeasurableBase(IUnit unit) :
-            this(unit, default(TValue))
-        {
-        }
-
-        protected MeasurableBase() :
-            this(ArbitraryUnit.Instance, default(TValue))
-        {
-        }
-
         #region IComparable<IMeasurable<TValue>>
 
-        public Int32 CompareTo(IMeasurable<TValue> other)
+        public virtual Int32 CompareTo(IMeasurable<TValue> other)
         {
             if (object.ReferenceEquals((object)other, (object)null))
             {
@@ -62,7 +51,7 @@ namespace opt.Units
 
         #region IEquatable<IMeasurable<TValue>>
 
-        public Boolean Equals(IMeasurable<TValue> other)
+        public virtual Boolean Equals(IMeasurable<TValue> other)
         {
             if (object.ReferenceEquals((object)other, (object)null))
             {
@@ -138,6 +127,25 @@ namespace opt.Units
 
                 return hash;
             }
+        }
+
+        #endregion
+
+        #region Explicit cast to TValue
+
+        public static explicit operator TValue(MeasurableBase<TValue> measurable)
+        {
+            if (measurable == null)
+            {
+                throw new InvalidCastException();
+            }
+
+            return measurable.Value;
+        }
+
+        public virtual TValue ToValueType()
+        {
+            return (TValue)this;
         }
 
         #endregion
