@@ -198,7 +198,7 @@ namespace opt.Units
         /// <param name="obj">The <see cref="Object"/> to compare with the current <see cref="Object"/></param>
         /// <returns>True if the specified <see cref="Object"/> is equal to the current <see cref="Object"/>;
         ///     otherwise, false</returns>
-        public override Boolean Equals(object obj)
+        public override Boolean Equals(Object obj)
         {
             return Equals(obj as IMeasurable<TValue>);
         }
