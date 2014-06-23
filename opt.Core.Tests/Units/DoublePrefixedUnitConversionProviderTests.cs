@@ -47,6 +47,46 @@ namespace opt.Core.Tests.Units
         }
 
         [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void ConvertToBaseNoNullFrom()
+        {
+            DoublePrefixedUnitConversionProvider prov = new DoublePrefixedUnitConversionProvider();
+            UnitConversion<double> conv = prov.GetConversion(centimetre, metre);
+
+            conv(null, metre, 10);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void ConvertFromBaseNoNullTo()
+        {
+            DoublePrefixedUnitConversionProvider prov = new DoublePrefixedUnitConversionProvider();
+            UnitConversion<double> conv = prov.GetConversion(metre, centimetre);
+
+            conv(metre, null, 10);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void ConvertFromToPrefixedNoNullFrom()
+        {
+            DoublePrefixedUnitConversionProvider prov = new DoublePrefixedUnitConversionProvider();
+            UnitConversion<double> conv = prov.GetConversion(kilometre, centimetre);
+
+            conv(null, centimetre, 10);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void ConvertFromToPrefixedNoNullTo()
+        {
+            DoublePrefixedUnitConversionProvider prov = new DoublePrefixedUnitConversionProvider();
+            UnitConversion<double> conv = prov.GetConversion(kilometre, centimetre);
+
+            conv(kilometre, null, 10);
+        }
+
+        [TestMethod]
         public void ConvertLesserToBase()
         {
             DoublePrefixedUnitConversionProvider prov = new DoublePrefixedUnitConversionProvider();
