@@ -24,3 +24,4 @@ Tasks covered by this sample:
   - Utilizing prefixed unit conversion provider.
   - Utilizing `UnitConversionDictionary` - to store custom conversions and use it as conversions provider.
   - Using `UnitConverter<T>` as a single access point to unit conversion.
+  - Using `IMeasurable<T>` and its conversion provider.

@@ -38,8 +38,14 @@ namespace opt.Samples.Units
         // Provider to handle conversions between prefixed units
         private DoublePrefixedUnitConversionProvider prefixedConversions;
 
-        // Single access point to all existing conversion rules, will be used to convert values
-        private UnitConverter<double> converter;
+        // Provider of measurable conversions
+        private DoubleMeasurableUnitConversionProvider measurableConversions;
+
+        // Single access point to all existing double conversion rules, will be used to convert values
+        private UnitConverter<double> doubleConverter;
+
+        // Single access point to all existing measurable conversion rules
+        private UnitConverter<IMeasurable<double>> measurableConverter;
 
         private string conversionResultFormat = "{0} {1}   is   {2} {3}";
 
@@ -50,8 +56,11 @@ namespace opt.Samples.Units
             // First, initialize units
             InitializeUnits();
             // Second, initialize conversion rules and converter
-            InitializeConversions();
-            InitializeConverter();
+            InitializeDoubleConversions();
+            InitializeDoubleConverter();
+            // Third, initialize conversions and converter for measurables
+            InitializeMeasurableConversions();
+            InitializeMeasurableConverter();
 
             // UI initialization
             FillTree();
@@ -75,7 +84,7 @@ namespace opt.Samples.Units
             units.Add(boa);
         }
 
-        private void InitializeConversions()
+        private void InitializeDoubleConversions()
         {
             // 1. For prefixed units, use predefined prefixed unit converter
             prefixedConversions = new DoublePrefixedUnitConversionProvider();
@@ -102,10 +111,24 @@ namespace opt.Samples.Units
             }
         }
 
-        private void InitializeConverter()
+        private void InitializeDoubleConverter()
         {
             // Just create a converter and give it all possible sources to look for conversion rules in
-            converter = new UnitConverter<double>(prefixedConversions, conversions);
+            doubleConverter = new UnitConverter<double>(prefixedConversions, conversions);
+        }
+
+        private void InitializeMeasurableConversions()
+        {
+            // For measurables, use predefined measurable unit conversion provider.
+            // Populate it with double converter, because converting IMeasurable<double>
+            // implies converting doubles.
+            measurableConversions = new DoubleMeasurableUnitConversionProvider(doubleConverter);
+        }
+
+        private void InitializeMeasurableConverter()
+        {
+            // Just create a converter and give it all possible sources to look for conversion rules in
+            measurableConverter = new UnitConverter<IMeasurable<double>>(measurableConversions);
         }
 
         private void InitializeNumericField()
@@ -188,7 +211,7 @@ namespace opt.Samples.Units
             }
         }
 
-        private void buttonConvert_Click(object sender, System.EventArgs e)
+        private void buttonConvertDouble_Click(object sender, System.EventArgs e)
         {
             IUnit fromUnit = treeUnits.SelectedNode == null ? null : treeUnits.SelectedNode.Tag as IUnit;
             IUnit toUnit = comboUnits.SelectedItem == null ? null : ((UnitsComboBoxItem)comboUnits.SelectedItem).Unit;
@@ -201,7 +224,31 @@ namespace opt.Samples.Units
                 try
                 {
                     labelResult.Text = string.Format(conversionResultFormat, value.ToString(), fromUnit.Symbol,
-                        converter.Convert(fromUnit, toUnit, value).ToString(), toUnit.Symbol);
+                        doubleConverter.Convert(fromUnit, toUnit, value).ToString(), toUnit.Symbol);
+                }
+                catch (InvalidOperationException)
+                {
+                    MessageBox.Show("Conversion not found!", "Units Sample", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+        }
+
+        private void buttonConvertMeasurable_Click(object sender, EventArgs e)
+        {
+            IUnit fromUnit = treeUnits.SelectedNode == null ? null : treeUnits.SelectedNode.Tag as IUnit;
+            IUnit toUnit = comboUnits.SelectedItem == null ? null : ((UnitsComboBoxItem)comboUnits.SelectedItem).Unit;
+
+            if (fromUnit != null && toUnit != null)
+            {
+                labelResult.Text = string.Empty;
+
+                double value = Convert.ToDouble(numericValue.Value);
+                DoubleMeasurable measurableValue = new DoubleMeasurable(fromUnit, value);
+                try
+                {
+                    IMeasurable<double> convertedValue = measurableConverter.Convert(fromUnit, toUnit, measurableValue);
+                    labelResult.Text = string.Format(conversionResultFormat, value.ToString(), fromUnit.Symbol,
+                        convertedValue.Value.ToString(), convertedValue.Unit.Symbol);
                 }
                 catch (InvalidOperationException)
                 {

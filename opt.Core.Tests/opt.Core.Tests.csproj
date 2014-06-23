@@ -60,6 +60,8 @@
     <Compile Include="Units\DoublePrefixedUnitConversionProviderTests.cs" />
     <Compile Include="Units\PrefixedUnitConversionProviderBaseTests.cs" />
     <Compile Include="Units\UnitConversionDictionaryTests.cs" />
+    <Compile Include="Units\MeasurableUnitConversionProviderBaseTests.cs" />
+    <Compile Include="Units\DoubleMeasurableUnitConversionProviderTests.cs" />
     <Compile Include="Units\UnitTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

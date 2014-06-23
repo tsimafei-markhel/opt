@@ -43,9 +43,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.labelResult = new System.Windows.Forms.Label();
-            this.buttonConvert = new System.Windows.Forms.Button();
+            this.buttonConvertDouble = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.labelDescription = new System.Windows.Forms.Label();
+            this.buttonConvertMeasurable = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericValue)).BeginInit();
             this.SuspendLayout();
             // 
@@ -168,7 +169,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(204, 235);
+            this.label6.Location = new System.Drawing.Point(204, 264);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(40, 13);
             this.label6.TabIndex = 13;
@@ -177,21 +178,21 @@
             // labelResult
             // 
             this.labelResult.AutoSize = true;
-            this.labelResult.Location = new System.Drawing.Point(274, 235);
+            this.labelResult.Location = new System.Drawing.Point(274, 264);
             this.labelResult.Name = "labelResult";
             this.labelResult.Size = new System.Drawing.Size(10, 13);
             this.labelResult.TabIndex = 14;
             this.labelResult.Text = " ";
             // 
-            // buttonConvert
+            // buttonConvertDouble
             // 
-            this.buttonConvert.Location = new System.Drawing.Point(277, 200);
-            this.buttonConvert.Name = "buttonConvert";
-            this.buttonConvert.Size = new System.Drawing.Size(75, 23);
-            this.buttonConvert.TabIndex = 15;
-            this.buttonConvert.Text = "Convert";
-            this.buttonConvert.UseVisualStyleBackColor = true;
-            this.buttonConvert.Click += new System.EventHandler(this.buttonConvert_Click);
+            this.buttonConvertDouble.Location = new System.Drawing.Point(277, 200);
+            this.buttonConvertDouble.Name = "buttonConvertDouble";
+            this.buttonConvertDouble.Size = new System.Drawing.Size(186, 23);
+            this.buttonConvertDouble.TabIndex = 15;
+            this.buttonConvertDouble.Text = "Convert <double>";
+            this.buttonConvertDouble.UseVisualStyleBackColor = true;
+            this.buttonConvertDouble.Click += new System.EventHandler(this.buttonConvertDouble_Click);
             // 
             // label8
             // 
@@ -211,14 +212,25 @@
             this.labelDescription.TabIndex = 17;
             this.labelDescription.Text = " ";
             // 
+            // buttonConvertMeasurable
+            // 
+            this.buttonConvertMeasurable.Location = new System.Drawing.Point(277, 229);
+            this.buttonConvertMeasurable.Name = "buttonConvertMeasurable";
+            this.buttonConvertMeasurable.Size = new System.Drawing.Size(186, 23);
+            this.buttonConvertMeasurable.TabIndex = 18;
+            this.buttonConvertMeasurable.Text = "Convert <measurable>";
+            this.buttonConvertMeasurable.UseVisualStyleBackColor = true;
+            this.buttonConvertMeasurable.Click += new System.EventHandler(this.buttonConvertMeasurable_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(624, 442);
+            this.Controls.Add(this.buttonConvertMeasurable);
             this.Controls.Add(this.labelDescription);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.buttonConvert);
+            this.Controls.Add(this.buttonConvertDouble);
             this.Controls.Add(this.labelResult);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label4);
@@ -260,9 +272,10 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label labelResult;
-        private System.Windows.Forms.Button buttonConvert;
+        private System.Windows.Forms.Button buttonConvertDouble;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label labelDescription;
+        private System.Windows.Forms.Button buttonConvertMeasurable;
     }
 }
 

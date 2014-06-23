@@ -73,9 +73,6 @@ namespace opt.Core.Tests.Units
 
             Assert.IsNotNull(conv);
             Assert.AreEqual<UnitConversion<double>>(prov.ConvertToBase, conv);
-
-            //double result = conv(centimetre, metre, 10);
-            //Assert.IsTrue(Math.Abs(result - 0.1) < double.Epsilon);
         }
 
         [TestMethod]
@@ -86,9 +83,6 @@ namespace opt.Core.Tests.Units
 
             Assert.IsNotNull(conv);
             Assert.AreEqual<UnitConversion<double>>(prov.ConvertToBase, conv);
-
-            //double result = conv(kilometre, metre, 10);
-            //Assert.IsTrue(Math.Abs(result - 10000.0) < double.Epsilon);
         }
 
         [TestMethod]
@@ -99,9 +93,6 @@ namespace opt.Core.Tests.Units
 
             Assert.IsNotNull(conv);
             Assert.AreEqual<UnitConversion<double>>(prov.ConvertFromBase, conv);
-
-            //double result = conv(metre, centimetre, 1.0);
-            //Assert.IsTrue(Math.Abs(result - 100.0) < double.Epsilon);
         }
 
         [TestMethod]
@@ -112,9 +103,6 @@ namespace opt.Core.Tests.Units
 
             Assert.IsNotNull(conv);
             Assert.AreEqual<UnitConversion<double>>(prov.ConvertFromBase, conv);
-
-            //double result = conv(metre, kilometre, 100);
-            //Assert.IsTrue(Math.Abs(result - 0.1) < double.Epsilon);
         }
 
         [TestMethod]
@@ -125,9 +113,6 @@ namespace opt.Core.Tests.Units
 
             Assert.IsNotNull(conv);
             Assert.AreEqual<UnitConversion<double>>(prov.ConvertFromPrefixedToPrefixed, conv);
-
-            //double result = conv(centimetre, kilometre, 100);
-            //Assert.IsTrue(Math.Abs(result - 0.001) < double.Epsilon);
         }
 
         [TestMethod]
@@ -138,9 +123,6 @@ namespace opt.Core.Tests.Units
 
             Assert.IsNotNull(conv);
             Assert.AreEqual<UnitConversion<double>>(prov.ConvertFromPrefixedToPrefixed, conv);
-
-            //double result = conv(kilometre, centimetre, 1);
-            //Assert.IsTrue(Math.Abs(result - 100000.0) < double.Epsilon);
         }
     }
 }
