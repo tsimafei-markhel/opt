@@ -53,6 +53,8 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Relations\InequalityRelationTests.cs" />
+    <Compile Include="Relations\SetRelationTests.cs" />
     <Compile Include="Units\UnitConverterTests.cs" />
     <Compile Include="Units\PrefixedUnitTests.cs" />
     <Compile Include="Units\UnitCollectionTests.cs" />
