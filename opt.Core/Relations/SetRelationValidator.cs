@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 
-// TODO: Add unit tests
-
 namespace opt.Relations
 {
     public sealed class SetRelationValidator<TItem, TSet> : IBinaryRelationValidator<TItem, TSet>
