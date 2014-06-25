@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 
-// TODO: Add unit tests
-
 namespace opt.Relations
 {
     public sealed class InequalityRelationValidator<TValue> : IBinaryRelationValidator<TValue, TValue>
@@ -62,7 +60,7 @@ namespace opt.Relations
                 return false;
             }
 
-            return left.CompareTo(right) > 0;
+            return left.CompareTo(right) < 0;
         }
 
         private static Boolean ValidateLessOrEqual(TValue left, TValue right)
@@ -73,7 +71,7 @@ namespace opt.Relations
                 return false;
             }
 
-            return left.CompareTo(right) >= 0;
+            return left.CompareTo(right) <= 0;
         }
 
         private static Boolean ValidateGreater(TValue left, TValue right)
@@ -84,7 +82,7 @@ namespace opt.Relations
                 return false;
             }
 
-            return left.CompareTo(right) < 0;
+            return left.CompareTo(right) > 0;
         }
 
         private static Boolean ValidateGreaterOrEqual(TValue left, TValue right)
@@ -95,7 +93,7 @@ namespace opt.Relations
                 return false;
             }
 
-            return left.CompareTo(right) <= 0;
+            return left.CompareTo(right) >= 0;
         }
     }
 }
