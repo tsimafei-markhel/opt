@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{A60A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "opt.Samples.Units", "Samples\opt.Samples.Units\opt.Samples.Units.csproj", "{9A8C2B32-338B-46F0-9A8A-9C4C02FD3F96}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "opt.Samples.Relations", "Samples\opt.Samples.Relations\opt.Samples.Relations.csproj", "{F523537F-3206-4CCB-AC1D-8B5EA24188CB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,11 +41,16 @@ Global
 		{9A8C2B32-338B-46F0-9A8A-9C4C02FD3F96}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A8C2B32-338B-46F0-9A8A-9C4C02FD3F96}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A8C2B32-338B-46F0-9A8A-9C4C02FD3F96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F523537F-3206-4CCB-AC1D-8B5EA24188CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F523537F-3206-4CCB-AC1D-8B5EA24188CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F523537F-3206-4CCB-AC1D-8B5EA24188CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F523537F-3206-4CCB-AC1D-8B5EA24188CB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{9A8C2B32-338B-46F0-9A8A-9C4C02FD3F96} = {A60A2691-EE44-4E61-B94C-A27F864C25EA}
+		{F523537F-3206-4CCB-AC1D-8B5EA24188CB} = {A60A2691-EE44-4E61-B94C-A27F864C25EA}
 	EndGlobalSection
 EndGlobal
