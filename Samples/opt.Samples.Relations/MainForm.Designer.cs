@@ -30,15 +30,28 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.buttonTestInequalityDouble = new System.Windows.Forms.Button();
+            this.numericInequalityRightDouble = new System.Windows.Forms.NumericUpDown();
+            this.numericInequalityLeftDouble = new System.Windows.Forms.NumericUpDown();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textNotMember = new System.Windows.Forms.TextBox();
+            this.textMember = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textGreaterOrEqual = new System.Windows.Forms.TextBox();
+            this.textGreater = new System.Windows.Forms.TextBox();
+            this.textLessOrEqual = new System.Windows.Forms.TextBox();
+            this.textLess = new System.Windows.Forms.TextBox();
+            this.textNotEqual = new System.Windows.Forms.TextBox();
+            this.textEqual = new System.Windows.Forms.TextBox();
+            this.buttonReset = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericInequalityRightDouble)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericInequalityLeftDouble)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,122 +70,247 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.buttonTestInequalityDouble);
+            this.tabPage1.Controls.Add(this.numericInequalityRightDouble);
+            this.tabPage1.Controls.Add(this.numericInequalityLeftDouble);
+            this.tabPage1.Controls.Add(this.label5);
+            this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(430, 392);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.Text = "Double";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // buttonTestInequalityDouble
+            // 
+            this.buttonTestInequalityDouble.Location = new System.Drawing.Point(182, 37);
+            this.buttonTestInequalityDouble.Name = "buttonTestInequalityDouble";
+            this.buttonTestInequalityDouble.Size = new System.Drawing.Size(75, 23);
+            this.buttonTestInequalityDouble.TabIndex = 3;
+            this.buttonTestInequalityDouble.Text = "Test!";
+            this.buttonTestInequalityDouble.UseVisualStyleBackColor = true;
+            this.buttonTestInequalityDouble.Click += new System.EventHandler(this.buttonTestInequalityDouble_Click);
+            // 
+            // numericInequalityRightDouble
+            // 
+            this.numericInequalityRightDouble.Location = new System.Drawing.Point(76, 40);
+            this.numericInequalityRightDouble.Name = "numericInequalityRightDouble";
+            this.numericInequalityRightDouble.Size = new System.Drawing.Size(100, 20);
+            this.numericInequalityRightDouble.TabIndex = 2;
+            // 
+            // numericInequalityLeftDouble
+            // 
+            this.numericInequalityLeftDouble.Location = new System.Drawing.Point(76, 14);
+            this.numericInequalityLeftDouble.Name = "numericInequalityLeftDouble";
+            this.numericInequalityLeftDouble.Size = new System.Drawing.Size(100, 20);
+            this.numericInequalityLeftDouble.TabIndex = 0;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 42);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(64, 13);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Right value:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 16);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(57, 13);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Left value:";
             // 
             // tabPage2
             // 
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(192, 74);
+            this.tabPage2.Size = new System.Drawing.Size(430, 392);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.Text = "Double Measurable";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.textBox6);
-            this.panel1.Controls.Add(this.textBox5);
-            this.panel1.Controls.Add(this.textBox4);
-            this.panel1.Controls.Add(this.textBox3);
-            this.panel1.Controls.Add(this.textBox2);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.textNotMember);
+            this.panel1.Controls.Add(this.textMember);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.textGreaterOrEqual);
+            this.panel1.Controls.Add(this.textGreater);
+            this.panel1.Controls.Add(this.textLessOrEqual);
+            this.panel1.Controls.Add(this.textLess);
+            this.panel1.Controls.Add(this.textNotEqual);
+            this.panel1.Controls.Add(this.textEqual);
             this.panel1.Location = new System.Drawing.Point(456, 34);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(156, 396);
+            this.panel1.Size = new System.Drawing.Size(156, 367);
             this.panel1.TabIndex = 1;
             // 
-            // textBox1
+            // label2
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox1.Location = new System.Drawing.Point(3, 0);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(150, 31);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox1.WordWrap = false;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(3, 244);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(23, 13);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Set";
             // 
-            // textBox2
+            // textNotMember
             // 
-            this.textBox2.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox2.Location = new System.Drawing.Point(3, 37);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(150, 31);
-            this.textBox2.TabIndex = 1;
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox2.WordWrap = false;
+            this.textNotMember.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.textNotMember.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textNotMember.Location = new System.Drawing.Point(3, 292);
+            this.textNotMember.Name = "textNotMember";
+            this.textNotMember.ReadOnly = true;
+            this.textNotMember.Size = new System.Drawing.Size(150, 26);
+            this.textNotMember.TabIndex = 8;
+            this.textNotMember.TabStop = false;
+            this.textNotMember.Text = "Not Member";
+            this.textNotMember.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textNotMember.WordWrap = false;
             // 
-            // textBox3
+            // textMember
             // 
-            this.textBox3.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox3.Location = new System.Drawing.Point(3, 74);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(150, 31);
-            this.textBox3.TabIndex = 2;
-            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox3.WordWrap = false;
+            this.textMember.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.textMember.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textMember.Location = new System.Drawing.Point(3, 260);
+            this.textMember.Name = "textMember";
+            this.textMember.ReadOnly = true;
+            this.textMember.Size = new System.Drawing.Size(150, 26);
+            this.textMember.TabIndex = 7;
+            this.textMember.TabStop = false;
+            this.textMember.Text = "Member";
+            this.textMember.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textMember.WordWrap = false;
             // 
-            // textBox4
+            // label1
             // 
-            this.textBox4.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox4.Location = new System.Drawing.Point(3, 111);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(150, 31);
-            this.textBox4.TabIndex = 3;
-            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox4.WordWrap = false;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(52, 13);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Inequality";
             // 
-            // textBox5
+            // textGreaterOrEqual
             // 
-            this.textBox5.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox5.Location = new System.Drawing.Point(3, 148);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(150, 31);
-            this.textBox5.TabIndex = 4;
-            this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox5.WordWrap = false;
+            this.textGreaterOrEqual.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.textGreaterOrEqual.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textGreaterOrEqual.Location = new System.Drawing.Point(3, 176);
+            this.textGreaterOrEqual.Name = "textGreaterOrEqual";
+            this.textGreaterOrEqual.ReadOnly = true;
+            this.textGreaterOrEqual.Size = new System.Drawing.Size(150, 26);
+            this.textGreaterOrEqual.TabIndex = 5;
+            this.textGreaterOrEqual.TabStop = false;
+            this.textGreaterOrEqual.Text = "Greater Or Equal";
+            this.textGreaterOrEqual.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textGreaterOrEqual.WordWrap = false;
             // 
-            // textBox6
+            // textGreater
             // 
-            this.textBox6.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox6.Location = new System.Drawing.Point(3, 185);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(150, 31);
-            this.textBox6.TabIndex = 5;
-            this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox6.WordWrap = false;
+            this.textGreater.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.textGreater.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textGreater.Location = new System.Drawing.Point(3, 144);
+            this.textGreater.Name = "textGreater";
+            this.textGreater.ReadOnly = true;
+            this.textGreater.Size = new System.Drawing.Size(150, 26);
+            this.textGreater.TabIndex = 4;
+            this.textGreater.TabStop = false;
+            this.textGreater.Text = "Greater";
+            this.textGreater.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textGreater.WordWrap = false;
+            // 
+            // textLessOrEqual
+            // 
+            this.textLessOrEqual.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.textLessOrEqual.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textLessOrEqual.Location = new System.Drawing.Point(3, 112);
+            this.textLessOrEqual.Name = "textLessOrEqual";
+            this.textLessOrEqual.ReadOnly = true;
+            this.textLessOrEqual.Size = new System.Drawing.Size(150, 26);
+            this.textLessOrEqual.TabIndex = 3;
+            this.textLessOrEqual.TabStop = false;
+            this.textLessOrEqual.Text = "Less Or Equal";
+            this.textLessOrEqual.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textLessOrEqual.WordWrap = false;
+            // 
+            // textLess
+            // 
+            this.textLess.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.textLess.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textLess.Location = new System.Drawing.Point(3, 80);
+            this.textLess.Name = "textLess";
+            this.textLess.ReadOnly = true;
+            this.textLess.Size = new System.Drawing.Size(150, 26);
+            this.textLess.TabIndex = 2;
+            this.textLess.TabStop = false;
+            this.textLess.Text = "Less";
+            this.textLess.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textLess.WordWrap = false;
+            // 
+            // textNotEqual
+            // 
+            this.textNotEqual.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.textNotEqual.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textNotEqual.Location = new System.Drawing.Point(3, 48);
+            this.textNotEqual.Name = "textNotEqual";
+            this.textNotEqual.ReadOnly = true;
+            this.textNotEqual.Size = new System.Drawing.Size(150, 26);
+            this.textNotEqual.TabIndex = 1;
+            this.textNotEqual.TabStop = false;
+            this.textNotEqual.Text = "Not Equal";
+            this.textNotEqual.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textNotEqual.WordWrap = false;
+            // 
+            // textEqual
+            // 
+            this.textEqual.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.textEqual.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textEqual.Location = new System.Drawing.Point(3, 16);
+            this.textEqual.Name = "textEqual";
+            this.textEqual.ReadOnly = true;
+            this.textEqual.Size = new System.Drawing.Size(150, 26);
+            this.textEqual.TabIndex = 0;
+            this.textEqual.TabStop = false;
+            this.textEqual.Text = "Equal";
+            this.textEqual.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textEqual.WordWrap = false;
+            // 
+            // buttonReset
+            // 
+            this.buttonReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonReset.Location = new System.Drawing.Point(456, 407);
+            this.buttonReset.Name = "buttonReset";
+            this.buttonReset.Size = new System.Drawing.Size(156, 23);
+            this.buttonReset.TabIndex = 2;
+            this.buttonReset.Text = "Reset";
+            this.buttonReset.UseVisualStyleBackColor = true;
+            this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(624, 442);
+            this.Controls.Add(this.buttonReset);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.tabControl1);
             this.MinimumSize = new System.Drawing.Size(640, 480);
             this.Name = "MainForm";
             this.Text = "Relations Sample";
             this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericInequalityRightDouble)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericInequalityLeftDouble)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -185,12 +323,22 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textEqual;
+        private System.Windows.Forms.TextBox textGreaterOrEqual;
+        private System.Windows.Forms.TextBox textGreater;
+        private System.Windows.Forms.TextBox textLessOrEqual;
+        private System.Windows.Forms.TextBox textLess;
+        private System.Windows.Forms.TextBox textNotEqual;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textNotMember;
+        private System.Windows.Forms.TextBox textMember;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button buttonTestInequalityDouble;
+        private System.Windows.Forms.NumericUpDown numericInequalityRightDouble;
+        private System.Windows.Forms.NumericUpDown numericInequalityLeftDouble;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button buttonReset;
     }
 }
 

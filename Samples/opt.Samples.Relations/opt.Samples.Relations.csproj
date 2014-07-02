@@ -74,6 +74,16 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\opt.Core\opt.Core.csproj">
+      <Project>{bdb0cea7-1902-4376-9bf0-57c81f32610c}</Project>
+      <Name>opt.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\opt.Domain\opt.Domain.csproj">
+      <Project>{c933d401-e8e7-4d47-b9f2-7bcab7ca9077}</Project>
+      <Name>opt.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
