@@ -4,7 +4,9 @@
 
 namespace opt.Units
 {
-    public class DoubleMeasurable : MeasurableBase<Double>
+    // Had to implement IComparable<DoubleMeasurable>, IEquatable<DoubleMeasurable>, these implementations
+    // just fall back to the MeasurableBase<Double> implementation
+    public class DoubleMeasurable : MeasurableBase<Double>, IComparable<DoubleMeasurable>, IEquatable<DoubleMeasurable>
     {
         public DoubleMeasurable(IUnit unit, Double value) :
             base(unit, value)
@@ -14,6 +16,16 @@ namespace opt.Units
         public DoubleMeasurable(Double value) :
             base(value)
         {
+        }
+
+        public virtual Boolean Equals(DoubleMeasurable other)
+        {
+            return Equals(other as IMeasurable<double>);
+        }
+
+        public virtual Int32 CompareTo(DoubleMeasurable other)
+        {
+            return CompareTo(other as IMeasurable<double>);
         }
     }
 }
