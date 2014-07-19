@@ -14,12 +14,17 @@ namespace opt.Samples.Relations
         // TODO: private InequalityRelationValidator<DoubleMeasurable> doubleMeasurableRelationValidator;
         private SetRelationValidator<DoubleMeasurable, HashSet<DoubleMeasurable>> setMeasurableRelationValidator;
 
+        private HashSet<Double> doubleSet;
+        private HashSet<DoubleMeasurable> doubleMeasurableSet;
+
         public MainForm()
         {
             InitializeComponent();
 
             // Validators initialization
             InitializeValidators();
+
+            InitializeSets();
 
             // UI initialization
             InitializeNumericFields();
@@ -33,6 +38,12 @@ namespace opt.Samples.Relations
             setMeasurableRelationValidator = new SetRelationValidator<DoubleMeasurable, HashSet<DoubleMeasurable>>();
         }
 
+        private void InitializeSets()
+        {
+            doubleSet = new HashSet<Double>();
+            doubleMeasurableSet = new HashSet<DoubleMeasurable>();
+        }
+
         private void InitializeNumericFields()
         {
             numericInequalityLeftDouble.Minimum = decimal.MinValue;
@@ -42,6 +53,27 @@ namespace opt.Samples.Relations
             numericInequalityRightDouble.Minimum = decimal.MinValue;
             numericInequalityRightDouble.Maximum = decimal.MaxValue;
             numericInequalityRightDouble.DecimalPlaces = 1;
+
+            numericSetAddDouble.Minimum = decimal.MinValue;
+            numericSetAddDouble.Maximum = decimal.MaxValue;
+            numericSetAddDouble.DecimalPlaces = 1;
+
+            numericSetTestDouble.Minimum = decimal.MinValue;
+            numericSetTestDouble.Maximum = decimal.MaxValue;
+            numericSetTestDouble.DecimalPlaces = 1;
+        }
+
+        private void UpdateListSetDouble()
+        {
+            listSetDouble.SuspendLayout();
+            listSetDouble.Items.Clear();
+
+            foreach (Double value in doubleSet)
+            {
+                listSetDouble.Items.Add(value);
+            }
+
+            listSetDouble.ResumeLayout();
         }
 
         private void ResetRelationFields()
@@ -82,6 +114,27 @@ namespace opt.Samples.Relations
         private void buttonReset_Click(object sender, EventArgs e)
         {
             ResetRelationFields();
+        }
+
+        private void buttonSetAddDouble_Click(object sender, EventArgs e)
+        {
+            double value = Convert.ToDouble(numericSetAddDouble.Value);
+            doubleSet.Add(value);
+
+            UpdateListSetDouble();
+        }
+
+        private void buttonSetTestDouble_Click(object sender, EventArgs e)
+        {
+            ResetRelationFields();
+
+            double value = Convert.ToDouble(numericSetTestDouble.Value);
+
+            // TODO: Move the below to a generic method, p-haps add mapping between text field and a relation
+            textMember.BackColor =
+                setRelationValidator.Validate(SetRelation.Member, value, doubleSet) ? Color.LightGreen : Color.OrangeRed;
+            textNotMember.BackColor =
+                setRelationValidator.Validate(SetRelation.NotMember, value, doubleSet) ? Color.LightGreen : Color.OrangeRed;
         }
     }
 }

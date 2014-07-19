@@ -48,11 +48,21 @@
             this.textNotEqual = new System.Windows.Forms.TextBox();
             this.textEqual = new System.Windows.Forms.TextBox();
             this.buttonReset = new System.Windows.Forms.Button();
+            this.listSetDouble = new System.Windows.Forms.ListBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.numericSetAddDouble = new System.Windows.Forms.NumericUpDown();
+            this.label6 = new System.Windows.Forms.Label();
+            this.buttonSetAddDouble = new System.Windows.Forms.Button();
+            this.buttonSetTestDouble = new System.Windows.Forms.Button();
+            this.numericSetTestDouble = new System.Windows.Forms.NumericUpDown();
+            this.label7 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericInequalityRightDouble)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericInequalityLeftDouble)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericSetAddDouble)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericSetTestDouble)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -70,6 +80,14 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.buttonSetTestDouble);
+            this.tabPage1.Controls.Add(this.numericSetTestDouble);
+            this.tabPage1.Controls.Add(this.label7);
+            this.tabPage1.Controls.Add(this.buttonSetAddDouble);
+            this.tabPage1.Controls.Add(this.numericSetAddDouble);
+            this.tabPage1.Controls.Add(this.label6);
+            this.tabPage1.Controls.Add(this.label4);
+            this.tabPage1.Controls.Add(this.listSetDouble);
             this.tabPage1.Controls.Add(this.buttonTestInequalityDouble);
             this.tabPage1.Controls.Add(this.numericInequalityRightDouble);
             this.tabPage1.Controls.Add(this.numericInequalityLeftDouble);
@@ -88,7 +106,7 @@
             this.buttonTestInequalityDouble.Location = new System.Drawing.Point(182, 37);
             this.buttonTestInequalityDouble.Name = "buttonTestInequalityDouble";
             this.buttonTestInequalityDouble.Size = new System.Drawing.Size(75, 23);
-            this.buttonTestInequalityDouble.TabIndex = 3;
+            this.buttonTestInequalityDouble.TabIndex = 2;
             this.buttonTestInequalityDouble.Text = "Test!";
             this.buttonTestInequalityDouble.UseVisualStyleBackColor = true;
             this.buttonTestInequalityDouble.Click += new System.EventHandler(this.buttonTestInequalityDouble_Click);
@@ -98,7 +116,7 @@
             this.numericInequalityRightDouble.Location = new System.Drawing.Point(76, 40);
             this.numericInequalityRightDouble.Name = "numericInequalityRightDouble";
             this.numericInequalityRightDouble.Size = new System.Drawing.Size(100, 20);
-            this.numericInequalityRightDouble.TabIndex = 2;
+            this.numericInequalityRightDouble.TabIndex = 1;
             // 
             // numericInequalityLeftDouble
             // 
@@ -295,6 +313,75 @@
             this.buttonReset.UseVisualStyleBackColor = true;
             this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
             // 
+            // listSetDouble
+            // 
+            this.listSetDouble.FormattingEnabled = true;
+            this.listSetDouble.Location = new System.Drawing.Point(9, 262);
+            this.listSetDouble.Name = "listSetDouble";
+            this.listSetDouble.Size = new System.Drawing.Size(61, 121);
+            this.listSetDouble.TabIndex = 4;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 244);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(26, 13);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "Set:";
+            // 
+            // numericSetAddDouble
+            // 
+            this.numericSetAddDouble.Location = new System.Drawing.Point(140, 260);
+            this.numericSetAddDouble.Name = "numericSetAddDouble";
+            this.numericSetAddDouble.Size = new System.Drawing.Size(100, 20);
+            this.numericSetAddDouble.TabIndex = 3;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(76, 262);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(58, 13);
+            this.label6.TabIndex = 7;
+            this.label6.Text = "Add to set:";
+            // 
+            // buttonSetAddDouble
+            // 
+            this.buttonSetAddDouble.Location = new System.Drawing.Point(246, 257);
+            this.buttonSetAddDouble.Name = "buttonSetAddDouble";
+            this.buttonSetAddDouble.Size = new System.Drawing.Size(75, 23);
+            this.buttonSetAddDouble.TabIndex = 4;
+            this.buttonSetAddDouble.Text = "Add";
+            this.buttonSetAddDouble.UseVisualStyleBackColor = true;
+            this.buttonSetAddDouble.Click += new System.EventHandler(this.buttonSetAddDouble_Click);
+            // 
+            // buttonSetTestDouble
+            // 
+            this.buttonSetTestDouble.Location = new System.Drawing.Point(246, 283);
+            this.buttonSetTestDouble.Name = "buttonSetTestDouble";
+            this.buttonSetTestDouble.Size = new System.Drawing.Size(75, 23);
+            this.buttonSetTestDouble.TabIndex = 6;
+            this.buttonSetTestDouble.Text = "Test!";
+            this.buttonSetTestDouble.UseVisualStyleBackColor = true;
+            this.buttonSetTestDouble.Click += new System.EventHandler(this.buttonSetTestDouble_Click);
+            // 
+            // numericSetTestDouble
+            // 
+            this.numericSetTestDouble.Location = new System.Drawing.Point(140, 286);
+            this.numericSetTestDouble.Name = "numericSetTestDouble";
+            this.numericSetTestDouble.Size = new System.Drawing.Size(100, 20);
+            this.numericSetTestDouble.TabIndex = 5;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(73, 288);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(60, 13);
+            this.label7.TabIndex = 10;
+            this.label7.Text = "Test value:";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -313,6 +400,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericInequalityLeftDouble)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericSetAddDouble)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericSetTestDouble)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -339,6 +428,14 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button buttonReset;
+        private System.Windows.Forms.Button buttonSetTestDouble;
+        private System.Windows.Forms.NumericUpDown numericSetTestDouble;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button buttonSetAddDouble;
+        private System.Windows.Forms.NumericUpDown numericSetAddDouble;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ListBox listSetDouble;
     }
 }
 
