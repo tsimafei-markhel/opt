@@ -3,19 +3,21 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using opt.Relations;
-using opt.Units;
 
 namespace opt.Samples.Relations
 {
     public partial class MainForm : Form
     {
+        private static readonly Color validRelationColor = Color.LightGreen;
+        private static readonly Color invalidRelationColor = Color.OrangeRed;
+        private static readonly Color defaultRelationColor = SystemColors.ControlLight;
+
+        private Dictionary<IRelation, TextBox> relationFields;
+
         private InequalityRelationValidator<Double> doubleRelationValidator;
         private SetRelationValidator<Double, HashSet<Double>> setRelationValidator;
-        // TODO: private InequalityRelationValidator<DoubleMeasurable> doubleMeasurableRelationValidator;
-        private SetRelationValidator<DoubleMeasurable, HashSet<DoubleMeasurable>> setMeasurableRelationValidator;
 
         private HashSet<Double> doubleSet;
-        private HashSet<DoubleMeasurable> doubleMeasurableSet;
 
         public MainForm()
         {
@@ -28,20 +30,18 @@ namespace opt.Samples.Relations
 
             // UI initialization
             InitializeNumericFields();
+            InitializeFieldsMapping();
         }
 
         private void InitializeValidators()
         {
             doubleRelationValidator = new InequalityRelationValidator<double>();
             setRelationValidator = new SetRelationValidator<double, HashSet<double>>();
-            // TODO: doubleMeasurableRelationValidator = new InequalityRelationValidator<DoubleMeasurable>();
-            setMeasurableRelationValidator = new SetRelationValidator<DoubleMeasurable, HashSet<DoubleMeasurable>>();
         }
 
         private void InitializeSets()
         {
             doubleSet = new HashSet<Double>();
-            doubleMeasurableSet = new HashSet<DoubleMeasurable>();
         }
 
         private void InitializeNumericFields()
@@ -63,6 +63,19 @@ namespace opt.Samples.Relations
             numericSetTestDouble.DecimalPlaces = 1;
         }
 
+        private void InitializeFieldsMapping()
+        {
+            relationFields = new Dictionary<IRelation, TextBox>();
+            relationFields.Add(InequalityRelation.Equal, textEqual);
+            relationFields.Add(InequalityRelation.NotEqual, textNotEqual);
+            relationFields.Add(InequalityRelation.Less, textLess);
+            relationFields.Add(InequalityRelation.LessOrEqual, textLessOrEqual);
+            relationFields.Add(InequalityRelation.Greater, textGreater);
+            relationFields.Add(InequalityRelation.GreaterOrEqual, textGreaterOrEqual);
+            relationFields.Add(SetRelation.Member, textMember);
+            relationFields.Add(SetRelation.NotMember, textNotMember);
+        }
+
         private void UpdateListSetDouble()
         {
             listSetDouble.SuspendLayout();
@@ -78,15 +91,15 @@ namespace opt.Samples.Relations
 
         private void ResetRelationFields()
         {
-            textEqual.BackColor = SystemColors.ControlLight;
-            textNotEqual.BackColor = SystemColors.ControlLight;
-            textLess.BackColor = SystemColors.ControlLight;
-            textLessOrEqual.BackColor = SystemColors.ControlLight;
-            textGreater.BackColor = SystemColors.ControlLight;
-            textGreaterOrEqual.BackColor = SystemColors.ControlLight;
+            textEqual.BackColor = defaultRelationColor;
+            textNotEqual.BackColor = defaultRelationColor;
+            textLess.BackColor = defaultRelationColor;
+            textLessOrEqual.BackColor = defaultRelationColor;
+            textGreater.BackColor = defaultRelationColor;
+            textGreaterOrEqual.BackColor = defaultRelationColor;
 
-            textMember.BackColor = SystemColors.ControlLight;
-            textNotMember.BackColor = SystemColors.ControlLight;
+            textMember.BackColor = defaultRelationColor;
+            textNotMember.BackColor = defaultRelationColor;
         }
 
         private void buttonTestInequalityDouble_Click(object sender, EventArgs e)
@@ -96,19 +109,12 @@ namespace opt.Samples.Relations
             double left = Convert.ToDouble(numericInequalityLeftDouble.Value);
             double right = Convert.ToDouble(numericInequalityRightDouble.Value);
 
-            // TODO: Move the below to a generic method, p-haps add mapping between text field and a relation
-            textEqual.BackColor = 
-                doubleRelationValidator.Validate(InequalityRelation.Equal, left, right) ? Color.LightGreen : Color.OrangeRed;
-            textNotEqual.BackColor =
-                doubleRelationValidator.Validate(InequalityRelation.NotEqual, left, right) ? Color.LightGreen : Color.OrangeRed;
-            textLess.BackColor =
-                doubleRelationValidator.Validate(InequalityRelation.Less, left, right) ? Color.LightGreen : Color.OrangeRed;
-            textLessOrEqual.BackColor =
-                doubleRelationValidator.Validate(InequalityRelation.LessOrEqual, left, right) ? Color.LightGreen : Color.OrangeRed;
-            textGreater.BackColor =
-                doubleRelationValidator.Validate(InequalityRelation.Greater, left, right) ? Color.LightGreen : Color.OrangeRed;
-            textGreaterOrEqual.BackColor =
-                doubleRelationValidator.Validate(InequalityRelation.GreaterOrEqual, left, right) ? Color.LightGreen : Color.OrangeRed;
+            // It is possible to iterate over all relation defined in a certain relation container
+            foreach (IRelation relation in InequalityRelation.AllRelations())
+            {
+                relationFields[relation].BackColor =
+                    doubleRelationValidator.Validate(relation, left, right) ? validRelationColor : invalidRelationColor;
+            }
         }
 
         private void buttonReset_Click(object sender, EventArgs e)
@@ -130,10 +136,11 @@ namespace opt.Samples.Relations
 
             double value = Convert.ToDouble(numericSetTestDouble.Value);
 
-            // TODO: Move the below to a generic method, p-haps add mapping between text field and a relation
-            textMember.BackColor =
+            // It is also possible to address relations defined in a relation container in an
+            // enumeration way
+            relationFields[SetRelation.Member].BackColor =
                 setRelationValidator.Validate(SetRelation.Member, value, doubleSet) ? Color.LightGreen : Color.OrangeRed;
-            textNotMember.BackColor =
+            relationFields[SetRelation.NotMember].BackColor =
                 setRelationValidator.Validate(SetRelation.NotMember, value, doubleSet) ? Color.LightGreen : Color.OrangeRed;
         }
     }
