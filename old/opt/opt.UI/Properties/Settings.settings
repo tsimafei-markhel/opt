@@ -1,0 +1,39 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="opt.UI.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ApplicationName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">OPT</Value>
+    </Setting>
+    <Setting Name="ValuesDecimalPlaces" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="RestrictedVariableIdentifiers" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Abs,Acos,Asin,Atan,Ceiling,Cos,Exp,Floor,IEEERemainder,Log,Log10,Max,Min,Pow,Round,Sign,Sin,Sqrt,Tan,Truncate</Value>
+    </Setting>
+    <Setting Name="QuantitiesFileName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">\Models\numpk.txt</Value>
+    </Setting>
+    <Setting Name="ParametersFileName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">\Models\par.opt</Value>
+    </Setting>
+    <Setting Name="ResultsFileName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">\Models\fun.opt</Value>
+    </Setting>
+    <Setting Name="LicenseFileName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">license.xml</Value>
+    </Setting>
+    <Setting Name="UseOldXmlProvider" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="UseInvariantCulture" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="ModelFilePath" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="CalcAppFilePath" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+  </Settings>
+</SettingsFile>

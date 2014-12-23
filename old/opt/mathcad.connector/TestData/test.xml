@@ -1,0 +1,323 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<model xmlns="http://www.opt.com/model">
+    <parameters>
+        <parameter id="0" name="x1" variableIdentifier="x1" minValue="0" maxValue="2">
+            <properties />
+        </parameter>
+        <parameter id="1" name="x2" variableIdentifier="x2" minValue="-2" maxValue="0">
+            <properties />
+        </parameter>
+    </parameters>
+    <criteria>
+        <criterion id="0" name="Y01" variableIdentifier="Y01" type="Minimizing" weight="1" expression="">
+            <properties />
+        </criterion>
+        <criterion id="1" name="Y02" variableIdentifier="Y02" type="Minimizing" weight="1" expression="">
+            <properties />
+        </criterion>
+    </criteria>
+    <functionalConstraints />
+    <experiments>
+        <experiment id="0" number="1">
+            <parameterValues>
+                <parameterValue id="0" value="1" />
+                <parameterValue id="1" value="-1" />
+            </parameterValues>
+            <criterionValues>
+                <criterionValue id="0" value="0" />
+                <criterionValue id="1" value="-1" />
+            </criterionValues>
+            <functionalConstraintValues />
+            <properties />
+        </experiment>
+        <experiment id="1" number="2">
+            <parameterValues>
+                <parameterValue id="0" value="0.500000000279973" />
+                <parameterValue id="1" value="-0.499999999720027" />
+            </parameterValues>
+            <criterionValues>
+                <criterionValue id="0" value="5.5994603398446E-10" />
+                <criterionValue id="1" value="-0.25" />
+            </criterionValues>
+            <functionalConstraintValues />
+            <properties />
+        </experiment>
+        <experiment id="2" number="3">
+            <parameterValues>
+                <parameterValue id="0" value="1.50000000027997" />
+                <parameterValue id="1" value="-1.49999999972003" />
+            </parameterValues>
+            <criterionValues>
+                <criterionValue id="0" value="5.59940094291278E-10" />
+                <criterionValue id="1" value="-2.25" />
+            </criterionValues>
+            <functionalConstraintValues />
+            <properties />
+        </experiment>
+        <experiment id="3" number="4">
+            <parameterValues>
+                <parameterValue id="0" value="0.250000000279973" />
+                <parameterValue id="1" value="-0.749999999720027" />
+            </parameterValues>
+            <criterionValues>
+                <criterionValue id="0" value="-0.499999999440054" />
+                <criterionValue id="1" value="-0.187500000139986" />
+            </criterionValues>
+            <functionalConstraintValues />
+            <properties />
+        </experiment>
+        <experiment id="4" number="5">
+            <parameterValues>
+                <parameterValue id="0" value="1.25000000027997" />
+                <parameterValue id="1" value="-1.74999999972003" />
+            </parameterValues>
+            <criterionValues>
+                <criterionValue id="0" value="-0.49999999944006" />
+                <criterionValue id="1" value="-2.18750000013998" />
+            </criterionValues>
+            <functionalConstraintValues />
+            <properties />
+        </experiment>
+        <experiment id="5" number="6">
+            <parameterValues>
+                <parameterValue id="0" value="0.750000000559945" />
+                <parameterValue id="1" value="-1.24999999944005" />
+            </parameterValues>
+            <criterionValues>
+                <criterionValue id="0" value="-0.499999998880105" />
+                <criterionValue id="1" value="-0.937500000279969" />
+            </criterionValues>
+            <functionalConstraintValues />
+            <properties />
+        </experiment>
+        <experiment id="6" number="7">
+            <parameterValues>
+                <parameterValue id="0" value="1.75000000055995" />
+                <parameterValue id="1" value="-0.249999999440055" />
+            </parameterValues>
+            <criterionValues>
+                <criterionValue id="0" value="1.5000000011199" />
+                <criterionValue id="1" value="-0.437499999160084" />
+            </criterionValues>
+            <functionalConstraintValues />
+            <properties />
+        </experiment>
+        <experiment id="7" number="8">
+            <parameterValues>
+                <parameterValue id="0" value="0.12500000020998" />
+                <parameterValue id="1" value="-0.124999999230075" />
+            </parameterValues>
+            <criterionValues>
+                <criterionValue id="0" value="9.79905004361292E-10" />
+                <criterionValue id="1" value="-0.0156249999300069" />
+            </criterionValues>
+            <functionalConstraintValues />
+            <properties />
+        </experiment>
+        <experiment id="8" number="9">
+            <parameterValues>
+                <parameterValue id="0" value="1.12500000020998" />
+                <parameterValue id="1" value="-1.12499999923008" />
+            </parameterValues>
+            <criterionValues>
+                <criterionValue id="0" value="9.79899938968742E-10" />
+                <criterionValue id="1" value="-1.26562499937007" />
+            </criterionValues>
+            <functionalConstraintValues />
+            <properties />
+        </experiment>
+        <experiment id="9" number="10">
+            <parameterValues>
+                <parameterValue id="0" value="0.625000000489952" />
+                <parameterValue id="1" value="-1.62499999951005" />
+            </parameterValues>
+            <criterionValues>
+                <criterionValue id="0" value="-0.999999999020098" />
+                <criterionValue id="1" value="-1.01562500048995" />
+            </criterionValues>
+            <functionalConstraintValues />
+            <properties />
+        </experiment>
+        <experiment id="10" number="11">
+            <parameterValues>
+                <parameterValue id="0" value="1.62500000048995" />
+                <parameterValue id="1" value="-0.624999999510048" />
+            </parameterValues>
+            <criterionValues>
+                <criterionValue id="0" value="1.0000000009799" />
+                <criterionValue id="1" value="-1.01562499951005" />
+            </criterionValues>
+            <functionalConstraintValues />
+            <properties />
+        </experiment>
+        <experiment id="11" number="12">
+            <parameterValues>
+                <parameterValue id="0" value="0.375000000489952" />
+                <parameterValue id="1" value="-1.37499999951005" />
+            </parameterValues>
+            <criterionValues>
+                <criterionValue id="0" value="-0.999999999020098" />
+                <criterionValue id="1" value="-0.515625000489953" />
+            </criterionValues>
+            <functionalConstraintValues />
+            <properties />
+        </experiment>
+        <experiment id="12" number="13">
+            <parameterValues>
+                <parameterValue id="0" value="1.37500000048995" />
+                <parameterValue id="1" value="-0.374999999510048" />
+            </parameterValues>
+            <criterionValues>
+                <criterionValue id="0" value="1.0000000009799" />
+                <criterionValue id="1" value="-0.515624999510047" />
+            </criterionValues>
+            <functionalConstraintValues />
+            <properties />
+        </experiment>
+        <experiment id="13" number="14">
+            <parameterValues>
+                <parameterValue id="0" value="0.875000000769925" />
+                <parameterValue id="1" value="-0.87499999979002" />
+            </parameterValues>
+            <criterionValues>
+                <criterionValue id="0" value="9.79905045994656E-10" />
+                <criterionValue id="1" value="-0.765625000489952" />
+            </criterionValues>
+            <functionalConstraintValues />
+            <properties />
+        </experiment>
+        <experiment id="14" number="15">
+            <parameterValues>
+                <parameterValue id="0" value="1.87500000076993" />
+                <parameterValue id="1" value="-1.87499999979002" />
+            </parameterValues>
+            <criterionValues>
+                <criterionValue id="0" value="9.79909930975964E-10" />
+                <criterionValue id="1" value="-3.51562500104991" />
+            </criterionValues>
+            <functionalConstraintValues />
+            <properties />
+        </experiment>
+        <experiment id="15" number="16">
+            <parameterValues>
+                <parameterValue id="0" value="0.0625000001399863" />
+                <parameterValue id="1" value="-0.937499999860014" />
+            </parameterValues>
+            <criterionValues>
+                <criterionValue id="0" value="-0.874999999720028" />
+                <criterionValue id="1" value="-0.058593750122488" />
+            </criterionValues>
+            <functionalConstraintValues />
+            <properties />
+        </experiment>
+        <experiment id="16" number="17">
+            <parameterValues>
+                <parameterValue id="0" value="1.06250000013999" />
+                <parameterValue id="1" value="-1.93749999986001" />
+            </parameterValues>
+            <criterionValues>
+                <criterionValue id="0" value="-0.87499999972002" />
+                <criterionValue id="1" value="-2.05859375012249" />
+            </criterionValues>
+            <functionalConstraintValues />
+            <properties />
+        </experiment>
+        <experiment id="17" number="18">
+            <parameterValues>
+                <parameterValue id="0" value="0.562500000419959" />
+                <parameterValue id="1" value="-1.43749999958004" />
+            </parameterValues>
+            <criterionValues>
+                <criterionValue id="0" value="-0.874999999160081" />
+                <criterionValue id="1" value="-0.808593750367464" />
+            </criterionValues>
+            <functionalConstraintValues />
+            <properties />
+        </experiment>
+        <experiment id="18" number="19">
+            <parameterValues>
+                <parameterValue id="0" value="1.56250000041996" />
+                <parameterValue id="1" value="-0.437499999580041" />
+            </parameterValues>
+            <criterionValues>
+                <criterionValue id="0" value="1.12500000083992" />
+                <criterionValue id="1" value="-0.683593749527547" />
+            </criterionValues>
+            <functionalConstraintValues />
+            <properties />
+        </experiment>
+        <experiment id="19" number="20">
+            <parameterValues>
+                <parameterValue id="0" value="0.312500000419959" />
+                <parameterValue id="1" value="-1.68749999958004" />
+            </parameterValues>
+            <criterionValues>
+                <criterionValue id="0" value="-1.37499999916008" />
+                <criterionValue id="1" value="-0.527343750577443" />
+            </criterionValues>
+            <functionalConstraintValues />
+            <properties />
+        </experiment>
+        <experiment id="20" number="21">
+            <parameterValues>
+                <parameterValue id="0" value="1.31250000041996" />
+                <parameterValue id="1" value="-0.687499999580041" />
+            </parameterValues>
+            <criterionValues>
+                <criterionValue id="0" value="0.625000000839919" />
+                <criterionValue id="1" value="-0.902343749737526" />
+            </criterionValues>
+            <functionalConstraintValues />
+            <properties />
+        </experiment>
+        <experiment id="21" number="22">
+            <parameterValues>
+                <parameterValue id="0" value="0.812500000699932" />
+                <parameterValue id="1" value="-0.187499999300068" />
+            </parameterValues>
+            <criterionValues>
+                <criterionValue id="0" value="0.625000001399864" />
+                <criterionValue id="1" value="-0.152343749562542" />
+            </criterionValues>
+            <functionalConstraintValues />
+            <properties />
+        </experiment>
+        <experiment id="22" number="23">
+            <parameterValues>
+                <parameterValue id="0" value="1.81250000069993" />
+                <parameterValue id="1" value="-1.18749999930007" />
+            </parameterValues>
+            <criterionValues>
+                <criterionValue id="0" value="0.62500000139986" />
+                <criterionValue id="1" value="-2.15234374956254" />
+            </criterionValues>
+            <functionalConstraintValues />
+            <properties />
+        </experiment>
+        <experiment id="23" number="24">
+            <parameterValues>
+                <parameterValue id="0" value="0.187500000349966" />
+                <parameterValue id="1" value="-1.06249999909009" />
+            </parameterValues>
+            <criterionValues>
+                <criterionValue id="0" value="-0.874999998740124" />
+                <criterionValue id="1" value="-0.199218750201231" />
+            </criterionValues>
+            <functionalConstraintValues />
+            <properties />
+        </experiment>
+        <experiment id="24" number="25">
+            <parameterValues>
+                <parameterValue id="0" value="1.18750000034997" />
+                <parameterValue id="1" value="-0.0624999990900887" />
+            </parameterValues>
+            <criterionValues>
+                <criterionValue id="0" value="1.12500000125988" />
+                <criterionValue id="1" value="-0.0742187489413535" />
+            </criterionValues>
+            <functionalConstraintValues />
+            <properties />
+        </experiment>
+    </experiments>
+    <properties />
+</model>

@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<identificationModel xmlns="http://www.opt.com/identification.model">
+    <optimizationParameters>
+        <optimizationParameter id="0" name="x1" variableIdentifier="x1" minValue="1" maxValue="4">
+            <properties />
+        </optimizationParameter>
+        <optimizationParameter id="1" name="x2" variableIdentifier="x2" minValue="2" maxValue="10">
+            <properties />
+        </optimizationParameter>
+        <optimizationParameter id="2" name="x3" variableIdentifier="x3" minValue="2" maxValue="4">
+            <properties />
+        </optimizationParameter>
+    </optimizationParameters>
+    <identificationParameters>
+        <identificationParameter id="0" name="alpha1" variableIdentifier="alpha1" minValue="1" maxValue="2">
+            <properties />
+        </identificationParameter>
+        <identificationParameter id="1" name="alpha2" variableIdentifier="alpha2" minValue="4" maxValue="10">
+            <properties />
+        </identificationParameter>
+        <identificationParameter id="2" name="alpha3" variableIdentifier="alpha3" minValue="5" maxValue="17">
+            <properties />
+        </identificationParameter>
+    </identificationParameters>
+    <criteria>
+        <criterion id="0" name="c1" variableIdentifier="c1" type="DifferenceInSquare">
+            <properties />
+        </criterion>
+        <criterion id="1" name="c2" variableIdentifier="c2" type="AbsoluteDifference">
+            <properties />
+        </criterion>
+        <criterion id="2" name="c3" variableIdentifier="c3" type="AbsoluteDifferenceNormalized">
+            <properties />
+        </criterion>
+    </criteria>
+    <functionalConstraints>
+        <functionalConstraint id="0" name="fc1" variableIdentifier="fc1" relation="Greater" value="-99999" expression="">
+            <properties />
+        </functionalConstraint>
+        <functionalConstraint id="1" name="fc2" variableIdentifier="fc2" relation="Greater" value="-99999" expression="">
+            <properties />
+        </functionalConstraint>
+        <functionalConstraint id="2" name="fc3" variableIdentifier="fc3" relation="Equal" value="0" expression="">
+            <properties />
+        </functionalConstraint>
+    </functionalConstraints>
+    <realExperiments />
+    <identificationExperiments />
+    <properties />
+</identificationModel>

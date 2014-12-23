@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<identificationModel xmlns="http://www.opt.com/identification.model">
+    <optimizationParameters>
+        <optimizationParameter id="0" name="x1" variableIdentifier="x1" minValue="1" maxValue="4" />
+        <optimizationParameter id="1" name="x2" variableIdentifier="x2" minValue="2" maxValue="10" />
+        <optimizationParameter id="2" name="x3" variableIdentifier="x3" minValue="2" maxValue="4" />
+    </optimizationParameters>
+    <identificationParameters>
+        <identificationParameter id="0" name="alpha1" variableIdentifier="alpha1" minValue="1" maxValue="2" />
+        <identificationParameter id="1" name="alpha2" variableIdentifier="alpha2" minValue="4" maxValue="10" />
+        <identificationParameter id="2" name="alpha3" variableIdentifier="alpha3" minValue="5" maxValue="17" />
+    </identificationParameters>
+    <criteria>
+        <criterion id="0" name="c1" variableIdentifier="c1" type="DifferenceInSquare" />
+        <criterion id="1" name="c2" variableIdentifier="c2" type="AbsoluteDifference" />
+        <criterion id="2" name="c3" variableIdentifier="c3" type="AbsoluteDifferenceNormalized" />
+    </criteria>
+    <functionalConstraints>
+        <functionalConstraint id="0" name="fc1" variableIdentifier="fc1" relation="Greater" value="-99999" expression="" />
+        <functionalConstraint id="1" name="fc2" variableIdentifier="fc2" relation="Greater" value="-99999" expression="" />
+        <functionalConstraint id="2" name="fc3" variableIdentifier="fc3" relation="Equal" value="0" expression="" />
+    </functionalConstraints>
+    <realExperiments>
+        <realExperiment id="0" number="1">
+            <optimizationParameterValues>
+                <optimizationParameterValue id="0" value="2" />
+                <optimizationParameterValue id="1" value="5" />
+                <optimizationParameterValue id="2" value="3" />
+            </optimizationParameterValues>
+            <realCriterionValues>
+                <realCriterionValue id="0" value="1.5" />
+                <realCriterionValue id="1" value="5" />
+                <realCriterionValue id="2" value="6" />
+            </realCriterionValues>
+            <functionalConstraintValues>
+                <functionalConstraintValue id="0" value="10" />
+                <functionalConstraintValue id="1" value="10" />
+                <functionalConstraintValue id="2" value="0" />
+            </functionalConstraintValues>
+        </realExperiment>
+        <realExperiment id="1" number="2">
+            <optimizationParameterValues>
+                <optimizationParameterValue id="0" value="3" />
+                <optimizationParameterValue id="1" value="6" />
+                <optimizationParameterValue id="2" value="3" />
+            </optimizationParameterValues>
+            <realCriterionValues>
+                <realCriterionValue id="0" value="1.6" />
+                <realCriterionValue id="1" value="6" />
+                <realCriterionValue id="2" value="7" />
+            </realCriterionValues>
+            <functionalConstraintValues>
+                <functionalConstraintValue id="0" value="11" />
+                <functionalConstraintValue id="1" value="11" />
+                <functionalConstraintValue id="2" value="0" />
+            </functionalConstraintValues>
+        </realExperiment>
+    </realExperiments>
+    <identificationExperiments />
+</identificationModel>

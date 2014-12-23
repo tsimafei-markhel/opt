@@ -1,0 +1,1992 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>opt.Core</name>
+    </assembly>
+    <members>
+        <member name="T:opt.SettingsHelper">
+            <summary>
+            Helper class, contains routines for settings storage initialization
+            </summary>
+        </member>
+        <member name="M:opt.SettingsHelper.GetPropertiesWithAttribute(System.Type,System.Type)">
+            <summary>
+            Gets all properties of the <paramref name="typeToSearch"/> with attribute of <paramref name="attributeType"/>
+            </summary>
+            <param name="typeToSearch">Type to take properties from</param>
+            <param name="attributeType">Attribute type to search for</param>
+            <returns>Collection of properties that belong to <paramref name="typeToSearch"/> and are decorated
+            with attribute of <paramref name="attributeType"/></returns>
+        </member>
+        <member name="M:opt.SettingsHelper.BuildSettingsProperty(System.String,System.Object,System.Type,System.Object[])">
+            <summary>
+            Creates instance of <see cref="T:System.Configuration.SettingsProperty"/> with desired parameters
+            </summary>
+            <param name="name">Name of the new <see cref="T:System.Configuration.SettingsProperty"/></param>
+            <param name="defaultValue">Default value of the parameter</param>
+            <param name="propertyValueType">Type of the parameter</param>
+            <param name="attributes">Custom attributes to copy</param>
+            <returns>New instance of <see cref="T:System.Configuration.SettingsProperty"/> with desired parameters</returns>
+        </member>
+        <member name="M:opt.SettingsHelper.BuildSettingsPropertyValue(System.Configuration.SettingsProperty)">
+            <summary>
+            Creates instance of <see cref="T:System.Configuration.SettingsPropertyValue"/> for a certain <see cref="T:System.Configuration.SettingsProperty"/>
+            </summary>
+            <param name="property">Corresponding <see cref="T:System.Configuration.SettingsProperty"/> instance this value belongs to</param>
+            <returns>New instance of <see cref="T:System.Configuration.SettingsPropertyValue"/> with desired parameters</returns>
+        </member>
+        <member name="M:opt.SettingsHelper.AddDefaultProperties(System.Type,System.Configuration.SettingsPropertyCollection,System.Configuration.SettingsPropertyValueCollection)">
+            <summary>
+            Adds default properties to the settings storage of <paramref name="settingsStorageType"/> type.
+            Properties are taken from the type definition. Only those are taken which are decorated with 
+            <see cref="T:System.Configuration.DefaultSettingValueAttribute"/> attribute (i.e. have default values)
+            </summary>
+            <param name="settingsStorageType">Type of the settings storage to take properties from</param>
+            <param name="propertyCollection">Collection to add instances of <see cref="T:System.Configuration.SettingsProperty"/> to</param>
+            <param name="propertyValueCollection">Collection to add corresponding instances of <see cref="T:System.Configuration.SettingsPropertyValue"/> to</param>
+        </member>
+        <member name="T:opt.DataModel.Constraint">
+            <summary>
+            Represents a constraint (e.g. functional)
+            </summary>
+        </member>
+        <member name="T:opt.DataModel.NamedModelEntity">
+            <summary>
+            Entity with name that can be added to the <see cref="T:opt.DataModel.Model"/>
+            </summary>
+        </member>
+        <member name="T:opt.DataModel.ModelEntity">
+            <summary>
+            Entity that can be added to the <see cref="T:opt.DataModel.Model"/>
+            </summary>
+        </member>
+        <member name="M:opt.DataModel.ModelEntity.#ctor(opt.DataModel.TId)">
+            <summary>
+            Initializes new instance of <see cref="T:opt.DataModel.ModelEntity"/> with specified ID
+            </summary>
+            <param name="id">ID of a new entity</param>
+        </member>
+        <member name="P:opt.DataModel.ModelEntity.Id">
+            <summary>
+            Gets unique identifier of an entity
+            </summary>
+        </member>
+        <member name="P:opt.DataModel.ModelEntity.Properties">
+            <summary>
+            Gets <see cref="T:opt.DataModel.PropertyCollection"/> of an entity
+            </summary>
+        </member>
+        <member name="M:opt.DataModel.NamedModelEntity.#ctor(opt.DataModel.TId,System.String,System.String)">
+            <summary>
+            Initializes new instance of <see cref="T:opt.DataModel.NamedModelEntity"/> with specified name and variable identifier
+            </summary>
+            <param name="id">ID of a new entity</param>
+            <param name="name">Name of a new entity</param>
+            <param name="variableIdentifier">Variable identifier of a new entity</param>
+        </member>
+        <member name="M:opt.DataModel.NamedModelEntity.Clone">
+            <summary>
+            Creates a deep copy of <see cref="T:opt.DataModel.NamedModelEntity"/> instance
+            </summary>
+            <returns>Deep copy of self</returns>
+        </member>
+        <member name="P:opt.DataModel.NamedModelEntity.Name">
+            <summary>
+            Gets or sets entity name
+            </summary>
+        </member>
+        <member name="P:opt.DataModel.NamedModelEntity.VariableIdentifier">
+            <summary>
+            Gets or sets entity variable identifier
+            </summary>
+        </member>
+        <member name="M:opt.DataModel.Constraint.#ctor(opt.DataModel.TId,System.String,System.String,opt.DataModel.Relation,System.Double,System.String)">
+            <summary>
+            Initializes new instance of <see cref="T:opt.DataModel.Constraint"/>
+            </summary>
+            <param name="id">Constraint identifier</param>
+            <param name="name">Constraint name</param>
+            <param name="variableIdentifier">Constraint variable identifier</param>
+            <param name="constraintRelation">Constraint relation</param>
+            <param name="value">Constraint limitation value</param>
+            <param name="expression">Mathematical expression that can be used to calculate constraint value</param>
+        </member>
+        <member name="M:opt.DataModel.Constraint.Clone">
+            <summary>
+            Creates a deep copy of <see cref="T:opt.DataModel.Constraint"/> instance
+            </summary>
+            <returns>Deep copy of self</returns>
+        </member>
+        <member name="P:opt.DataModel.Constraint.ConstraintRelation">
+            <summary>
+            Gets or sets constraint relation - how a constraint relates to the limiting value
+            </summary>
+        </member>
+        <member name="P:opt.DataModel.Constraint.Value">
+            <summary>
+            Gets or sets constraint limiting value
+            </summary>
+        </member>
+        <member name="P:opt.DataModel.Constraint.Expression">
+            <summary>
+            Gets or sets mathematical expression that can be used to calculate constraint value
+            </summary>
+        </member>
+        <member name="T:opt.DataModel.CorrelationType">
+            <summary>
+            Type of the correlation between two entities
+            </summary>
+        </member>
+        <member name="F:opt.DataModel.CorrelationType.ResultsNotSignificant">
+            <summary>
+            Correlation is not significant and can be dropped
+            </summary>
+        </member>
+        <member name="F:opt.DataModel.CorrelationType.Correlated">
+            <summary>
+            Two entities correlate
+            </summary>
+        </member>
+        <member name="F:opt.DataModel.CorrelationType.SignificantlyRelated">
+            <summary>
+            Weak correlation between two entities
+            </summary>
+        </member>
+        <member name="T:opt.DataModel.Criterion">
+            <summary>
+            Represents a criterion (objective)
+            </summary>
+        </member>
+        <member name="M:opt.DataModel.Criterion.#ctor(opt.DataModel.TId,System.String,System.String,opt.DataModel.CriterionType,System.String)">
+            <summary>
+            Initializes new instance of <see cref="T:opt.DataModel.Criterion"/>
+            </summary>
+            <param name="id">Criterion identifier</param>
+            <param name="name">Criterion name</param>
+            <param name="variableIdentifier">Criterion variable identifier</param>
+            <param name="type">Criterion type</param>
+            <param name="expression">Mathematical expression that can be used to calculate criterion value</param>
+        </member>
+        <member name="M:opt.DataModel.Criterion.Clone">
+            <summary>
+            Creates a deep copy of <see cref="T:opt.DataModel.Criterion"/> instance
+            </summary>
+            <returns>Deep copy of self</returns>
+        </member>
+        <member name="P:opt.DataModel.Criterion.Type">
+            <summary>
+            Gets or sets criterion type
+            </summary>
+        </member>
+        <member name="P:opt.DataModel.Criterion.Weight">
+            <summary>
+            Gets or sets criterion weight
+            </summary>
+        </member>
+        <member name="P:opt.DataModel.Criterion.Expression">
+            <summary>
+            Gets or sets mathematical expression that can be used to calculate criterion value
+            </summary>
+        </member>
+        <member name="P:opt.DataModel.Criterion.SortDirection">
+            <summary>
+            Gets sort direction for the values of this criterion
+            </summary>
+        </member>
+        <member name="T:opt.DataModel.CriterionType">
+            <summary>
+            Possible types of a criterion (objective)
+            </summary>
+        </member>
+        <member name="F:opt.DataModel.CriterionType.Minimizing">
+            <summary>
+            Minimizing criterion - lesser is better
+            </summary>
+        </member>
+        <member name="F:opt.DataModel.CriterionType.Maximizing">
+            <summary>
+            Maximizing criterion - greater is better
+            </summary>
+        </member>
+        <member name="T:opt.DataModel.CustomProperty">
+            <summary>
+            Base for custom properties of the <see cref="T:opt.DataModel.Model"/> and its components
+            </summary>
+        </member>
+        <member name="M:opt.DataModel.CustomProperty.Clone">
+            <summary>
+            Creates a deep copy of <see cref="T:opt.DataModel.CustomProperty"/> instance
+            </summary>
+            <returns>Deep copy of self</returns>
+        </member>
+        <member name="P:opt.DataModel.CustomProperty.Name">
+            <summary>
+            Gets name of the custom property (can be used as a key)
+            </summary>
+        </member>
+        <member name="T:opt.DataModel.Experiment">
+            <summary>
+            Represents experiment (point)
+            </summary>
+        </member>
+        <member name="M:opt.DataModel.Experiment.#ctor(opt.DataModel.TId,System.Int32)">
+            <summary>
+            Initializes new instance of <see cref="T:opt.DataModel.Experiment"/>
+            </summary>
+            <param name="id">Experiment identifier</param>
+            <param name="number">Experiment number</param>
+        </member>
+        <member name="M:opt.DataModel.Experiment.Clone">
+            <summary>
+            Creates a deep copy of <see cref="T:opt.DataModel.Experiment"/> instance
+            </summary>
+            <returns>Deep copy of self</returns>
+        </member>
+        <member name="P:opt.DataModel.Experiment.Number">
+            <summary>
+            Gets experiment number
+            </summary>
+        </member>
+        <member name="P:opt.DataModel.Experiment.IsActive">
+            <summary>
+            Gets or sets whether the experiment fits all constraints (incl. criterial)
+            </summary>
+        </member>
+        <member name="P:opt.DataModel.Experiment.IsParetoOptimal">
+            <summary>
+            Gets or sets whether the experiment belongs to Pareto front
+            </summary>
+        </member>
+        <member name="P:opt.DataModel.Experiment.CriterionValues">
+            <summary>
+            Gets criterion values for this experiment
+            </summary>
+        </member>
+        <member name="P:opt.DataModel.Experiment.ParameterValues">
+            <summary>
+            Gets parameter values for this experiment
+            </summary>
+        </member>
+        <member name="P:opt.DataModel.Experiment.ConstraintValues">
+            <summary>
+            Gets constraint values for this experiment
+            </summary>
+        </member>
+        <member name="T:opt.DataModel.ExperimentCollection">
+            <summary>
+            A collection of <see cref="T:opt.DataModel.Experiment"/> or derived type instances
+            </summary>
+        </member>
+        <member name="T:opt.DataModel.ModelEntityCollection`1">
+            <summary>
+            A collection of model entities or derived type instances
+            </summary>
+        </member>
+        <member name="M:opt.DataModel.ModelEntityCollection`1.#ctor">
+            <summary>
+            Initializes new instance of <see cref="!:ModelEntityCollection"/>
+            </summary>
+        </member>
+        <member name="M:opt.DataModel.ModelEntityCollection`1.#ctor(System.Int32)">
+            <summary>
+            Initializes new instance of <see cref="!:ModelEntityCollection"/> with predefined capacity
+            </summary>
+            <param name="capacity">Desired capacity of a new <see cref="!:ModelEntityCollection"/></param>
+        </member>
+        <member name="M:opt.DataModel.ModelEntityCollection`1.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes new instance of <see cref="!:ModelEntityCollection"/> - for binary serialization
+            </summary>
+            <param name="info">A <see cref="T:System.Runtime.Serialization.SerializationInfo"/> object containing the information required 
+            to serialize the <see cref="!:ModelEntityCollection"/></param>
+            <param name="context">A <see cref="T:System.Runtime.Serialization.StreamingContext"/> structure containing the
+            source and destination of the serialized stream associated with the <see cref="!:ModelEntityCollection"/></param>
+        </member>
+        <member name="M:opt.DataModel.ModelEntityCollection`1.GetFreeConsequentId">
+            <summary>
+            Provides next free ID for an entity to be added to this collection
+            </summary>
+            <returns>Next free ID for an entity to be added to this collection</returns>
+            <exception cref="T:System.InvalidOperationException">Thrown if key with <see cref="F:System.Int32.MaxValue"/> exists in the collection</exception>
+        </member>
+        <member name="M:opt.DataModel.ModelEntityCollection`1.Add(`0)">
+            <summary>
+            Adds new item into collection, uses <see cref="!:T.Id"/> as key
+            </summary>
+            <param name="item">Item to be added into collection</param>
+            <remarks>Does not copy the <paramref name="item"/></remarks>
+        </member>
+        <member name="M:opt.DataModel.ExperimentCollection.#ctor">
+            <summary>
+            Initializes new instance of <see cref="T:opt.DataModel.ExperimentCollection"/>
+            </summary>
+        </member>
+        <member name="M:opt.DataModel.ExperimentCollection.#ctor(System.Int32)">
+            <summary>
+            Initializes new instance of <see cref="T:opt.DataModel.ExperimentCollection"/> with predefined capacity
+            </summary>
+            <param name="capacity">Desired capacity of a new <see cref="T:opt.DataModel.ExperimentCollection"/></param>
+        </member>
+        <member name="M:opt.DataModel.ExperimentCollection.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes new instance of <see cref="T:opt.DataModel.ExperimentCollection"/> - for binary serialization
+            </summary>
+            <param name="info">A <see cref="T:System.Runtime.Serialization.SerializationInfo"/> object containing the information required 
+            to serialize the <see cref="T:opt.DataModel.ExperimentCollection"/></param>
+            <param name="context">A <see cref="T:System.Runtime.Serialization.StreamingContext"/> structure containing the
+            source and destination of the serialized stream associated with the <see cref="T:opt.DataModel.ExperimentCollection"/></param>
+        </member>
+        <member name="M:opt.DataModel.ExperimentCollection.FindIdByNumber(System.Int32)">
+            <summary>
+            Finds ID of an <see cref="T:opt.DataModel.Experiment"/> with <paramref name="experimentNumber"/> number
+            </summary>
+            <param name="experimentNumber">Number of the <see cref="T:opt.DataModel.Experiment"/> to search for</param>
+            <returns>ID of an <see cref="T:opt.DataModel.Experiment"/> with <paramref name="experimentNumber"/> number</returns>
+            <exception cref="T:System.InvalidOperationException">If <see cref="T:opt.DataModel.Experiment"/> with 
+            <paramref name="experimentNumber"/> was not found</exception>
+        </member>
+        <member name="M:opt.DataModel.ExperimentCollection.FindByNumber(System.Int32)">
+            <summary>
+            Finds <see cref="T:opt.DataModel.Experiment"/> with <paramref name="experimentNumber"/> number
+            </summary>
+            <param name="experimentNumber">Number of the <see cref="T:opt.DataModel.Experiment"/> to search for</param>
+            <returns><see cref="T:opt.DataModel.Experiment"/> with <paramref name="experimentNumber"/> number or null
+            if such element was not found</returns>
+        </member>
+        <member name="M:opt.DataModel.ExperimentCollection.CountActiveExperiments">
+            <summary>
+            Counts active experiments (those satisfying various constraints)
+            </summary>
+            <returns>Number of active experiments</returns>
+        </member>
+        <member name="M:opt.DataModel.ExperimentCollection.RemoveInactiveExperiments">
+            <summary>
+            Removes all inactive experiments from the collection
+            </summary>
+        </member>
+        <member name="M:opt.DataModel.ExperimentCollection.Clone">
+            <summary>
+            Creates a deep copy of <see cref="T:opt.DataModel.ExperimentCollection"/> instance
+            </summary>
+            <returns>Deep copy of self</returns>
+        </member>
+        <member name="T:opt.DataModel.Interval">
+            <summary>
+            Represents an interval
+            </summary>
+            <remarks>Immutable</remarks>
+        </member>
+        <member name="F:opt.DataModel.Interval.cachedString">
+            <summary>
+            Stores string representation of the <see cref="T:opt.DataModel.Interval"/> determined 
+            during initialization
+            </summary>
+            <remarks>As long as <see cref="T:opt.DataModel.Interval"/> is immutable, we can determine
+            its string representation on initialization and cache determined value</remarks>
+        </member>
+        <member name="F:opt.DataModel.Interval.cachedStringInvariant">
+            <summary>
+            Stores string representation of the <see cref="T:opt.DataModel.Interval"/> determined 
+            during initialization - with <see cref="!:CultureInfo.Invariant"/>
+            </summary>
+            <remarks>As long as <see cref="T:opt.DataModel.Interval"/> is immutable, we can determine
+            its string representation on initialization and cache determined value</remarks>
+        </member>
+        <member name="F:opt.DataModel.Interval.cachedStringFormat">
+            <summary>
+            Stores string format of the <see cref="T:opt.DataModel.Interval"/> determined
+            during initialization. It should be used when interval boundaries
+            have to be formatted
+            </summary>
+        </member>
+        <member name="M:opt.DataModel.Interval.#ctor(System.Double,System.Boolean,System.Double,System.Boolean)">
+            <summary>
+            Initializes new instance of <see cref="T:opt.DataModel.Interval"/>
+            </summary>
+            <param name="minimum">Lower boundary</param>
+            <param name="isMinimumOpen">Whether lower boundary is open or not</param>
+            <param name="maximum">Upper boundary</param>
+            <param name="isMaximumOpen">Whether upper boundary is open or not</param>
+            <exception cref="T:System.ArgumentException">If <paramref name="minimum"/> or
+            <paramref name="maximum"/> is <see cref="F:System.Double.NaN"/></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">If <paramref name="minimum"/> is
+            greater than <paramref name=""/></exception>
+            <remarks><see cref="F:System.Double.NegativeInfinity"/> and <see cref="F:System.Double.PositiveInfinity"/>
+            boundaries will be always open</remarks>
+        </member>
+        <member name="M:opt.DataModel.Interval.#ctor(System.Double,System.Double)">
+            <summary>
+            Initializes new instance of <see cref="T:opt.DataModel.Interval"/> which is
+            closed from both sides
+            </summary>
+            <param name="minimum">Lower boundary</param>
+            <param name="maximum">Upper boundary</param>
+            <exception cref="T:System.ArgumentException">If <paramref name="minimum"/> or
+            <paramref name="maximum"/> is <see cref="F:System.Double.NaN"/></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">If <paramref name="minimum"/> is
+            greater than <paramref name=""/></exception>
+        </member>
+        <member name="M:opt.DataModel.Interval.InInterval(System.Double)">
+            <summary>
+            Checks whether a <paramref name="value"/> belongs to the <see cref="T:opt.DataModel.Interval"/>
+            </summary>
+            <param name="value">Value that needs to be tested</param>
+            <returns>True if <paramref name="value"/> belongs to the <see cref="T:opt.DataModel.Interval"/>;
+            otherwise False</returns>
+        </member>
+        <member name="M:opt.DataModel.Interval.InInterval(opt.DataModel.Interval)">
+            <summary>
+            Checks whether an <paramref name="otherInterval"/> belongs to the <see cref="T:opt.DataModel.Interval"/>
+            </summary>
+            <param name="otherInterval"><see cref="T:opt.DataModel.Interval"/> that needs to be tested</param>
+            <returns>True if both <see cref="P:opt.DataModel.Interval.Minimum"/> and <see cref="P:opt.DataModel.Interval.Maximum"/>
+            of <paramref name="otherInterval"/> belong to the <see cref="T:opt.DataModel.Interval"/>;
+            otherwise False</returns>
+        </member>
+        <member name="M:opt.DataModel.Interval.ToStringInvariant">
+            <summary>
+            Converts <see cref="T:opt.DataModel.Interval"/> value to string with <see cref="!:CultureInfo.Invariant"/>
+            </summary>
+            <returns>String representation of this <see cref="T:opt.DataModel.Interval"/> instance for
+            <see cref="!:CultureInfo.Invariant"/></returns>
+        </member>
+        <member name="M:opt.DataModel.Interval.ToString(System.String)">
+            <summary>
+            Converts <see cref="T:opt.DataModel.Interval"/> value to string with desired <paramref name="format"/> 
+            for <see cref="T:System.Double"/> to <see cref="T:System.String"/> conversion
+            </summary>
+            <param name="doubleFormat"><see cref="T:System.Double"/> to <see cref="T:System.String"/> format</param>
+            <returns>String representation of this <see cref="T:opt.DataModel.Interval"/> instance. Boundaries
+            are formatted with <paramref name="doubleFormat"/></returns>
+        </member>
+        <member name="M:opt.DataModel.Interval.ToStringInvariant(System.String)">
+            <summary>
+            Converts <see cref="T:opt.DataModel.Interval"/> value to string with desired <paramref name="format"/> 
+            for <see cref="T:System.Double"/> to <see cref="T:System.String"/> conversion and <see cref="!:CultureInfo.Invariant"/>
+            </summary>
+            <param name="doubleFormat"><see cref="T:System.Double"/> to <see cref="T:System.String"/> format</param>
+            <returns>String representation of this <see cref="T:opt.DataModel.Interval"/> instance. Boundaries
+            are formatted with <paramref name="doubleFormat"/> - for <see cref="!:CultureInfo.Invariant"/></returns>
+        </member>
+        <member name="M:opt.DataModel.Interval.Create(System.Double,System.Double,System.Boolean,System.Boolean)">
+            <summary>
+            Creates new instance of <see cref="!:Invariant"/>. Boundaries are calculated from
+            <paramref name="mean"/> and <paramref name="deviationValue"/>
+            </summary>
+            <param name="mean">Mean (middle) of the interval</param>
+            <param name="deviationValue">Desired <see cref="P:opt.DataModel.Interval.Length"/> / 2</param>
+            <param name="isMinimumOpen">Whether lower boundary is open or not. Default is False</param>
+            <param name="isMaximumOpen">Whether upper boundary is open or not. Default is False</param>
+            <returns>New instance of <see cref="!:Invariant"/>. Its minimum is
+            <paramref name="mean"/> - <paramref name="deviationValue"/> and its
+            maximum is <paramref name="mean"/> + <paramref name="deviationValue"/></returns>
+            <exception cref="T:System.ArgumentException">If <paramref name="mean"/> or <paramref name="deviationValue"/>
+            is <see cref="F:System.Double.NaN"/></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">If <paramref name="mean"/> or
+            <paramref name="deviationValue"/> is <see cref="F:System.Double.NegativeInfinity"/> or
+            <see cref="F:System.Double.PositiveInfinity"/>. If <paramref name="deviationValue"/> is
+            below zero</exception>
+        </member>
+        <member name="M:opt.DataModel.Interval.Create(System.Double,System.Int32,System.Boolean,System.Boolean)">
+            <summary>
+            Creates new instance of <see cref="!:Invariant"/>. Boundaries are calculated from
+            <paramref name="mean"/> and <paramref name="deviationPercent"/>
+            </summary>
+            <param name="mean">Mean (middle) of the interval</param>
+            <param name="deviationPercent">Desired distance between <paramref name="mean"/>
+            and resulting <see cref="P:opt.DataModel.Interval.Minimum"/> (or <see cref="P:opt.DataModel.Interval.Minimum"/>)
+            expressed in percents of <paramref name="mean"/></param>
+            <param name="isMinimumOpen">Whether lower boundary is open or not. Default is False</param>
+            <param name="isMaximumOpen">Whether upper boundary is open or not. Default is False</param>
+            <returns>New instance of <see cref="!:Invariant"/> which is <paramref name="mean"/>
+            +- <paramref name="deviationPercent"/> * <paramref name="mean"/></returns>
+            <exception cref="T:System.ArgumentException">If <paramref name="mean"/> is <see cref="F:System.Double.NaN"/></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">If <paramref name="mean"/> is
+            <see cref="F:System.Double.NegativeInfinity"/> or <see cref="F:System.Double.PositiveInfinity"/>.
+            If <paramref name="deviationPercent"/> is below zero</exception>
+        </member>
+        <member name="M:opt.DataModel.Interval.CreateWithRestrictions(System.Double,System.Double,System.Double,System.Double,System.Boolean,System.Boolean)">
+            <summary>
+            Creates new instance of <see cref="!:Invariant"/>. Boundaries are calculated from
+            <paramref name="mean"/> and <paramref name="deviationValue"/> but never exceed
+            the restrictions
+            </summary>
+            <param name="mean">Mean (middle) of the interval</param>
+            <param name="deviationValue">Desired <see cref="P:opt.DataModel.Interval.Length"/> / 2</param>
+            <param name="minRestriction">Lower boundary restriction. <see cref="P:opt.DataModel.Interval.Minimum"/>
+            of the resulting <see cref="T:opt.DataModel.Interval"/> instance will not be less than this value</param>
+            <param name="maxRestriction">Upper boundary restriction. <see cref="P:opt.DataModel.Interval.Maximum"/>
+            of the resulting <see cref="T:opt.DataModel.Interval"/> instance will not be greater than this value</param>
+            <param name="isMinimumOpen">Whether lower boundary is open or not. Default is False</param>
+            <param name="isMaximumOpen">Whether upper boundary is open or not. Default is False</param>
+            <returns>New instance of <see cref="!:Invariant"/>. Its minimum is
+            MAX(<paramref name="mean"/> - <paramref name="deviationValue"/>; <paramref name="minRestriction"/>)
+            and its maximum is MIN(<paramref name="mean"/> + <paramref name="deviationValue"/>;
+            <paramref name="maxRestriction"/>)</returns>
+            <exception cref="T:System.ArgumentException">If <paramref name="mean"/> or <paramref name="deviationValue"/>
+            or <paramref name="minRestriction"/> or <paramref name="maxRestriction"/> is
+            <see cref="F:System.Double.NaN"/></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">If <paramref name="mean"/> or
+            <paramref name="deviationValue"/> is <see cref="F:System.Double.NegativeInfinity"/> or
+            <see cref="F:System.Double.PositiveInfinity"/>. If <paramref name="deviationValue"/> is
+            below zero. If <paramref name="minRestriction"/> is greater than
+            <paramref name="maxRestriction"/></exception>
+        </member>
+        <member name="M:opt.DataModel.Interval.CreateWithRestrictions(System.Double,System.Int32,System.Double,System.Double,System.Boolean,System.Boolean)">
+            <summary>
+            Creates new instance of <see cref="!:Invariant"/>. Boundaries are calculated from
+            <paramref name="mean"/> and <paramref name="deviationPercent"/> but never exceed
+            the restrictions
+            </summary>
+            <param name="mean">Mean (middle) of the interval</param>
+            <param name="deviationPercent">Desired distance between <paramref name="mean"/>
+            and resulting <see cref="P:opt.DataModel.Interval.Minimum"/> (or <see cref="P:opt.DataModel.Interval.Minimum"/>)
+            expressed in percents of <paramref name="mean"/></param>
+            <param name="minRestriction">Lower boundary restriction. <see cref="P:opt.DataModel.Interval.Minimum"/>
+            of the resulting <see cref="T:opt.DataModel.Interval"/> instance will not be less than this value</param>
+            <param name="maxRestriction">Upper boundary restriction. <see cref="P:opt.DataModel.Interval.Maximum"/>
+            of the resulting <see cref="T:opt.DataModel.Interval"/> instance will not be greater than this value</param>
+            <param name="isMinimumOpen">Whether lower boundary is open or not. Default is False</param>
+            <param name="isMaximumOpen">Whether upper boundary is open or not. Default is False</param>
+            <returns>New instance of <see cref="!:Invariant"/> which is <paramref name="mean"/>
+            +- <paramref name="deviationPercent"/> * <paramref name="mean"/>. Restrictions
+            are applied and can replace <see cref="P:opt.DataModel.Interval.Minimum"/> and <see cref="P:opt.DataModel.Interval.Maximum"/>
+            in the result</returns>
+            <exception cref="T:System.ArgumentException">If <paramref name="mean"/> or <paramref name="minRestriction"/>
+            or <paramref name="maxRestriction"/> is <see cref="F:System.Double.NaN"/></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">If <paramref name="mean"/> is
+            <see cref="F:System.Double.NegativeInfinity"/> or <see cref="F:System.Double.PositiveInfinity"/>.
+            If <paramref name="deviationPercent"/> is below zero. If <paramref name="minRestriction"/>
+            is greater than <paramref name="maxRestriction"/></exception>
+        </member>
+        <member name="M:opt.DataModel.Interval.ValidateMean(System.Double)">
+            <summary>
+            Validates mean (middle) value of the <see cref="T:opt.DataModel.Interval"/>
+            </summary>
+            <param name="mean">Mean (middle) value of the <see cref="T:opt.DataModel.Interval"/>
+            that needs to be validated</param>
+            <exception cref="T:System.ArgumentException">If <paramref name="mean"/> is
+            <see cref="F:System.Double.NaN"/></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">If <paramref name="mean"/>
+            is <see cref="F:System.Double.NegativeInfinity"/> or <see cref="F:System.Double.PositiveInfinity"/></exception>
+        </member>
+        <member name="M:opt.DataModel.Interval.ValidateDeviationValue(System.Double)">
+            <summary>
+            Validates deviation value of the <see cref="T:opt.DataModel.Interval"/>
+            </summary>
+            <param name="deviationValue">Deviation value of the <see cref="T:opt.DataModel.Interval"/>
+            that needs to be validated</param>
+            <exception cref="T:System.ArgumentException">If <paramref name="deviationValue"/> is
+            <see cref="F:System.Double.NaN"/></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">If <paramref name="deviationValue"/>
+            is <see cref="F:System.Double.NegativeInfinity"/> or <see cref="F:System.Double.PositiveInfinity"/>
+            or is below zero</exception>
+        </member>
+        <member name="M:opt.DataModel.Interval.ValidateDeviationPercent(System.Int32)">
+            <summary>
+            Validates deviation percent of the <see cref="T:opt.DataModel.Interval"/>
+            </summary>
+            <param name="deviationPercent">Deviation percent of the <see cref="T:opt.DataModel.Interval"/>
+            that needs to be validated</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">If <paramref name="deviationPercent"/>
+            is below zero</exception>
+        </member>
+        <member name="M:opt.DataModel.Interval.ValidateBoundaries(System.Double,System.Double)">
+            <summary>
+            Validates lower and upper boundaries of the <see cref="T:opt.DataModel.Interval"/>
+            </summary>
+            <param name="minimum">Lower boundary of the <see cref="T:opt.DataModel.Interval"/>
+            that needs to be validated</param>
+            <param name="maximum">Upper boundary of the <see cref="T:opt.DataModel.Interval"/>
+            that needs to be validated</param>
+            <exception cref="T:System.ArgumentException">If <paramref name="minimum"/>
+            or <paramref name="maximum"/> is <see cref="F:System.Double.NaN"/></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">If <paramref name="minimum"/>
+            is greater than <paramref name="maximum"/></exception>
+        </member>
+        <member name="M:opt.DataModel.Interval.Equals(System.Object)">
+            <summary>
+            Determines whether the specified <see cref="T:opt.DataModel.Interval"/> is equal to the current one
+            </summary>
+            <param name="other">The <see cref="T:opt.DataModel.Interval"/> object to compare with the current one</param>
+            <returns>True if the specified <see cref="T:opt.DataModel.Interval"/> is equal to the current one;
+            otherwise, False</returns>
+        </member>
+        <member name="M:opt.DataModel.Interval.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type
+            </summary>
+            <returns>A hash code for the current <see cref="T:opt.DataModel.Interval"/></returns>
+        </member>
+        <member name="M:opt.DataModel.Interval.ToString">
+            <summary>
+            Returns a string that represents the current <see cref="T:opt.DataModel.Interval"/> instance
+            </summary>
+            <returns>A string that represents the current <see cref="T:opt.DataModel.Interval"/> instance</returns>
+        </member>
+        <member name="P:opt.DataModel.Interval.Minimum">
+            <summary>
+            Gets lower boundary of the <see cref="T:opt.DataModel.Interval"/>
+            </summary>
+        </member>
+        <member name="P:opt.DataModel.Interval.Maximum">
+            <summary>
+            Gets upper boundary of the <see cref="T:opt.DataModel.Interval"/>
+            </summary>
+        </member>
+        <member name="P:opt.DataModel.Interval.Length">
+            <summary>
+            Gets <see cref="T:opt.DataModel.Interval"/> length. Always positive
+            </summary>
+            <remarks><see cref="P:opt.DataModel.Interval.Length"/> = <see cref="M:System.Math.Abs(System.SByte)"/>(
+            <see cref="P:opt.DataModel.Interval.Maximum"/> - <see cref="P:opt.DataModel.Interval.Minimum"/>)</remarks>
+        </member>
+        <member name="P:opt.DataModel.Interval.IsMinimumOpen">
+            <summary>
+            Gets whether a lower boundary of <see cref="T:opt.DataModel.Interval"/> is open
+            </summary>
+        </member>
+        <member name="P:opt.DataModel.Interval.IsMaximumOpen">
+            <summary>
+            Gets whether an upper boundary of <see cref="T:opt.DataModel.Interval"/> is open
+            </summary>
+        </member>
+        <member name="P:opt.DataModel.Interval.IsOpen">
+            <summary>
+            Gets whether <see cref="T:opt.DataModel.Interval"/> is open. True if both 
+            <see cref="P:opt.DataModel.Interval.IsMinimumOpen"/> and <see cref="P:opt.DataModel.Interval.IsMaximumOpen"/>
+            are True
+            </summary>
+        </member>
+        <member name="T:opt.DataModel.Model">
+            <summary>
+            Optimization model
+            </summary>
+        </member>
+        <member name="M:opt.DataModel.Model.#ctor">
+            <summary>
+            Initializes new instance of <see cref="T:opt.DataModel.Model"/>
+            </summary>
+        </member>
+        <member name="M:opt.DataModel.Model.ApplyFunctionalConstraints">
+            <summary>
+            Marks experiments that do not match functional constraints as inactive;
+            marks all matching experiments as active
+            </summary>
+        </member>
+        <member name="M:opt.DataModel.Model.CheckExpressionsExistence">
+            <summary>
+            Checks whether each and every criterion and constraint in the model has expression specified</summary>
+            <returns>True if each and every criterion and constraint in the model has expression specified</returns>
+        </member>
+        <member name="M:opt.DataModel.Model.CheckParameterVariableIdentifier(System.String)">
+            <summary>
+            Checks whether a parameter with <paramref name="varIdentifier"/> already exists in the model
+            </summary>
+            <param name="varIdentifier">Parameter variable identifier to be checked for uniqueness</param>
+            <returns>True if a parameter with <paramref name="varIdentifier"/> already exists in the model</returns>
+        </member>
+        <member name="M:opt.DataModel.Model.CheckCriterionVariableIdentifier(System.String)">
+            <summary>
+            Checks whether a criterion with <paramref name="varIdentifier"/> already exists in the model
+            </summary>
+            <param name="varIdentifier">Criterion variable identifier to be checked for uniqueness</param>
+            <returns>True if a criterion with <paramref name="varIdentifier"/> already exists in the model</returns>
+        </member>
+        <member name="M:opt.DataModel.Model.CheckConstraintVariableIdentifier(System.String)">
+            <summary>
+            Checks whether a constraint with <paramref name="varIdentifier"/> already exists in the model
+            </summary>
+            <param name="varIdentifier">Constraint variable identifier to be checked for uniqueness</param>
+            <returns>True if a constraint with <paramref name="varIdentifier"/> already exists in the model</returns>
+        </member>
+        <member name="M:opt.DataModel.Model.Serialize(opt.DataModel.Model)">
+            <summary>
+            Serializes <see cref="T:opt.DataModel.Model"/> to byte array
+            </summary>
+            <param name="obj"><see cref="T:opt.DataModel.Model"/> instance to serialize</param>
+            <returns>Byte array representing <paramref name="obj"/></returns>
+        </member>
+        <member name="M:opt.DataModel.Model.Deserialize(System.Byte[])">
+            <summary>
+            Deserializes <see cref="T:opt.DataModel.Model"/> from byte array
+            </summary>
+            <param name="data">Byte array representing <see cref="T:opt.DataModel.Model"/></param>
+            <returns><see cref="T:opt.DataModel.Model"/> instance deserialized from <paramref name="data"/></returns>
+        </member>
+        <member name="P:opt.DataModel.Model.Experiments">
+            <summary>
+            Gets a collection of experiments
+            </summary>
+        </member>
+        <member name="P:opt.DataModel.Model.Parameters">
+            <summary>
+            Gets a collection of parameters
+            </summary>
+        </member>
+        <member name="P:opt.DataModel.Model.Criteria">
+            <summary>
+            Gets a collection of criteria (objectives)
+            </summary>
+        </member>
+        <member name="P:opt.DataModel.Model.FunctionalConstraints">
+            <summary>
+            Gets a collection of constraints (e.g. functional)
+            </summary>
+        </member>
+        <member name="P:opt.DataModel.Model.Properties">
+            <summary>
+            Gets a collection of custom model properties
+            </summary>
+        </member>
+        <member name="T:opt.DataModel.NamedModelEntityCollection`1">
+            <summary>
+            A collection of named model entities or derived type instances
+            </summary>
+        </member>
+        <member name="M:opt.DataModel.NamedModelEntityCollection`1.#ctor">
+            <summary>
+            Initializes new instance of <see cref="!:NamedModelEntityCollection"/>
+            </summary>
+        </member>
+        <member name="M:opt.DataModel.NamedModelEntityCollection`1.#ctor(System.Int32)">
+            <summary>
+            Initializes new instance of <see cref="!:NamedModelEntityCollection"/> with predefined capacity
+            </summary>
+            <param name="capacity">Desired capacity of a new <see cref="!:NamedModelEntityCollection"/></param>
+        </member>
+        <member name="M:opt.DataModel.NamedModelEntityCollection`1.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes new instance of <see cref="!:NamedModelEntityCollection"/> - for binary serialization
+            </summary>
+            <param name="info">A <see cref="T:System.Runtime.Serialization.SerializationInfo"/> object containing the information required 
+            to serialize the <see cref="!:NamedModelEntityCollection"/></param>
+            <param name="context">A <see cref="T:System.Runtime.Serialization.StreamingContext"/> structure containing the
+            source and destination of the serialized stream associated with the <see cref="!:NamedModelEntityCollection"/></param>
+        </member>
+        <member name="M:opt.DataModel.NamedModelEntityCollection`1.FindIdByName(System.String)">
+            <summary>
+            Finds ID of a named entity with specified name
+            </summary>
+            <param name="name">Name of the element to search for</param>
+            <returns>ID of a named model entity with specified <paramref name="name"/></returns>
+            <exception cref="T:System.InvalidOperationException">If a named model entity with 
+            <paramref name="name"/> was not found</exception>
+        </member>
+        <member name="M:opt.DataModel.NamedModelEntityCollection`1.FindByName(System.String)">
+            <summary>
+            Finds a named entity with specified name
+            </summary>
+            <param name="name">Name of the element to search for</param>
+            <returns>An element with specified <paramref name="name"/> or null
+            if such element was not found</returns>
+        </member>
+        <member name="M:opt.DataModel.NamedModelEntityCollection`1.FindIdByVariableIdentifier(System.String)">
+            <summary>
+            Finds ID of a named entity with specified variable identifier
+            </summary>
+            <param name="variableIdentifier">Variable identifier of the element to search for</param>
+            <returns>ID of a named model entity with specified <paramref name="variableIdentifier"/></returns>
+            <exception cref="T:System.InvalidOperationException">If a named model entity with 
+            <paramref name="variableIdentifier"/> was not found</exception>
+        </member>
+        <member name="M:opt.DataModel.NamedModelEntityCollection`1.FindByVariableIdentifier(System.String)">
+            <summary>
+            Finds a named entity with specified variable identifier
+            </summary>
+            <param name="variableIdentifier">Variable identifier of the element to search for</param>
+            <returns>An element with specified <paramref name="variableIdentifier"/> or null
+            if such element was not found</returns>
+        </member>
+        <member name="M:opt.DataModel.NamedModelEntityCollection`1.Clone">
+            <summary>
+            Creates a deep copy of <see cref="T:opt.DataModel.NamedModelEntityCollection`1"/> instance
+            </summary>
+            <returns>Deep copy of self</returns>
+        </member>
+        <member name="T:opt.DataModel.OptimizationMethodResult">
+            <summary>
+            Defines a result of optimization method
+            </summary>
+        </member>
+        <member name="M:opt.DataModel.OptimizationMethodResult.#ctor">
+            <summary>
+            Initializes new instance of <see cref="T:opt.DataModel.OptimizationMethodResult"/>
+            </summary>
+        </member>
+        <member name="M:opt.DataModel.OptimizationMethodResult.#ctor(System.String)">
+            <summary>
+            Initializes new instance of <see cref="T:opt.DataModel.OptimizationMethodResult"/> with
+            specified optimization method name
+            </summary>
+            <param name="methodName">Name of the method that was used to find result</param>
+        </member>
+        <member name="M:opt.DataModel.OptimizationMethodResult.#ctor(System.String,System.String)">
+            <summary>
+            Initializes new instance of <see cref="T:opt.DataModel.OptimizationMethodResult"/> with
+            specified optimization method name and additional data description
+            </summary>
+            <param name="methodName">Name of the method that was used to find result</param>
+            <param name="additionalDataDescription">Additional data human-compatible description</param>
+        </member>
+        <member name="P:opt.DataModel.OptimizationMethodResult.SortedPoints">
+            <summary>
+            Gets a list of experiment IDs sorted in accordance with 
+            chosen decision-making method
+            </summary>
+        </member>
+        <member name="P:opt.DataModel.OptimizationMethodResult.AdditionalData">
+            <summary>
+            Gets additional data used to find the solution
+            Key - experiment ID, Value - corresponding additional data value
+            </summary>
+        </member>
+        <member name="P:opt.DataModel.OptimizationMethodResult.AdditionalDataDescription">
+            <summary>
+            Gets or sets additional data human-compatible description
+            </summary>
+        </member>
+        <member name="P:opt.DataModel.OptimizationMethodResult.MethodName">
+            <summary>
+            Get or sets name of the method that was used to find result
+            </summary>
+        </member>
+        <member name="P:opt.DataModel.OptimizationMethodResult.Name">
+            <summary>
+            Gets name of the custom property
+            </summary>
+        </member>
+        <member name="P:opt.DataModel.OptimizationMethodResult.PropertyName">
+            <summary>
+            Gets name of the custom property
+            </summary>
+        </member>
+        <member name="T:opt.DataModel.Parameter">
+            <summary>
+            Represents a parameter
+            </summary>
+        </member>
+        <member name="M:opt.DataModel.Parameter.#ctor(opt.DataModel.TId,System.String,System.String,System.Double,System.Double)">
+            <summary>
+            Initializes new instance of <see cref="T:opt.DataModel.Parameter"/>
+            </summary>
+            <param name="id">Parameter identifier</param>
+            <param name="name">Parameter name</param>
+            <param name="variableIdentifier">Parameter variable identifier</param>
+            <param name="minValue">Minimal possible value of the parameter</param>
+            <param name="maxValue">Maximal possible value of the parameter</param>
+        </member>
+        <member name="M:opt.DataModel.Parameter.Clone">
+            <summary>
+            Creates a deep copy of <see cref="T:opt.DataModel.Parameter"/> instance
+            </summary>
+            <returns>Deep copy of self</returns>
+        </member>
+        <member name="P:opt.DataModel.Parameter.MinValue">
+            <summary>
+            Gets or sets minimal possible value of the parameter
+            </summary>
+        </member>
+        <member name="P:opt.DataModel.Parameter.MaxValue">
+            <summary>
+            Gets or sets maximal possible value of the parameter
+            </summary>
+        </member>
+        <member name="T:opt.DataModel.PropertyCollection">
+            <summary>
+            A collection of <see cref="T:opt.DataModel.CustomProperty"/> or derived type instances
+            </summary>
+        </member>
+        <member name="M:opt.DataModel.PropertyCollection.#ctor">
+            <summary>
+            Initializes new instance of <see cref="T:opt.DataModel.PropertyCollection"/>
+            </summary>
+        </member>
+        <member name="M:opt.DataModel.PropertyCollection.#ctor(System.Int32)">
+            <summary>
+            Initializes new instance of <see cref="T:opt.DataModel.PropertyCollection"/> with predefined capacity
+            </summary>
+            <param name="capacity">Desired capacity of a new <see cref="T:opt.DataModel.PropertyCollection"/></param>
+        </member>
+        <member name="M:opt.DataModel.PropertyCollection.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes new instance of <see cref="T:opt.DataModel.PropertyCollection"/> - for binary serialization
+            </summary>
+            <param name="info">A <see cref="T:System.Runtime.Serialization.SerializationInfo"/> object containing the information required 
+            to serialize the <see cref="T:opt.DataModel.PropertyCollection"/></param>
+            <param name="context">A <see cref="T:System.Runtime.Serialization.StreamingContext"/> structure containing the
+            source and destination of the serialized stream associated with the <see cref="T:opt.DataModel.PropertyCollection"/></param>
+        </member>
+        <member name="M:opt.DataModel.PropertyCollection.GetProperty``1(System.String)">
+            <summary>
+            Finds property of a desired type by its name
+            </summary>
+            <typeparam name="T">Type of the property to search for. 
+            Must be <see cref="T:opt.DataModel.CustomProperty"/> or derived</typeparam>
+            <param name="propertyName">Name of the property to search for</param>
+            <returns>Property with specified <paramref name="propertyName"/> or null if 
+            property with such name was not found or it cannot be casted to desired type</returns>
+        </member>
+        <member name="M:opt.DataModel.PropertyCollection.Clone">
+            <summary>
+            Creates a deep copy of <see cref="T:opt.DataModel.PropertyCollection"/> instance
+            </summary>
+            <returns>Deep copy of self</returns>
+        </member>
+        <member name="T:opt.DataModel.Relation">
+            <summary>
+            Possible relation between some entity and its value
+            </summary>
+        </member>
+        <member name="F:opt.DataModel.Relation.Equal">
+            <summary>
+            ==
+            </summary>
+        </member>
+        <member name="F:opt.DataModel.Relation.Less">
+            <summary>
+            &lt;
+            </summary>
+        </member>
+        <member name="F:opt.DataModel.Relation.Greater">
+            <summary>
+            &gt;
+            </summary>
+        </member>
+        <member name="F:opt.DataModel.Relation.GreaterOrEqual">
+            <summary>
+            &gt;=
+            </summary>
+        </member>
+        <member name="F:opt.DataModel.Relation.LessOrEqual">
+            <summary>
+            &lt;=
+            </summary>
+        </member>
+        <member name="F:opt.DataModel.Relation.NotEqual">
+            <summary>
+            !=
+            </summary>
+        </member>
+        <member name="T:opt.DataModel.SortDirection">
+            <summary>
+            Possible sort directions
+            </summary>
+        </member>
+        <member name="F:opt.DataModel.SortDirection.Ascending">
+            <summary>
+            Ascending sorting direction (from lesser to greater)
+            </summary>
+        </member>
+        <member name="F:opt.DataModel.SortDirection.Descending">
+            <summary>
+            Descending sorting direction (from greater to lesser)
+            </summary>
+        </member>
+        <member name="T:opt.DataModel.StringProperty">
+            <summary>
+            Defines string property
+            </summary>
+        </member>
+        <member name="T:opt.DataModel.TId">
+            <summary>
+            Represents model entity identifier
+            </summary>
+            <remarks>Immutable</remarks>
+        </member>
+        <member name="F:opt.DataModel.TId.value">
+            <summary>
+            Id value storage
+            </summary>
+        </member>
+        <member name="M:opt.DataModel.TId.#ctor(System.Int32)">
+            <summary>
+            Initializes new instance of <see cref="T:opt.DataModel.TId"/> structure with value of <paramref name="idValue"/>
+            </summary>
+            <param name="idValue">Id value to use for initialization</param>
+        </member>
+        <member name="M:opt.DataModel.TId.#ctor(opt.DataModel.TId)">
+            <summary>
+            Initializes new instance of <see cref="T:opt.DataModel.TId"/> structure with value of <paramref name="anotherId"/>
+            </summary>
+            <param name="anotherId"><see cref="T:opt.DataModel.TId"/> instance to copy value from</param>
+        </member>
+        <member name="M:opt.DataModel.TId.Parse(System.String)">
+            <summary>
+            Creates new instance of <see cref="T:opt.DataModel.TId"/> and initializes it with <paramref name="value"/>
+            </summary>
+            <param name="value">String representation of Id to parse</param>
+            <returns>New instance of <see cref="T:opt.DataModel.TId"/> with <paramref name="value"/> value</returns>
+        </member>
+        <member name="M:opt.DataModel.TId.Equals(opt.DataModel.TId)">
+            <summary>
+            Indicates whether the current object is equal to another object of the same type
+            </summary>
+            <param name="other">An object to compare with this object</param>
+            <returns>True if the current object is equal to the other parameter; otherwise, False</returns>
+        </member>
+        <member name="M:opt.DataModel.TId.CompareTo(System.Object)">
+            <summary>
+            Compares this instance to a specified <see cref="T:opt.DataModel.TId"/> object and returns an
+            integer that indicates their relationship to one another
+            </summary>
+            <param name="other">A <see cref="T:opt.DataModel.TId"/> object to compare to this instance</param>
+            <returns>A value that indicates the relative order of the objects being compared.
+            The return value has these meanings: Value Meaning Less than zero This instance
+            precedes obj in the sort order. Zero This instance occurs in the same position
+            in the sort order as obj. Greater than zero This instance follows obj in
+            the sort order</returns>
+        </member>
+        <member name="M:opt.DataModel.TId.Equals(System.Object)">
+            <summary>
+            Determines whether the specified <see cref="T:opt.DataModel.TId"/> is equal to the current one
+            </summary>
+            <param name="other">The <see cref="T:opt.DataModel.TId"/> object to compare with the current one</param>
+            <returns>True if the specified <see cref="T:opt.DataModel.TId"/> is equal to the current one;
+            otherwise, False</returns>
+        </member>
+        <member name="M:opt.DataModel.TId.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type
+            </summary>
+            <returns>A hash code for the current <see cref="T:opt.DataModel.TId"/></returns>
+        </member>
+        <member name="M:opt.DataModel.TId.ToString">
+            <summary>
+            Returns a string that represents the current <see cref="T:opt.DataModel.TId"/> instance
+            </summary>
+            <returns>A string that represents the current <see cref="T:opt.DataModel.TId"/> instance</returns>
+        </member>
+        <member name="M:opt.DataModel.TId.op_Equality(opt.DataModel.TId,opt.DataModel.TId)">
+            <summary>
+            Determines whether values of two instances of <see cref="T:opt.DataModel.TId"/> are equal
+            </summary>
+            <param name="id1">First instance of <see cref="T:opt.DataModel.TId"/></param>
+            <param name="id2">Second instance of <see cref="T:opt.DataModel.TId"/></param>
+            <returns>True if <paramref name="id1"/> value is equal to the <paramref name="id2"/> 
+            value; otherwise, False</returns>
+        </member>
+        <member name="M:opt.DataModel.TId.op_Inequality(opt.DataModel.TId,opt.DataModel.TId)">
+            <summary>
+            Determines whether values of two instances of <see cref="T:opt.DataModel.TId"/> are not equal
+            </summary>
+            <param name="id1">First instance of <see cref="T:opt.DataModel.TId"/></param>
+            <param name="id2">Second instance of <see cref="T:opt.DataModel.TId"/></param>
+            <returns>True if <paramref name="id1"/> value is not equal to the <paramref name="id2"/> 
+            value; otherwise, False</returns>
+        </member>
+        <member name="M:opt.DataModel.TId.op_LessThan(opt.DataModel.TId,opt.DataModel.TId)">
+            <summary>
+            Determines whether value of <paramref name="id1"/> is less than value of 
+            <paramref name="id2"/>
+            </summary>
+            <param name="id1">First instance of <see cref="T:opt.DataModel.TId"/></param>
+            <param name="id2">Second instance of <see cref="T:opt.DataModel.TId"/></param>
+            <returns>True if <paramref name="id1"/> is less than value of 
+            <paramref name="id2"/>; otherwise, False</returns>
+        </member>
+        <member name="M:opt.DataModel.TId.op_LessThanOrEqual(opt.DataModel.TId,opt.DataModel.TId)">
+            <summary>
+            Determines whether value of <paramref name="id1"/> is less or equal than value of 
+            <paramref name="id2"/>
+            </summary>
+            <param name="id1">First instance of <see cref="T:opt.DataModel.TId"/></param>
+            <param name="id2">Second instance of <see cref="T:opt.DataModel.TId"/></param>
+            <returns>True if <paramref name="id1"/> is less or equal than value of 
+            <paramref name="id2"/>; otherwise, False</returns>
+        </member>
+        <member name="M:opt.DataModel.TId.op_GreaterThan(opt.DataModel.TId,opt.DataModel.TId)">
+            <summary>
+            Determines whether value of <paramref name="id1"/> is greater than value of 
+            <paramref name="id2"/>
+            </summary>
+            <param name="id1">First instance of <see cref="T:opt.DataModel.TId"/></param>
+            <param name="id2">Second instance of <see cref="T:opt.DataModel.TId"/></param>
+            <returns>True if <paramref name="id1"/> is greater than value of 
+            <paramref name="id2"/>; otherwise, False</returns>
+        </member>
+        <member name="M:opt.DataModel.TId.op_GreaterThanOrEqual(opt.DataModel.TId,opt.DataModel.TId)">
+            <summary>
+            Determines whether value of <paramref name="id1"/> is greater or equal than value of 
+            <paramref name="id2"/>
+            </summary>
+            <param name="id1">First instance of <see cref="T:opt.DataModel.TId"/></param>
+            <param name="id2">Second instance of <see cref="T:opt.DataModel.TId"/></param>
+            <returns>True if <paramref name="id1"/> is greater or equal than value of 
+            <paramref name="id2"/>; otherwise, False</returns>
+        </member>
+        <member name="M:opt.DataModel.TId.op_Implicit(System.Int32)~opt.DataModel.TId">
+            <summary>
+            Implicitly converts <see cref="T:System.Int32"/> value to <see cref="T:opt.DataModel.TId"/>
+            </summary>
+            <param name="idValue"><see cref="T:System.Int32"/> value to convert</param>
+            <returns>New instance of <see cref="T:opt.DataModel.TId"/></returns>
+        </member>
+        <member name="M:opt.DataModel.TId.op_Implicit(opt.DataModel.TId)~System.Int32">
+            <summary>
+            Implicitly converts <see cref="T:opt.DataModel.TId"/> to <see cref="T:System.Int32"/> value
+            </summary>
+            <param name="instance"><see cref="T:opt.DataModel.TId"/> to convert</param>
+            <returns><see cref="T:System.Int32"/> value</returns>
+        </member>
+        <member name="M:opt.DataModel.TId.op_Implicit(opt.DataModel.TId)~System.String">
+            <summary>
+            Implicitly converts <see cref="T:opt.DataModel.TId"/> to <see cref="T:System.String"/> value
+            </summary>
+            <param name="instance"><see cref="T:opt.DataModel.TId"/> to convert</param>
+            <returns><see cref="T:System.String"/> value</returns>
+        </member>
+        <member name="T:opt.DataModel.ValueProperty`1">
+            <summary>
+            Base class for simple value-typed properties
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:opt.DataModel.ValueProperty`1.#ctor(`0)">
+            <summary>
+            Initializes new instance of <see cref="!:ValueProperty"/> with specified value
+            </summary>
+            <param name="value">Value of a new property</param>
+        </member>
+        <member name="P:opt.DataModel.ValueProperty`1.Value">
+            <summary>
+            Gets or sets value of the property
+            </summary>
+        </member>
+        <member name="T:opt.INormalizer">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:opt.INormalizer.Normalize(System.Collections.Generic.IDictionary{opt.DataModel.TId,System.Double})">
+            <summary>
+            
+            </summary>
+            <param name="valuesToNormalize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:opt.INormalizer.Normalize(opt.DataModel.ExperimentCollection,opt.DataModel.Criterion)">
+            <summary>
+            
+            </summary>
+            <param name="experiments"></param>
+            <param name="criterionToNormalize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:opt.INormalizer.Normalize(opt.DataModel.ExperimentCollection,opt.DataModel.Parameter)">
+            <summary>
+            
+            </summary>
+            <param name="experiments"></param>
+            <param name="parameterToNormalize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:opt.INormalizer.Normalize(opt.DataModel.ExperimentCollection,opt.DataModel.Constraint)">
+            <summary>
+            
+            </summary>
+            <param name="experiments"></param>
+            <param name="constraintToNormalize"></param>
+            <returns></returns>
+        </member>
+        <member name="T:opt.IParameterValueGenerator">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:opt.IParameterValueGenerator.GenerateParameterValue(opt.DataModel.ExperimentCollection,opt.DataModel.NamedModelEntityCollection{opt.DataModel.Parameter})">
+            <summary>
+            
+            </summary>
+            <param name="experiments"></param>
+            <param name="parameters"></param>
+        </member>
+        <member name="M:opt.IParameterValueGenerator.GenerateParameterValue(opt.DataModel.Experiment,opt.DataModel.NamedModelEntityCollection{opt.DataModel.Parameter})">
+            <summary>
+            
+            </summary>
+            <param name="experiment"></param>
+            <param name="parameters"></param>
+        </member>
+        <member name="T:opt.IResultTableFiller">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:opt.IResultTableFiller.FillDataTable(opt.DataModel.Model,opt.DataModel.OptimizationMethodResult)">
+            <summary>
+            
+            </summary>
+            <param name="model"></param>
+            <param name="optimizationResult"></param>
+            <returns></returns>
+        </member>
+        <member name="T:opt.ISolver">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:opt.ISolver.Solve(opt.DataModel.Model)">
+            <summary>
+            
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="T:opt.Extensions.ConvertEx">
+            <summary>
+            Helper class with some Invariant culture methods
+            </summary>
+        </member>
+        <member name="M:opt.Extensions.ConvertEx.ToDoubleInvariant(System.String)">
+            <summary>
+            Converts string <paramref name="value"/> to <see cref="T:System.Double"/> with Invariant culture info
+            </summary>
+            <param name="value">String value to be converted</param>
+            <returns>String <paramref name="value"/> converted to <see cref="T:System.Double"/> with Invariant culture info</returns>
+        </member>
+        <member name="M:opt.Extensions.ConvertEx.ToDoubleInvariant(System.Object)">
+            <summary>
+            Converts <paramref name="value"/> to <see cref="T:System.Double"/> with Invariant culture info
+            </summary>
+            <param name="value">Value to be converted</param>
+            <returns><paramref name="value"/> converted to <see cref="T:System.Double"/> with Invariant culture info</returns>
+        </member>
+        <member name="T:opt.Extensions.DoubleExtensions">
+            <summary>
+            Various <see cref="!:Double"/> extensions
+            </summary>
+        </member>
+        <member name="M:opt.Extensions.DoubleExtensions.ToStringInvariant(System.Double)">
+            <summary>
+            Converts <see cref="!:Double"/> value to string with Invariant culture info
+            </summary>
+            <param name="value">Value to be converted</param>
+            <returns><see cref="!:Double"/> value converted to string with Invariant culture info</returns>
+        </member>
+        <member name="M:opt.Extensions.DoubleExtensions.ToStringInvariant(System.Double,System.String)">
+            <summary>
+            Converts <see cref="!:Double"/> value to string with desired <paramref name="format"/> and Invariant culture info
+            </summary>
+            <param name="value">Value to be converted</param>
+            <param name="format">Desired format</param>
+            <returns><see cref="!:Double"/> value converted to string with desired <paramref name="format"/> and Invariant culture info</returns>
+        </member>
+        <member name="T:opt.Extensions.EnumEx">
+            <summary>
+            Helper class with some methods for <see cref="T:System.Enum"/> handling
+            </summary>
+        </member>
+        <member name="M:opt.Extensions.EnumEx.Parse``1(System.String)">
+            <summary>
+            Converts the string representation of the name or numeric value of one or 
+            more enumerated constants to an equivalent enumerated object
+            </summary>
+            <typeparam name="T">An enumeration type</typeparam>
+            <param name="value">A string containing the name or value to convert</param>
+            <returns>A typed object of type enumType whose value is represented by <paramref name="value"/></returns>
+        </member>
+        <member name="T:opt.Helpers.AdmissibleSetFinder">
+            <summary>
+            Helper class, contains methods for admissible set finding
+            </summary>
+        </member>
+        <member name="M:opt.Helpers.AdmissibleSetFinder.GetInitialSet(opt.DataModel.Model)">
+            <summary>
+            Метод для выделения начального состояния модели, до 
+            построения допустимого множества
+            </summary>
+            <param name="model">Оптимизационная модель</param>
+            <returns>Список активных экспериментов ДО построения
+            допустимого множества</returns>
+        </member>
+        <member name="M:opt.Helpers.AdmissibleSetFinder.ApplyAdmissibleSet(System.Collections.ObjectModel.ReadOnlyCollection{opt.DataModel.TId},opt.DataModel.Model)">
+            <summary>
+            Метод для переноса допустимого множества на модель: 
+            эксперименты, входящие в допустимое множество, делаются 
+            активными, а не входящие - неактивными
+            </summary>
+            <param name="admissibleSet">Список ID экспериментов, входящих в 
+            допустимое множество</param>
+            <param name="model">Оптимизационная модель</param>
+        </member>
+        <member name="M:opt.Helpers.AdmissibleSetFinder.GetAdmissibleSet(System.Collections.Generic.Dictionary{opt.DataModel.TId,System.Int32},opt.DataModel.Model)">
+            <summary>
+            Метод для построения допустимого множества по набору 
+            граничных точек
+            </summary>
+            <param name="boundaryPoints">Набор граничных точек (по точке для каждого 
+            из критериев)</param>
+            <param name="model">Оптимизационная модель</param>
+            <returns>Списко ID экспериментов, входящих в допустимое множество</returns>
+        </member>
+        <member name="T:opt.Helpers.ExpressionEvaluator">
+            <summary>
+            Helper class, contains methods for symbolic expressions evaluation using NCalc
+            </summary>
+        </member>
+        <member name="M:opt.Helpers.ExpressionEvaluator.CalculateCriteriaValues(opt.DataModel.Model)">
+            <summary>
+            Evaluates criteria values
+            </summary>
+            <param name="model"><see cref="T:opt.DataModel.Model"/> instance to take expressions and numeric values from</param>
+        </member>
+        <member name="M:opt.Helpers.ExpressionEvaluator.CalculateConstraintsValues(opt.DataModel.Model)">
+            <summary>
+            Evaluates constraint values
+            </summary>
+            <param name="model"><see cref="T:opt.DataModel.Model"/> instance to take expressions and numeric values from</param>
+        </member>
+        <member name="M:opt.Helpers.ExpressionEvaluator.PrepareExpressionParametersCollection(System.Collections.Generic.Dictionary{opt.DataModel.TId,opt.DataModel.Parameter})">
+            <summary>
+            Creates a <see cref="T:System.Collections.Generic.Dictionary`2"/> with all model parameters. Keys are variable identifiers, values are null
+            </summary>
+            <param name="parameters">Collection of <see cref="T:opt.DataModel.Parameter"/></param>
+            <returns><see cref="T:System.Collections.Generic.Dictionary`2"/> with all model parameters</returns>
+        </member>
+        <member name="M:opt.Helpers.ExpressionEvaluator.PrepareExpressionCollection(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{opt.DataModel.TId,System.String}},System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Creates a <see cref="T:System.Collections.Generic.Dictionary`2"/> with <see cref="T:NCalc.Expression"/> instances for each item from <paramref name="expressionSource"/>
+            </summary>
+            <param name="expressionSource">Collection of string expressions to be used to build <see cref="T:NCalc.Expression"/> instances</param>
+            <param name="expressionParameters">Parameters of the <see cref="T:NCalc.Expression"/> to be included in the collection</param>
+            <returns><see cref="T:System.Collections.Generic.Dictionary`2"/> with <see cref="T:NCalc.Expression"/> instances for each item from <paramref name="expressionSource"/></returns>
+        </member>
+        <member name="T:opt.Helpers.Comparer">
+            <summary>
+            Helper class, contains methods for comparing various values
+            </summary>
+        </member>
+        <member name="M:opt.Helpers.Comparer.IsFirstValueBetter(System.Double,System.Double,opt.DataModel.CriterionType)">
+            <summary>
+            Checks whether <paramref name="firstValue"/> of the criterion is better than <paramref name="secondValue"/>
+            of the same criterion with regard to the type of this criterion
+            </summary>
+            <param name="firstValue">First criterion value</param>
+            <param name="secondValue">Second criterion value</param>
+            <param name="criterionType">Type of this criterion</param>
+            <returns>True if criterion is minimizing and <paramref name="firstValue"/> is lesser than <paramref name="secondValue"/> OR
+            if criterion is maximizing and <paramref name="firstValue"/> is greater than <paramref name="secondValue"/></returns>
+        </member>
+        <member name="M:opt.Helpers.Comparer.CompareValuesWithSign(System.Double,System.Double,opt.DataModel.Relation)">
+            <summary>
+            Compares two <see cref="T:System.Double"/> values with regard to specified relation
+            </summary>
+            <param name="leftValue">Left value of an inequality</param>
+            <param name="rigthValue">Right value of an inequality</param>
+            <param name="relation">Relation between <paramref name="leftValue"/> and <paramref name="rightValue"/>
+            that should be checked</param>
+            <returns>True if <paramref name="leftValue"/>, <paramref name="relation"/> and <paramref name="rightValue"/>
+            form correct inequality (e.g. 3 &gt;= 2)</returns>
+        </member>
+        <member name="T:opt.Helpers.DistanceType">
+            <summary>
+            Types of distances that <see cref="T:opt.Helpers.DistanceHelper"/> can calculate
+            </summary>
+        </member>
+        <member name="M:opt.Helpers.LpTauGenerator.GetParameterValue(System.Int32,System.Int32)">
+            <summary>
+            Метод для получения случайного значения 
+            с помощью LPTau-последовательности
+            </summary>
+            <param name="experimentNumber">Номер эксперимента (начиная с 1)</param>
+            <param name="parameterNumber">Номер параметра (начиная с 1)</param>
+            <returns>Случайное значение оптимизируемого параметра</returns>
+        </member>
+        <member name="T:opt.Helpers.ModelState">
+            <summary>
+            Describes <see cref="T:opt.DataModel.Model"/> state snapshot
+            </summary>
+        </member>
+        <member name="M:opt.Helpers.ModelState.GetModelState(opt.DataModel.Model)">
+            <summary>
+            Creates a snapshot of <paramref name="model"/> state
+            </summary>
+            <param name="model"><see cref="T:opt.DataModel.Model"/> to get state of</param>
+            <returns><see cref="T:opt.Helpers.ModelState"/> of a <paramref name="model"/></returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="model"/> is null</exception>
+        </member>
+        <member name="M:opt.Helpers.ModelState.CheckParametersExistence(opt.DataModel.Model)">
+            <summary>
+            Checks whether parameters were added to <paramref name="model"/>
+            </summary>
+            <param name="model"><see cref="T:opt.DataModel.Model"/> instance to be checked</param>
+            <returns>True if <paramref name="model"/> contains one or more parameters</returns>
+        </member>
+        <member name="M:opt.Helpers.ModelState.CheckCriteriaExistence(opt.DataModel.Model)">
+            <summary>
+            Checks whether criteria were added to <paramref name="model"/>
+            </summary>
+            <param name="model"><see cref="T:opt.DataModel.Model"/> instance to be checked</param>
+            <returns>True if <paramref name="model"/> contains one or more criteria</returns>
+        </member>
+        <member name="M:opt.Helpers.ModelState.CheckFunctionalConstraintsExistence(opt.DataModel.Model)">
+            <summary>
+            Checks whether functional constraints were added to <paramref name="model"/>
+            </summary>
+            <param name="model"><see cref="T:opt.DataModel.Model"/> instance to be checked</param>
+            <returns>True if <paramref name="model"/> contains one or more functional constraints</returns>
+        </member>
+        <member name="M:opt.Helpers.ModelState.CheckExperimentsExistence(opt.DataModel.Model)">
+            <summary>
+            Checks whether experiments were added to <paramref name="model"/>
+            </summary>
+            <param name="model"><see cref="T:opt.DataModel.Model"/> instance to be checked</param>
+            <returns>True if <paramref name="model"/> contains one or more experiments</returns>
+        </member>
+        <member name="M:opt.Helpers.ModelState.CheckCollectionExistence``1(System.Collections.Generic.IDictionary{opt.DataModel.TId,``0})">
+            <summary>
+            Checks whether <paramref name="collection"/> is not null and not empty
+            </summary>
+            <typeparam name="T">Type of the objects in the dictionary</typeparam>
+            <param name="collection"><see cref="!:IDictionary"/> to be checked</param>
+            <returns>True if <paramref name="collection"/> is not null and not empty</returns>
+        </member>
+        <member name="M:opt.Helpers.ModelState.CheckParameterValuesExistence(opt.DataModel.Model)">
+            <summary>
+            Checks whether all experiments in <paramref name="model"/> contain values for all parameters
+            </summary>
+            <param name="model"><see cref="T:opt.DataModel.Model"/> instance to be checked</param>
+            <returns>True if all experiments in <paramref name="model"/> contain values for all parameters</returns>
+        </member>
+        <member name="M:opt.Helpers.ModelState.CheckCriterionValuesExistence(opt.DataModel.Model)">
+            <summary>
+            Checks whether all experiments in <paramref name="model"/> contain values for all criteria
+            </summary>
+            <param name="model"><see cref="T:opt.DataModel.Model"/> instance to be checked</param>
+            <returns>True if all experiments in <paramref name="model"/> contain values for all criteria</returns>
+        </member>
+        <member name="M:opt.Helpers.ModelState.CheckFunctionalConstraintValuesExistence(opt.DataModel.Model)">
+            <summary>
+            Checks whether all experiments in <paramref name="model"/> contain values for all functional constraints
+            </summary>
+            <param name="model"><see cref="T:opt.DataModel.Model"/> instance to be checked</param>
+            <returns>True if all experiments in <paramref name="model"/> contain values for all functional constraints</returns>
+        </member>
+        <member name="M:opt.Helpers.ModelState.CheckEntityValuesExistence``1(System.Collections.Generic.IDictionary{opt.DataModel.TId,opt.DataModel.Experiment},System.Collections.Generic.IDictionary{opt.DataModel.TId,``0})">
+            <summary>
+            Checks whether all <paramref name="experiments"/> contain values for all <paramref name="entities"/>
+            </summary>
+            <typeparam name="T">Type of the entity. Currently only <see cref="T:opt.DataModel.Parameter"/>, <see cref="T:opt.DataModel.Criterion"/> and
+            <see cref="T:opt.DataModel.Constraint"/> are supported</typeparam>
+            <param name="experiments">Collection of the experiments</param>
+            <param name="entities">Collection of the entities, presence of values for which should be checked</param>
+            <exception cref="T:System.ArgumentException">If <typeparamref name="T"/> is not <see cref="T:opt.DataModel.Parameter"/>, <see cref="T:opt.DataModel.Criterion"/> or
+            <see cref="T:opt.DataModel.Constraint"/></exception>
+            <returns>True if all <paramref name="experiments"/> contain values for all <paramref name="entities"/></returns>
+        </member>
+        <member name="M:opt.Helpers.ModelState.CheckEntityValueExistence(System.Collections.Generic.IDictionary{opt.DataModel.TId,System.Double},opt.DataModel.TId)">
+            <summary>
+            Checks whether <paramref name="collection"/> contains element with <paramref name="entityId"/> key
+            </summary>
+            <param name="collection"><see cref="!:IDictionary"/> to be checked</param>
+            <param name="entityId">Key to search for in <paramref name="collection"/></param>
+            <returns>True if <paramref name="collection"/> is not null and contains element with <paramref name="entityId"/> key</returns>
+        </member>
+        <member name="M:opt.Helpers.ModelState.CheckParetoFrontExistence(opt.DataModel.Model)">
+            <summary>
+            Checks whether <paramref name="model"/> has experiments in Pareto front
+            </summary>
+            <param name="model"><see cref="T:opt.DataModel.Model"/> instance to be checked</param>
+            <returns>True if <paramref name="model"/> has at least one experiment in Pareto front</returns>
+        </member>
+        <member name="P:opt.Helpers.ModelState.HasParameters">
+            <summary>
+            Gets whether parameters were defined in the <see cref="T:opt.DataModel.Model"/>
+            </summary>
+        </member>
+        <member name="P:opt.Helpers.ModelState.HasCriteria">
+            <summary>
+            Gets whether criteria were defined in the <see cref="T:opt.DataModel.Model"/>
+            </summary>
+        </member>
+        <member name="P:opt.Helpers.ModelState.HasFunctionalConstraints">
+            <summary>
+            Gets whether functional constraints were defined in the <see cref="T:opt.DataModel.Model"/>
+            </summary>
+        </member>
+        <member name="P:opt.Helpers.ModelState.HasExperiments">
+            <summary>
+            Gets whether experiments were defined in the <see cref="T:opt.DataModel.Model"/>
+            </summary>
+        </member>
+        <member name="P:opt.Helpers.ModelState.HasParameterValues">
+            <summary>
+            Gets whether each experiment in the <see cref="T:opt.DataModel.Model"/> has values for all parameters
+            </summary>
+        </member>
+        <member name="P:opt.Helpers.ModelState.HasCriterionValues">
+            <summary>
+            Gets whether each experiment in the <see cref="T:opt.DataModel.Model"/> has values for all criteria
+            </summary>
+        </member>
+        <member name="P:opt.Helpers.ModelState.HasFunctionalConstraintValues">
+            <summary>
+            Gets whether each experiment in the <see cref="T:opt.DataModel.Model"/> has values for all functional constraints
+            </summary>
+        </member>
+        <member name="P:opt.Helpers.ModelState.HasParetoFront">
+            <summary>
+            Gets whether <see cref="T:opt.DataModel.Model"/> has experiments in Pareto front
+            </summary>
+        </member>
+        <member name="T:opt.Helpers.NormalizationHelper">
+            <summary>
+            Helper class, contains methods for value normalization
+            </summary>
+        </member>
+        <member name="M:opt.Helpers.NormalizationHelper.NormalizeCriterionValues(System.Collections.Generic.Dictionary{opt.DataModel.TId,opt.DataModel.Experiment},opt.DataModel.Criterion)">
+            <summary>
+            Normalizes criterion values of active experiments AND performs ingredient replacement (maximizing criterion will become minimizing,
+            minimizing criterion will stay minimizing)
+            </summary>
+            <param name="experiments">Collection of experiments to be processed</param>
+            <param name="criterion">Criterion to normalize values of</param>
+            <returns>Collection of normalized values (key - experiment ID, value - normalized 
+            <paramref name="criterion"/> value)</returns>
+        </member>
+        <member name="M:opt.Helpers.NormalizationHelper.NormalizeMinimizingCriterionValue(System.Double,System.Double,System.Double)">
+            <summary>
+            Normalizes local minimizing objective value
+            </summary>
+            <param name="valueToNormalize">Objective value to be normalized</param>
+            <param name="minCriterionValue">Minimal value of this objective</param>
+            <param name="criterionValuesVariationRange">Difference between maximal and minimal values of the objective</param>
+            <returns>Normalized objective value</returns>
+        </member>
+        <member name="M:opt.Helpers.NormalizationHelper.NormalizeMaximizingCriterionValue(System.Double,System.Double,System.Double)">
+            <summary>
+            Normalizes local maximizing objective value
+            </summary>
+            <param name="valueToNormalize">Objective value to be normalized</param>
+            <param name="maxCriterionValue">Maximal value of this objective</param>
+            <param name="criterionValuesVariationRange">Difference between maximal and minimal values of the objective</param>
+            <returns>Normalized objective value</returns>
+        </member>
+        <member name="M:opt.Helpers.ParetoFinder.CheckStrictDomination(System.Collections.Generic.IEnumerable{opt.DataModel.Criterion},opt.DataModel.Experiment,opt.DataModel.Experiment)">
+            <summary>
+            Метод для проверки строгого доминирования первой точки
+            над второй
+            </summary>
+            <param name="criteria">Список критериев оптимальности</param>
+            <param name="firstPoint">Первая точка</param>
+            <param name="secondPoint">Вторая точка</param>
+            <returns>True, если <paramref name="firstPoint"/> строго доминирует над 
+            <paramref name="secondPoint"/>, иначе false</returns>
+        </member>
+        <member name="T:opt.Helpers.PathHelper">
+            <summary>
+            Stores different helper routines for path handling
+            </summary>
+        </member>
+        <member name="M:opt.Helpers.PathHelper.ResolveRelativePath(System.String,System.String)">
+            <summary>
+            Resolves relative path to the absolute (rooted) path
+            </summary>
+            <param name="relativePath">Path to be resolved</param>
+            <param name="currentDirectory">Directory (rooted) to resolve <paramref name="relativePath"/>
+            against. If this argument is null - <see cref="P:System.Environment.CurrentDirectory"/> will be used</param>
+            <returns>Null if <paramref name="relativePath"/> is null. <paramref name="relativePath"/>
+            if it is already rooted. In other cases - full (rooted) path to it</returns>
+        </member>
+        <member name="T:opt.Helpers.SortableDoubleEntity">
+            <summary>
+            Helper data storage class to use when sorting different double-valued entities
+            </summary>
+        </member>
+        <member name="M:opt.Helpers.SortableDoubleEntity.CompareTo(opt.Helpers.SortableDoubleEntity)">
+            <summary>
+            Compares the current <see cref="T:opt.Helpers.SortableDoubleEntity"/> instance with another instance of the same type 
+            with regard to <see cref="P:opt.Helpers.SortableDoubleEntity.Direction"/>
+            </summary>
+            <param name="other">A <see cref="T:opt.Helpers.SortableDoubleEntity"/> instance to compare with this instance</param>
+            <returns>A value that indicates the relative order of the objects being compared. 
+            The return value has the following meanings: Less than zero - 
+            this object is less than the other parameter. Zero - This object is equal to 
+            other. Greater than zero - This object is greater than other</returns>
+        </member>
+        <member name="P:opt.Helpers.SortableDoubleEntity.Direction">
+            <summary>
+            Gets or sets direction of sorting
+            </summary>
+        </member>
+        <member name="P:opt.Helpers.SortableDoubleEntity.Id">
+            <summary>
+            Gets or sets entity ID
+            </summary>
+        </member>
+        <member name="P:opt.Helpers.SortableDoubleEntity.Value">
+            <summary>
+            Gets or sets entity value
+            </summary>
+        </member>
+        <member name="M:opt.Helpers.VariableIdentifierChecker.RegExCheck(System.String)">
+            <summary>
+            Метод для проверки идентификатора переменной на валидность
+            </summary>
+            <param name="varIdentifier">Идентификатор переменной, который надо проверить</param>
+            <returns>True, если идентификатор состоит только из латинских больших 
+            и маленьких букв</returns>
+        </member>
+        <member name="M:opt.Helpers.VariableIdentifierChecker.IsInRestrictedList(System.String,System.String)">
+            <summary>
+            Метод для проверки вхождения идентификатора переменной в список запрещенных 
+            идентификаторов
+            </summary>
+            <param name="varIdentifier">Идентификатор для проверки</param>
+            <param name="restrictedList">Строка, содержащая список запрещенных идентификаторов</param>
+            <returns>True если идентификатор находится в списке</returns>
+        </member>
+        <member name="T:opt.IDataExporter">
+            <summary>
+            Interface for various <see cref="T:opt.DataModel.Model"/> exporters
+            </summary>
+        </member>
+        <member name="M:opt.IDataExporter.Export(opt.DataModel.Model)">
+            <summary>
+            Exports <paramref name="model"/> to specified format
+            </summary>
+            <param name="model"><see cref="T:opt.DataModel.Model"/> to be exported</param>
+        </member>
+        <member name="T:opt.IDataImporter">
+            <summary>
+            Interface for various <see cref="T:opt.DataModel.Model"/> importers
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:opt.IDataImporter.Import(System.Object)" -->
+        <member name="T:opt.IExportable">
+            <summary>
+            Describes exportable entity
+            </summary>
+        </member>
+        <member name="M:opt.IExportable.Export(System.Object)">
+            <summary>
+            Exports this instance to specified destination
+            </summary>
+            <param name="destination">Export destination (stream, XmlWriter etc.)</param>
+        </member>
+        <member name="T:opt.IImportable">
+            <summary>
+            Describes importable entity
+            </summary>
+        </member>
+        <member name="M:opt.IImportable.Import(System.Object)">
+            <summary>
+            Imports an instance from specified source
+            </summary>
+            <param name="source">Import source (stream, XmlReader etc.)</param>
+            <returns>Imported instance</returns>
+        </member>
+        <member name="T:opt.SettingsManager">
+            <summary>
+            Stores opt.Core settings
+            </summary>
+            <remarks>Singleton</remarks>
+        </member>
+        <member name="M:opt.SettingsManager.#ctor">
+            <summary>
+            Initializes new instance of <see cref="T:opt.SettingsManager"/>, creates empty storage for properties
+            and fills it with default property values
+            </summary>
+        </member>
+        <member name="M:opt.SettingsManager.Merge(System.Configuration.SettingsPropertyValueCollection)">
+            <summary>
+            Copies properties and their values from <paramref name="propertyValueCollection"/>
+            </summary>
+            <param name="propertyValueCollection">Property value storage to copy data from</param>
+            <remarks>Existing values are overwritten by values from <paramref name="propertyValueCollection"/></remarks>
+        </member>
+        <member name="P:opt.SettingsManager.Instance">
+            <summary>
+            Gets instance of <see cref="T:opt.SettingsManager"/>
+            </summary>
+        </member>
+        <member name="P:opt.SettingsManager.ApplicationName">
+            <summary>
+            Gets or sets name of the application that uses opt.Core
+            </summary>
+            <value>Default value: opt.Core.dll</value>
+        </member>
+        <member name="P:opt.SettingsManager.ValuesDecimalPlaces">
+            <summary>
+            Gets or sets number of decimal places (digits in the fractional part of a number written in decimal form)
+            </summary>
+            <value>Default value: 3</value>
+        </member>
+        <member name="P:opt.SettingsManager.QuantitiesFileName">
+            <summary>
+            Gets or sets relative path to the file with quantitive model characteristics
+            </summary>
+            <value>Default value: \Models\numpk.txt</value>
+            <remarks>Only for the simplified calc modules</remarks>
+        </member>
+        <member name="P:opt.SettingsManager.ParametersFileName">
+            <summary>
+            Gets or sets relative path to the file with model parameters values
+            </summary>
+            <value>Default value: \Models\par.opt</value>
+            <remarks>Only for the simplified calc modules</remarks>
+        </member>
+        <member name="P:opt.SettingsManager.ResultsFileName">
+            <summary>
+            Gets or sets relative path to the file with model criteria and constraints values
+            </summary>
+            <value>Default value: \Models\fun.opt</value>
+            <remarks>Only for the simplified calc modules</remarks>
+        </member>
+        <member name="P:opt.SettingsManager.UseOldXmlProvider">
+            <summary>
+            Gets or sets whether to use old XML model provider or the new one
+            </summary>
+            <value>Default value: false</value>
+            <remarks>Use only for backward compatibility</remarks>
+        </member>
+        <member name="P:opt.SettingsManager.DoubleStringFormat">
+            <summary>
+            Gets a format of double to string conversion for ToString() method
+            </summary>
+            <value>Default value: F3 (results in #.###)</value>
+        </member>
+        <member name="T:opt.Text.TextModelProvider">
+            <summary>
+            Model-to-Text provider (for Dummy mode)
+            </summary>
+        </member>
+        <member name="M:opt.Text.TextModelProvider.WriteModel(opt.DataModel.Model,opt.Text.TextModelProviderSettings)">
+            <summary>
+            Writes <see cref="T:opt.DataModel.Model"/> partially to text files - only general information about model and
+            parameter values are written
+            </summary>
+            <param name="model"><see cref="T:opt.DataModel.Model"/> instance to be written</param>
+            <param name="providerSettings"><see cref="T:opt.Text.TextModelProviderSettings"/> with necessary export information</param>
+        </member>
+        <member name="M:opt.Text.TextModelProvider.WriteModelInformation(opt.DataModel.Model,System.String)">
+            <summary>
+            Writes general <see cref="T:opt.DataModel.Model"/> information: number of parameters, criteria and functional constraints
+            and also number of experiments to text file
+            </summary>
+            <param name="model"><see cref="T:opt.DataModel.Model"/> instance to be written</param>
+            <param name="informationFilePath">Full path to the file to be written</param>
+        </member>
+        <member name="M:opt.Text.TextModelProvider.WriteModelParameters(opt.DataModel.Model,System.String)">
+            <summary>
+            Writes parameter values for all experiments to the text file
+            </summary>
+            <param name="model"><see cref="T:opt.DataModel.Model"/> instance to take data from</param>
+            <param name="parametersFilePath">Full path to the file to be written</param>
+        </member>
+        <member name="M:opt.Text.TextModelProvider.ReadResultToModel(opt.DataModel.Model,opt.Text.TextModelProviderSettings)">
+            <summary>
+            Reads calculation results (values of criteria and functional constraints) from text file to the <paramref name="targetModel"/>
+            </summary>
+            <param name="targetModel"><see cref="T:opt.DataModel.Model"/> instance to read values to</param>
+            <param name="providerSettings"><see cref="T:opt.Text.TextModelProviderSettings"/> with full path to the file to be read</param>
+        </member>
+        <member name="M:opt.Text.TextModelProvider.ReadValues``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IDictionary{opt.DataModel.TId,System.Double},System.IO.StreamReader)">
+            <summary>
+            Reads <see cref="T:System.Double"/> values of entities represented by <typeparamref name="T"/> from <paramref name="streamReader"/>
+            to the <paramref name="valuesCollection"/>
+            </summary>
+            <typeparam name="T">Type of the entity which value should be read</typeparam>
+            <param name="entitiesCollection">Collection of entities to read values of</param>
+            <param name="valuesCollection">A collection to read values to</param>
+            <param name="streamReader"><see cref="T:System.IO.StreamReader"/> instance used to read values</param>
+        </member>
+        <member name="T:opt.Xml.NewXmlModelProvider">
+            <summary>
+            Up-to-date XML provider (writes <see cref="T:opt.DataModel.Model"/> to XML and reads it from XML). To be updated along with the
+            data model
+            </summary>
+        </member>
+        <member name="F:opt.Xml.NewXmlModelProvider.Namespace">
+            <summary>
+            Namespace to be used in XML model files
+            </summary>
+        </member>
+        <member name="F:opt.Xml.NewXmlModelProvider.modelFileWriterSettings">
+            <summary>
+            <see cref="T:System.Xml.XmlWriterSettings"/> instance to use when writing XML
+            </summary>
+        </member>
+        <member name="F:opt.Xml.NewXmlModelProvider.modelFileReaderSettings">
+            <summary>
+            <see cref="T:System.Xml.XmlReaderSettings"/> instance to use when reading XML
+            </summary>
+        </member>
+        <member name="M:opt.Xml.NewXmlModelProvider.Save(opt.DataModel.Model,System.String)">
+            <summary>
+            Writes <paramref name="model"/> to XML file
+            </summary>
+            <param name="model"><see cref="T:opt.DataModel.Model"/> instance to be written to XML</param>
+            <param name="filePath">Full path to target XML file</param>
+        </member>
+        <member name="M:opt.Xml.NewXmlModelProvider.GetXDocument(opt.DataModel.Model)">
+            <summary>
+            Creates <see cref="T:System.Xml.Linq.XDocument"/> with <paramref name="model"/> contents
+            </summary>
+            <param name="model"><see cref="T:opt.DataModel.Model"/> instance to be written to XML</param>
+            <returns><see cref="T:System.Xml.Linq.XDocument"/> with <paramref name="model"/> contents</returns>
+        </member>
+        <member name="M:opt.Xml.NewXmlModelProvider.WriteModelElement(System.Xml.Linq.XDocument)">
+            <summary>
+            Writes root element to the <paramref name="modelDocument"/>
+            </summary>
+            <param name="modelDocument"><see cref="T:System.Xml.Linq.XDocument"/> instance with <see cref="T:opt.DataModel.Model"/> contents</param>
+        </member>
+        <member name="M:opt.Xml.NewXmlModelProvider.WriteParameters(opt.DataModel.Model,System.Xml.Linq.XElement)">
+            <summary>
+            Writes a collection of <see cref="T:opt.DataModel.Parameter"/> to XML
+            </summary>
+            <param name="model"><see cref="T:opt.DataModel.Model"/> instance to be written to XML</param>
+            <param name="modelDocumentRoot"><see cref="T:System.Xml.Linq.XElement"/> instance that represents root of model XML document</param>
+        </member>
+        <member name="M:opt.Xml.NewXmlModelProvider.WriteCriteria(opt.DataModel.Model,System.Xml.Linq.XElement)">
+            <summary>
+            Writes a collection of <see cref="T:opt.DataModel.Criterion"/> to XML
+            </summary>
+            <param name="model"><see cref="T:opt.DataModel.Model"/> instance to be written to XML</param>
+            <param name="modelDocumentRoot"><see cref="T:System.Xml.Linq.XElement"/> instance that represents root of model XML document</param>
+        </member>
+        <member name="M:opt.Xml.NewXmlModelProvider.WriteFunctionalConstraints(opt.DataModel.Model,System.Xml.Linq.XElement)">
+            <summary>
+            Writes a collection of <see cref="T:opt.DataModel.Constraint"/> to XML
+            </summary>
+            <param name="model"><see cref="T:opt.DataModel.Model"/> instance to be written to XML</param>
+            <param name="modelDocumentRoot"><see cref="T:System.Xml.Linq.XElement"/> instance that represents root of model XML document</param>
+        </member>
+        <member name="M:opt.Xml.NewXmlModelProvider.WriteExperiments(opt.DataModel.Model,System.Xml.Linq.XElement)">
+            <summary>
+            Writes a collection of <see cref="T:opt.DataModel.Experiment"/> to XML
+            </summary>
+            <param name="model"><see cref="T:opt.DataModel.Model"/> instance to be written to XML</param>
+            <param name="modelDocumentRoot"><see cref="T:System.Xml.Linq.XElement"/> instance that represents root of model XML document</param>
+        </member>
+        <member name="M:opt.Xml.NewXmlModelProvider.WriteValueCollection(System.Collections.Generic.IDictionary{opt.DataModel.TId,System.Double},System.Xml.Linq.XName,System.Xml.Linq.XName)">
+            <summary>
+            Writes a collection of <see cref="T:System.Double"/> values to XML
+            </summary>
+            <param name="collection">Collection to be written to XML</param>
+            <param name="collectionElementName"><see cref="T:System.Xml.Linq.XName"/> of the collection XML element</param>
+            <param name="valueElementName"><see cref="T:System.Xml.Linq.XName"/> of the item XML element</param>
+            <returns><see cref="T:System.Xml.Linq.XElement"/> instance that represents the collection, with corresponding items added to it as children</returns>
+        </member>
+        <member name="M:opt.Xml.NewXmlModelProvider.WritePropertyCollection(opt.DataModel.PropertyCollection,System.Xml.Linq.XElement)">
+            <summary>
+            Writes <paramref name="properties"/> to XML. Does nothing if <paramref name="properties"/> collection is empty
+            </summary>
+            <param name="properties"><see cref="T:opt.DataModel.PropertyCollection"/> instance with custom properties</param>
+            <param name="parentElement"><see cref="T:System.Xml.Linq.XElement"/> instance to write custom properties collection to (as a child element)</param>
+        </member>
+        <member name="M:opt.Xml.NewXmlModelProvider.Open(System.String)">
+            <summary>
+            Reads <see cref="T:opt.DataModel.Model"/> from XML file
+            </summary>
+            <param name="filePath">Full path to model XML file</param>
+            <returns><see cref="T:opt.DataModel.Model"/> instance read from <paramref name="filePath"/></returns>
+        </member>
+        <member name="M:opt.Xml.NewXmlModelProvider.ReadCollectionElement(System.Xml.Linq.XName,System.Xml.Linq.XElement,System.Boolean)">
+            <summary>
+            Finds collection element among descendants of the <paramref name="parentElement"/> by name
+            </summary>
+            <param name="collectionElementName"><see cref="T:System.Xml.Linq.XName"/> of the collection element to be found</param>
+            <param name="parentElement"><see cref="T:System.Xml.Linq.XElement"/> instance to look for the collection element in</param>
+            <param name="throwIfMissing">Controls whether to throw exception if <paramref name="collectionElementName"/>
+            not found or not</param>
+            <returns><see cref="T:System.Xml.Linq.XElement"/> instance representing the required collection</returns>
+        </member>
+        <member name="M:opt.Xml.NewXmlModelProvider.ReadParameters(opt.DataModel.Model,System.Xml.Linq.XElement)">
+            <summary>
+            Reads a collection of <see cref="T:opt.DataModel.Parameter"/> from XML
+            </summary>
+            <param name="model"><see cref="T:opt.DataModel.Model"/> instance to be read from XML</param>
+            <param name="parametersCollectionElement"><see cref="T:System.Xml.Linq.XElement"/> to read a collection from</param>
+        </member>
+        <member name="M:opt.Xml.NewXmlModelProvider.ReadCriteria(opt.DataModel.Model,System.Xml.Linq.XElement)">
+            <summary>
+            Reads a collection of <see cref="T:opt.DataModel.Criterion"/> from XML
+            </summary>
+            <param name="model"><see cref="T:opt.DataModel.Model"/> instance to be read from XML</param>
+            <param name="criteriaCollectionElement"><see cref="T:System.Xml.Linq.XElement"/> to read a collection from</param>
+        </member>
+        <member name="M:opt.Xml.NewXmlModelProvider.ReadConstraints(opt.DataModel.Model,System.Xml.Linq.XElement)">
+            <summary>
+            Reads a collection of <see cref="T:opt.DataModel.Constraint"/> from XML
+            </summary>
+            <param name="model"><see cref="T:opt.DataModel.Model"/> instance to be read from XML</param>
+            <param name="constraintsCollectionElement"><see cref="T:System.Xml.Linq.XElement"/> to read a collection from</param>
+        </member>
+        <member name="M:opt.Xml.NewXmlModelProvider.ReadExperiments(opt.DataModel.Model,System.Xml.Linq.XElement)">
+            <summary>
+            Reads a collection of <see cref="T:opt.DataModel.Experiment"/> from XML
+            </summary>
+            <param name="model"><see cref="T:opt.DataModel.Model"/> instance to be read from XML</param>
+            <param name="experimentsCollectionElement"><see cref="T:System.Xml.Linq.XElement"/> to read a collection from</param>
+        </member>
+        <member name="M:opt.Xml.NewXmlModelProvider.ReadValueCollection(System.Collections.Generic.IDictionary{opt.DataModel.TId,System.Double},System.Xml.Linq.XName,System.Xml.Linq.XName,System.Xml.Linq.XElement)">
+            <summary>
+            Reads a collection of <see cref="T:System.Double"/> values from XML
+            </summary>
+            <param name="collection">Collection to be filled with values read from XML</param>
+            <param name="collectionElementName">Name of the collection parent XML element</param>
+            <param name="valueElementName">Name of the XML element that represents collection item</param>
+            <param name="parentElement"><see cref="T:System.Xml.Linq.XElement"/> instance that is parent to the collection element</param>
+        </member>
+        <member name="M:opt.Xml.NewXmlModelProvider.ReadPropertyCollection(opt.DataModel.PropertyCollection,System.Xml.Linq.XElement)">
+            <summary>
+            Reads <see cref="T:opt.DataModel.PropertyCollection"/> of custom properties from XML. Does nothing if
+            <paramref name="propertiesCollectionElement"/> is null
+            </summary>
+            <param name="propertyCollection"><see cref="T:opt.DataModel.PropertyCollection"/> instance to be filled from XML</param>
+            <param name="propertiesCollectionElement">Name of the element that is parent to the collection element</param>
+        </member>
+        <member name="T:opt.Xml.NewXmlModelProvider.Elements">
+            <summary>
+            Helper class, stores <see cref="T:System.Xml.Linq.XName"/> of different XML elements used in model XML
+            </summary>
+        </member>
+        <member name="T:opt.Xml.NewXmlModelProvider.Attributes">
+            <summary>
+            Helper class, stores <see cref="T:System.Xml.Linq.XName"/> of different attributes used in model XML
+            </summary>
+        </member>
+        <member name="T:opt.Xml.XmlModelProvider">
+            <summary>
+            XML provider (writes <see cref="T:opt.DataModel.Model"/> to XML and reads it from XML)
+            </summary>
+        </member>
+        <member name="F:opt.Xml.XmlModelProvider.oldFormatRootElementName">
+            <summary>
+            Old XML file format indicator
+            </summary>
+        </member>
+        <member name="M:opt.Xml.XmlModelProvider.Open(System.String)">
+            <summary>
+            Reads <see cref="T:opt.DataModel.Model"/> from XML file. Automatically detects and handles XML files of old format
+            </summary>
+            <param name="filePath">Full path to model XML file</param>
+            <returns><see cref="T:opt.DataModel.Model"/> instance read from <paramref name="filePath"/></returns>
+        </member>
+        <member name="M:opt.Xml.XmlModelProvider.Save(opt.DataModel.Model,System.String)">
+            <summary>
+            Writes <paramref name="model"/> to XML file. Format (old/current) is controlled by a setting
+            </summary>
+            <param name="model"><see cref="T:opt.DataModel.Model"/> instance to be written to XML</param>
+            <param name="filePath">Full path to target XML file</param>
+        </member>
+        <member name="M:opt.Xml.XmlModelProvider.GetXDocument(opt.DataModel.Model)">
+            <summary>
+            Creates <see cref="T:System.Xml.Linq.XDocument"/> with <paramref name="model"/> contents. Format (old/current) is controlled by a setting
+            </summary>
+            <param name="model"><see cref="T:opt.DataModel.Model"/> instance to be written to XML</param>
+            <returns><see cref="T:System.Xml.Linq.XDocument"/> with <paramref name="model"/> contents</returns>
+            <remarks>Left for possible external usage</remarks>
+        </member>
+        <member name="M:opt.Xml.XmlModelProvider.IsOfOldFormat(System.String)">
+            <summary>
+            Detects old XMl file format
+            </summary>
+            <param name="filePath">Full path to target XML file</param>
+            <returns>True if XML model file is of old format</returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,585 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{46DF2CC6-93F1-4546-BCA8-C5ABA5ADFA54}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>opt.UI</RootNamespace>
+    <AssemblyName>opt</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <StartupObject>opt.Program</StartupObject>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ProductName>OPT</ProductName>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Dummy Release|AnyCPU'">
+    <OutputPath>bin\Dummy Release\</OutputPath>
+    <DefineConstants>TRACE;DUMMY</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\opt.exe.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CommandLine">
+      <HintPath>..\packages\CommandLineParser.1.9.71\lib\net40\CommandLine.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus, Version=3.1.3.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EPPlus.3.1.3.3\lib\net35\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Exporters\ExcelExporter.cs" />
+    <Compile Include="Exporters\ExcelExporterSettings.cs" />
+    <Compile Include="Exporters\ExportableData.cs" />
+    <Compile Include="Exporters\TextResultExporter.cs" />
+    <Compile Include="Exporters\TextResultExporterSettings.cs" />
+    <Compile Include="Forms\AdditiveGaParamsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AdditiveGaParamsForm.Designer.cs">
+      <DependentUpon>AdditiveGaParamsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AdditiveGaProcessForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AdditiveGaProcessForm.Designer.cs">
+      <DependentUpon>AdditiveGaProcessForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AdditiveGaResultsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AdditiveGaResultsForm.Designer.cs">
+      <DependentUpon>AdditiveGaResultsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CriterionCorrelationsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CriterionCorrelationsForm.Designer.cs">
+      <DependentUpon>CriterionCorrelationsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\NsgaResultsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NsgaResultsForm.Designer.cs">
+      <DependentUpon>NsgaResultsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\NsgaProcessForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NsgaProcessForm.Designer.cs">
+      <DependentUpon>NsgaProcessForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\NsgaParamsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NsgaParamsForm.Designer.cs">
+      <DependentUpon>NsgaParamsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CriterialConstraintForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CriterialConstraintForm.Designer.cs">
+      <DependentUpon>CriterialConstraintForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CriteriaPriorityForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CriteriaPriorityForm.Designer.cs">
+      <DependentUpon>CriteriaPriorityForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MainCriterionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainCriterionForm.Designer.cs">
+      <DependentUpon>MainCriterionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MainCriterionResultsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainCriterionResultsForm.Designer.cs">
+      <DependentUpon>MainCriterionResultsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ParameterBasePercentageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ParameterBasePercentageForm.Designer.cs">
+      <DependentUpon>ParameterBasePercentageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SuccessiveConcessionsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SuccessiveConcessionsForm.Designer.cs">
+      <DependentUpon>SuccessiveConcessionsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\CommandLine\CommandLineArgsHelper.cs" />
+    <Compile Include="Helpers\CommandLine\CommandLineArgs.cs" />
+    <Compile Include="Helpers\DataModel\ConstraintExtension.cs" />
+    <Compile Include="Helpers\DataModel\CriterionExtension.cs" />
+    <Compile Include="Helpers\DataModel\CriterionTypeManager.cs" />
+    <Compile Include="Helpers\DataModel\ParameterExtension.cs" />
+    <Compile Include="Helpers\DataModel\RelationManager.cs" />
+    <Compile Include="Helpers\DataModel\SortDirectionManager.cs" />
+    <Compile Include="Helpers\LicenseValidator.cs" />
+    <Compile Include="Helpers\MessageBoxHelper.cs" />
+    <Compile Include="Mru\IMruList.cs" />
+    <Compile Include="Mru\MruItem.cs" />
+    <Compile Include="Mru\MruList.cs" />
+    <Compile Include="Helpers\PathTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Solvers\Formal\FormalResultDataGridFiller.cs" />
+    <Compile Include="Solvers\Formal\BinaryRelationsSolver.cs" />
+    <Compile Include="Solvers\Formal\FormalMethodResult.cs" />
+    <Compile Include="Solvers\Formal\FormalMethods.cs" />
+    <Compile Include="Solvers\Formal\IdealPointForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Solvers\Formal\IdealPointForm.Designer.cs">
+      <DependentUpon>IdealPointForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Solvers\Formal\IdealPointSolver.cs" />
+    <Compile Include="Solvers\Formal\IFormalMethodSolver.cs" />
+    <Compile Include="Solvers\Formal\MaximalPowerSolver.cs" />
+    <Compile Include="Helpers\MatrixDataGridFiller.cs" />
+    <Compile Include="Solvers\Genetics\Additive\AdditiveCrossover.cs" />
+    <Compile Include="Solvers\Genetics\Additive\AdditiveDataGridFiller.cs" />
+    <Compile Include="Solvers\Genetics\Additive\AdditiveMutation.cs" />
+    <Compile Include="Solvers\Genetics\Additive\AdditiveParams.cs" />
+    <Compile Include="Solvers\Genetics\Additive\AdditiveIndividual.cs" />
+    <Compile Include="Solvers\Genetics\Additive\AdditivePopulation.cs" />
+    <Compile Include="Solvers\Genetics\GeneEncoding\Bit.cs" />
+    <Compile Include="Solvers\Genetics\Population.cs" />
+    <Compile Include="Solvers\Genetics\Additive\AdditiveMethodResult.cs" />
+    <Compile Include="Solvers\Genetics\Additive\AdditiveSelection.cs" />
+    <Compile Include="Solvers\Genetics\Additive\AdditiveSolver.cs" />
+    <Compile Include="Solvers\Genetics\Individual.cs" />
+    <Compile Include="Solvers\Genetics\IndividualAttribute.cs" />
+    <Compile Include="Solvers\IntegralCriterion\AdditiveCriterionSolver.cs" />
+    <Compile Include="Solvers\IntegralCriterion\IIntegralCriterionMethodSolver.cs" />
+    <Compile Include="Solvers\IntegralCriterion\IntegralCriterionMethods.cs" />
+    <Compile Include="Solvers\IntegralCriterion\IntegralCriterionMethodResult.cs" />
+    <Compile Include="Solvers\IntegralCriterion\IntegralCriterionResultDataGridFiller.cs" />
+    <Compile Include="Solvers\IntegralCriterion\MinimaxSolver.cs" />
+    <Compile Include="Solvers\IntegralCriterion\MultiplicativeCriterionSolver.cs" />
+    <Compile Include="Solvers\IntegralCriterion\UtilityFunction.cs" />
+    <Compile Include="Solvers\IntegralCriterion\UtilityFunctionDrawer.cs" />
+    <Compile Include="Forms\AdmissibleSetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AdmissibleSetForm.Designer.cs">
+      <DependentUpon>AdmissibleSetForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ChangeConstraintsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ChangeConstraintsForm.Designer.cs">
+      <DependentUpon>ChangeConstraintsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ConstraintForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ConstraintForm.Designer.cs">
+      <DependentUpon>ConstraintForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CriterionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CriterionForm.Designer.cs">
+      <DependentUpon>CriterionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Form10.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form10.Designer.cs">
+      <DependentUpon>Form10.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Form15.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form15.Designer.cs">
+      <DependentUpon>Form15.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Form20.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form20.Designer.cs">
+      <DependentUpon>Form20.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Form25.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form25.Designer.cs">
+      <DependentUpon>Form25.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Form30.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form30.Designer.cs">
+      <DependentUpon>Form30.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Form35.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form35.Designer.cs">
+      <DependentUpon>Form35.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Form40.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form40.Designer.cs">
+      <DependentUpon>Form40.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Form45.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form45.Designer.cs">
+      <DependentUpon>Form45.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Form5.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form5.Designer.cs">
+      <DependentUpon>Form5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Form50.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form50.Designer.cs">
+      <DependentUpon>Form50.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\IntegralResultsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\IntegralResultsForm.Designer.cs">
+      <DependentUpon>IntegralResultsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MatrixForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MatrixForm.Designer.cs">
+      <DependentUpon>MatrixForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ParameterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ParameterForm.Designer.cs">
+      <DependentUpon>ParameterForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormalResultsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormalResultsForm.Designer.cs">
+      <DependentUpon>FormalResultsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ParetoPointsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ParetoPointsForm.Designer.cs">
+      <DependentUpon>ParetoPointsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UtilityFunctionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UtilityFunctionForm.Designer.cs">
+      <DependentUpon>UtilityFunctionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\WeightsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\WeightsForm.Designer.cs">
+      <DependentUpon>WeightsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\AdditiveGaParamsForm.resx">
+      <DependentUpon>AdditiveGaParamsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AdditiveGaProcessForm.resx">
+      <DependentUpon>AdditiveGaProcessForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AdditiveGaResultsForm.resx">
+      <DependentUpon>AdditiveGaResultsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CriterionCorrelationsForm.resx">
+      <DependentUpon>CriterionCorrelationsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\NsgaResultsForm.resx">
+      <DependentUpon>NsgaResultsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\NsgaProcessForm.resx">
+      <DependentUpon>NsgaProcessForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\NsgaParamsForm.resx">
+      <DependentUpon>NsgaParamsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CriterialConstraintForm.resx">
+      <DependentUpon>CriterialConstraintForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CriteriaPriorityForm.resx">
+      <DependentUpon>CriteriaPriorityForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainCriterionForm.resx">
+      <DependentUpon>MainCriterionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainCriterionResultsForm.resx">
+      <DependentUpon>MainCriterionResultsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ParameterBasePercentageForm.resx">
+      <DependentUpon>ParameterBasePercentageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SuccessiveConcessionsForm.resx">
+      <DependentUpon>SuccessiveConcessionsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Solvers\Formal\IdealPointForm.resx">
+      <DependentUpon>IdealPointForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AdmissibleSetForm.resx">
+      <DependentUpon>AdmissibleSetForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ChangeConstraintsForm.resx">
+      <DependentUpon>ChangeConstraintsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ConstraintForm.resx">
+      <DependentUpon>ConstraintForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CriterionForm.resx">
+      <DependentUpon>CriterionForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form10.resx">
+      <DependentUpon>Form10.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form15.resx">
+      <DependentUpon>Form15.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form20.resx">
+      <DependentUpon>Form20.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form25.resx">
+      <DependentUpon>Form25.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form30.resx">
+      <DependentUpon>Form30.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form35.resx">
+      <DependentUpon>Form35.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form40.resx">
+      <DependentUpon>Form40.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form45.resx">
+      <DependentUpon>Form45.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form5.resx">
+      <DependentUpon>Form5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form50.resx">
+      <DependentUpon>Form50.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormalResultsForm.resx">
+      <DependentUpon>FormalResultsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\IntegralResultsForm.resx">
+      <DependentUpon>IntegralResultsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MatrixForm.resx">
+      <DependentUpon>MatrixForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ParameterForm.resx">
+      <DependentUpon>ParameterForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ParetoPointsForm.resx">
+      <DependentUpon>ParetoPointsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UtilityFunctionForm.resx">
+      <DependentUpon>UtilityFunctionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\WeightsForm.resx">
+      <DependentUpon>WeightsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SuccessiveConcessionsResultsForm.resx">
+      <DependentUpon>SuccessiveConcessionsResultsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Solvers\MainCriterion\CriterialConstraint.cs" />
+    <Compile Include="Solvers\MainCriterion\CriterialConstraintNew.cs" />
+    <Compile Include="Solvers\MainCriterion\CriterialConstraints.cs" />
+    <Compile Include="Solvers\MainCriterion\MainCriterionDataGridFiller.cs" />
+    <Compile Include="Solvers\MainCriterion\MainCriterionMethodResult.cs" />
+    <Compile Include="Solvers\MainCriterion\MainCriterionSolver.cs" />
+    <Compile Include="Solvers\Genetics\Nsga\NsgaCrossover.cs" />
+    <Compile Include="Solvers\Genetics\Nsga\NsgaDataGridFiller.cs" />
+    <Compile Include="Solvers\Genetics\Nsga\NsgaMethodResult.cs" />
+    <Compile Include="Solvers\Genetics\Nsga\NsgaParams.cs" />
+    <Compile Include="Solvers\Genetics\Nsga\NsgaSelection.cs" />
+    <Compile Include="Solvers\Genetics\Nsga\NsgaSolver.cs" />
+    <Compile Include="Solvers\Genetics\Nsga\NsgaIndividual.cs" />
+    <Compile Include="Solvers\SuccessiveConcessions\CriterialConcession.cs" />
+    <Compile Include="Solvers\SuccessiveConcessions\CriterialConcessions.cs" />
+    <Compile Include="Solvers\SuccessiveConcessions\ScDataGridFiller.cs" />
+    <Compile Include="Solvers\SuccessiveConcessions\ScMethodResult.cs" />
+    <Compile Include="Solvers\SuccessiveConcessions\ScSolver.cs" />
+    <Compile Include="Forms\SuccessiveConcessionsResultsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SuccessiveConcessionsResultsForm.Designer.cs">
+      <DependentUpon>SuccessiveConcessionsResultsForm.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pencil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\magnifier.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\disk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cog.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\table.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\information.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\readme.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\arrow_right.png" />
+    <None Include="Resources\arrow_left.png" />
+    <None Include="Resources\arrow_up.png" />
+    <None Include="Resources\arrow_down.png" />
+    <None Include="Resources\delete.png" />
+    <None Include="Resources\cancel.png" />
+    <None Include="Resources\add.png" />
+    <None Include="Resources\accept.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\opt.Core\opt.Core.csproj">
+      <Project>{d27a5472-ee95-4d55-9b81-7542416e1c96}</Project>
+      <Name>opt.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>copy "$(SolutionDir)dependencies\license.xml" "$(TargetDir)license.xml" /Y</PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

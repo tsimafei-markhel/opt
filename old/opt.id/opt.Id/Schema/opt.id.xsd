@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" 
+           elementFormDefault="qualified" 
+           targetNamespace="http://www.opt.com/identification.model" 
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://www.opt.com/identification.model">
+
+    <!-- TODO: Add type definition for 'properties' element & related elements -->
+    <!-- TODO: Group attributes for brevity -->
+    <!-- TODO: Redefine 'id' attribute type -->
+    <!-- TODO: Redefine 'type' attribute type for 'CriterionType' -->
+    <!-- TODO: Redefine 'relation' attribute type for 'FunctionalConstraintType' -->
+    <!-- TODO: Add uniqueness constraint for 'id' attributes -->
+    <!-- TODO: Review minOccurs and maxOccurs for all elements -->
+    <!-- TODO: Discuss 'expression' attribute in the 'FunctionalConstraintType' type -->
+
+    <xs:element name="identificationModel" type="tns:IdentificationModelType" />
+
+    <xs:complexType name="IdentificationModelType">
+        <xs:sequence>
+                <xs:element name="optimizationParameters" type="tns:OptimizationParameterCollectionType" minOccurs="1" maxOccurs="1" />
+                <xs:element name="identificationParameters" type="tns:IdentificationParameterCollectionType" minOccurs="1" maxOccurs="1" />
+                <xs:element name="criteria" type="tns:CriterionCollectionType" minOccurs="1" maxOccurs="1" />
+                <xs:element name="functionalConstraints" type="tns:FunctionalConstraintCollectionType" minOccurs="1" maxOccurs="1" />
+                <xs:element name="realExperiments" type="tns:RealExperimentCollectionType" minOccurs="1" maxOccurs="1" />
+                <xs:element name="identificationExperiments">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element maxOccurs="unbounded" name="identificationExperiment">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="identificationParameterValues">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element maxOccurs="unbounded" name="identificationParameterValue">
+                                                        <xs:complexType>
+                                                            <xs:attribute name="id" type="xs:unsignedByte" use="required" />
+                                                            <xs:attribute name="value" type="xs:decimal" use="required" />
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="mathematicalCriterionValues" />
+                                        <xs:element name="adequacyCriterionValues" />
+                                        <xs:element name="functionalConstraintValues" />
+                                        <xs:element name="properties" />
+                                    </xs:sequence>
+                                    <xs:attribute name="id" type="xs:unsignedByte" use="required" />
+                                    <xs:attribute name="number" type="xs:unsignedByte" use="required" />
+                                    <xs:attribute name="realExperimentId" type="xs:unsignedByte" use="required" />
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="properties" minOccurs="0" maxOccurs="1" />
+            </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="OptimizationParameterCollectionType">
+        <xs:sequence>
+            <xs:element name="optimizationParameter" type="tns:OptimizationParameterType" minOccurs="1" maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="OptimizationParameterType">
+        <xs:sequence>
+            <xs:element name="properties" minOccurs="0" maxOccurs="1" />
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:unsignedShort" use="required" />
+        <xs:attribute name="name" type="xs:string" use="required" />
+        <xs:attribute name="variableIdentifier" type="xs:string" use="required" />
+        <xs:attribute name="minValue" type="xs:double" use="required" />
+        <xs:attribute name="maxValue" type="xs:double" use="required" />
+    </xs:complexType>
+
+    <xs:complexType name="IdentificationParameterCollectionType">
+        <xs:sequence>
+            <xs:element name="identificationParameter" type="tns:IdentificationParameterType" minOccurs="1" maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="IdentificationParameterType">
+        <xs:sequence>
+            <xs:element name="properties" minOccurs="0" maxOccurs="1" />
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:unsignedShort" use="required" />
+        <xs:attribute name="name" type="xs:string" use="required" />
+        <xs:attribute name="variableIdentifier" type="xs:string" use="required" />
+        <xs:attribute name="minValue" type="xs:double" use="required" />
+        <xs:attribute name="maxValue" type="xs:double" use="required" />
+    </xs:complexType>
+
+    <xs:complexType name="CriterionCollectionType">
+        <xs:sequence>
+            <xs:element name="criterion" type="tns:CriterionType" minOccurs="1" maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="CriterionType">
+        <xs:sequence>
+            <xs:element name="properties" minOccurs="0" maxOccurs="1" />
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:unsignedShort" use="required" />
+        <xs:attribute name="name" type="xs:string" use="required" />
+        <xs:attribute name="variableIdentifier" type="xs:string" use="required" />
+        <xs:attribute name="type" type="xs:string" use="required" />
+    </xs:complexType>
+
+    <xs:complexType name="FunctionalConstraintCollectionType">
+        <xs:sequence>
+            <xs:element name="functionalConstraint" type="tns:FunctionalConstraintType" minOccurs="1" maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="FunctionalConstraintType">
+        <xs:sequence>
+            <xs:element name="properties" minOccurs="0" maxOccurs="1" />
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:unsignedShort" use="required" />
+        <xs:attribute name="name" type="xs:string" use="required" />
+        <xs:attribute name="variableIdentifier" type="xs:string" use="required" />
+        <xs:attribute name="relation" type="xs:string" use="required" />
+        <xs:attribute name="value" type="xs:double" use="required" />
+        <xs:attribute name="expression" type="xs:string" use="required" />
+    </xs:complexType>
+
+    <xs:complexType name="RealExperimentCollectionType">
+        <xs:sequence>
+            <xs:element name="realExperiment" type="tns:RealExperimentType" minOccurs="0" maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="RealExperimentType">
+        <xs:sequence>
+            <xs:element name="optimizationParameterValues" type="tns:OptimizationParameterValueCollectionType" minOccurs="1" maxOccurs="1" />
+            <xs:element name="realCriterionValues" type="tns:RealCriterionValueCollectionType" minOccurs="1" maxOccurs="1" />
+            <xs:element name="functionalConstraintValues" type="tns:FunctionalConstraintValueCollectionType" minOccurs="1" maxOccurs="1" />
+            <xs:element name="properties" minOccurs="0" maxOccurs="1" />
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:unsignedShort" use="required" />
+        <xs:attribute name="number" type="xs:unsignedShort" use="required" />
+    </xs:complexType>
+
+    <xs:complexType name="OptimizationParameterValueCollectionType">
+        <xs:sequence>
+            <xs:element name="optimizationParameterValue" type="tns:ValueType" minOccurs="0" maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="RealCriterionValueCollectionType">
+        <xs:sequence>
+            <xs:element name="realCriterionValue" type="tns:ValueType" minOccurs="0" maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="FunctionalConstraintValueCollectionType">
+        <xs:sequence>
+            <xs:element name="functionalConstraintValue" type="tns:ValueType" minOccurs="0" maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ValueType">
+        <xs:attribute name="id" type="xs:unsignedShort" use="required" />
+        <xs:attribute name="value" type="xs:double" use="required" />
+    </xs:complexType>
+    
+</xs:schema>

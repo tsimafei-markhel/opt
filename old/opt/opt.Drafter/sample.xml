@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<modelDraft xmlns="http://www.opt.com/model.draft">
+    <promotableConstants>
+        <promotableConstant id="1" name="Test constant 1" variableIdentifier="pc1" isPromoted="False" value="12.658" minValue="-1.0" maxValue="1.0" />
+        <promotableConstant id="2" name="Test constant 2" variableIdentifier="pc2" isPromoted="False" value="7.3" minValue="-1.0" maxValue="1.0" />
+        <promotableConstant id="3" name="Test constant 3" variableIdentifier="pc3" isPromoted="False" value="165.09" minValue="-1.0" maxValue="1.0" />
+        <promotableConstant id="4" name="Test constant 4" variableIdentifier="pc4" isPromoted="True" value="0.0" minValue="-10.267" maxValue="15.4" />
+        <promotableConstant id="5" name="Test constant 5" variableIdentifier="pc5" isPromoted="True" value="0.0" minValue="27.1" maxValue="86.5" />
+        <promotableConstant id="6" name="Test constant 6" variableIdentifier="pc6" isPromoted="True" value="0.0" minValue="0.267" maxValue="17.67" />
+    </promotableConstants>
+    <promotableCriteria>
+        <promotableCriterion id="1" name="Test criterion 1" variableIdentifier="pcr1" isPromoted="False" type="Maximizing" relation="Equal" value="0.0" />
+        <promotableCriterion id="2" name="Test criterion 2" variableIdentifier="pcr2" isPromoted="False" type="Minimizing" relation="Equal" value="0.0" />
+        <promotableCriterion id="3" name="Test criterion 3" variableIdentifier="pcr3" isPromoted="False" type="Maximizing" relation="Equal" value="0.0" />
+        <promotableCriterion id="4" name="Test criterion 4" variableIdentifier="pcr4" isPromoted="True" type="Minimizing" relation="LessOrEqual" value="100.7" />
+        <promotableCriterion id="5" name="Test criterion 5" variableIdentifier="pcr5" isPromoted="True" type="Maximizing" relation="GreaterOrEqual" value="-56.065" />
+    </promotableCriteria>
+</modelDraft>
