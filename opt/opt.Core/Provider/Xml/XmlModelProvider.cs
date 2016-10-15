@@ -92,7 +92,7 @@ namespace opt.Provider.Xml
             Model model = new Model();
 
             using (FileStream modelFileStream = File.OpenRead(filePath))
-            using (XmlReader modelFileReader = XmlReader.Create(filePath, modelFileReaderSettings))
+            using (XmlReader modelFileReader = XmlReader.Create(modelFileStream, modelFileReaderSettings))
             {
                 XDocument modelFileDocument = XDocument.Load(modelFileReader, LoadOptions.None);
 
