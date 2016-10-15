@@ -3,11 +3,11 @@ using System.Globalization;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using opt.DataModel;
 using opt.Drafter.CommandLine;
 using opt.Drafter.DataModel;
 using opt.Drafter.Xml;
-using opt.DataModel;
-using opt.Xml;
+using opt.Provider.Xml;
 
 // TODO: Refactor this!
 
@@ -83,7 +83,7 @@ namespace opt.Drafter
 
                         Console.WriteLine();
                         Console.WriteLine("Saving model XML to 'model.xml'...");
-                        XmlModelProvider.Save(model, Path.Combine(parsedArgs.OutputFolderPath, "model.xml"));
+                        (new XmlModelProvider()).Save(model, Path.Combine(parsedArgs.OutputFolderPath, "model.xml"));
                         Console.WriteLine("    Model XML was saved!");
 
                         Console.WriteLine();
