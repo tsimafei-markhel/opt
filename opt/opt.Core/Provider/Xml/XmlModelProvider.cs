@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Xml;
 using System.Xml.Linq;
 using opt.DataModel;
@@ -25,6 +26,7 @@ namespace opt.Provider.Xml
         private readonly XmlWriterSettings modelFileWriterSettings = new XmlWriterSettings
         {
             CloseOutput = true,
+            Encoding = Encoding.UTF8,
             Indent = true,
             IndentChars = "    ",
             NamespaceHandling = NamespaceHandling.OmitDuplicates
