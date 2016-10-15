@@ -4,12 +4,15 @@ using System.IO;
 using System.Threading;
 using OfficeOpenXml;
 using opt.DataModel;
-using opt.Xml;
+using opt.Provider;
+using opt.Provider.Xml;
 
 namespace temp.opt.ExcelImporter
 {
     public class Program
     {
+        private static IModelProvider modelProvider = new XmlModelProvider();
+
         public static void Main(string[] args)
         {
             Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
@@ -17,7 +20,7 @@ namespace temp.opt.ExcelImporter
             CommandLineOptions options = CommandLineOptions.Parse(args);
             if (options != null)
             {
-                Model model = XmlModelProvider.Open(options.ModelFilePath);
+                Model model = modelProvider.Load(options.ModelFilePath);
 
                 ExcelPackage excel = new ExcelPackage(new FileInfo(options.ExcelFilePath));
                 ExcelWorksheet dataSheet = excel.Workbook.Worksheets["Single-objective points"];
@@ -33,7 +36,7 @@ namespace temp.opt.ExcelImporter
                     model.Experiments.Add(e.Id, e);
                 }
 
-                XmlModelProvider.Save(model, options.ModelFilePath);
+                modelProvider.Save(model, options.ModelFilePath);
             }
         }
     }

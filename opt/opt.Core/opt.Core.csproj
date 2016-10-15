@@ -103,9 +103,6 @@
     <Compile Include="Configuration\SettingsManager.cs" />
     <Compile Include="Text\TextModelProvider.cs" />
     <Compile Include="Text\TextModelProviderSettings.cs" />
-    <Compile Include="Xml\NewXmlModelProvider.cs" />
-    <Compile Include="Xml\OldXmlModelProvider.cs" />
-    <Compile Include="Xml\XmlModelProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
