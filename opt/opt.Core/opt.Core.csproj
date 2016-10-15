@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Release\opt.Core.xml</DocumentationFile>
   </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="NCalc, Version=1.3.8.0, Culture=neutral, PublicKeyToken=973cde3f1cafed03, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -70,8 +73,6 @@
     <Compile Include="DataModel\TId.cs" />
     <Compile Include="DataModel\ValueProperty.cs" />
     <Compile Include="Generators\SobolQuasirandomGenerator.cs" />
-    <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="IValue.cs" />
     <Compile Include="Standardization\IStandardizer.cs" />
     <Compile Include="Extensibility\IResultTableFiller.cs" />
     <Compile Include="Extensibility\ISolver.cs" />
@@ -94,7 +95,6 @@
     <Compile Include="Helpers\SortableDouble.cs" />
     <Compile Include="Helpers\VariableIdentifierChecker.cs" />
     <Compile Include="IDataExporter.cs" />
-    <Compile Include="IDataImporter.cs" />
     <Compile Include="IExportable.cs" />
     <Compile Include="IImportable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
