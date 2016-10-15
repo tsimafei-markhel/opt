@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 using opt.DataModel;
-using opt.Xml;
+using opt.Provider;
+using opt.Provider.Xml;
 
 namespace mathcad.connector
 {
@@ -36,6 +37,7 @@ namespace mathcad.connector
         private MathcadWrapper mathcadWrapper;
         private readonly string optFile;
         private Model model;
+        private readonly IModelProvider modelProvider = new XmlModelProvider();
 
         public EventHandler<ProgressChangedEventArgs> ProgressChanged;
         public EventHandler<EventArgs> ProcessingComplete;
@@ -85,7 +87,7 @@ namespace mathcad.connector
                 return;
             }
 
-            model = XmlModelProvider.Open(optFile);
+            model = modelProvider.Load(optFile);
             if (cancellationToken.IsCancellationRequested)
             {
                 OnProcessingComplete(new EventArgs());
@@ -113,7 +115,7 @@ namespace mathcad.connector
                 return;
             }
 
-            XmlModelProvider.Save(model, optFile);
+            modelProvider.Save(model, optFile);
 
             OnProcessingComplete(new EventArgs());
         }

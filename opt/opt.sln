@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "opt.Drafter", "opt.Drafter\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "opt.Bionic", "opt.Bionic\opt.Bionic.csproj", "{86219C59-B9CF-405B-81F9-87C10143C1FD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mathcad.connector", "mathcad.connector\mathcad.connector.csproj", "{F2A66B1A-45CD-40DB-9E90-A3F1C4673D38}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -138,6 +140,24 @@ Global
 		{86219C59-B9CF-405B-81F9-87C10143C1FD}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{86219C59-B9CF-405B-81F9-87C10143C1FD}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{86219C59-B9CF-405B-81F9-87C10143C1FD}.Release|x86.ActiveCfg = Release|Any CPU
+		{F2A66B1A-45CD-40DB-9E90-A3F1C4673D38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2A66B1A-45CD-40DB-9E90-A3F1C4673D38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2A66B1A-45CD-40DB-9E90-A3F1C4673D38}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{F2A66B1A-45CD-40DB-9E90-A3F1C4673D38}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{F2A66B1A-45CD-40DB-9E90-A3F1C4673D38}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F2A66B1A-45CD-40DB-9E90-A3F1C4673D38}.Debug|x86.Build.0 = Debug|Any CPU
+		{F2A66B1A-45CD-40DB-9E90-A3F1C4673D38}.Dummy Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2A66B1A-45CD-40DB-9E90-A3F1C4673D38}.Dummy Release|Any CPU.Build.0 = Release|Any CPU
+		{F2A66B1A-45CD-40DB-9E90-A3F1C4673D38}.Dummy Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{F2A66B1A-45CD-40DB-9E90-A3F1C4673D38}.Dummy Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{F2A66B1A-45CD-40DB-9E90-A3F1C4673D38}.Dummy Release|x86.ActiveCfg = Release|Any CPU
+		{F2A66B1A-45CD-40DB-9E90-A3F1C4673D38}.Dummy Release|x86.Build.0 = Release|Any CPU
+		{F2A66B1A-45CD-40DB-9E90-A3F1C4673D38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2A66B1A-45CD-40DB-9E90-A3F1C4673D38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2A66B1A-45CD-40DB-9E90-A3F1C4673D38}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{F2A66B1A-45CD-40DB-9E90-A3F1C4673D38}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{F2A66B1A-45CD-40DB-9E90-A3F1C4673D38}.Release|x86.ActiveCfg = Release|Any CPU
+		{F2A66B1A-45CD-40DB-9E90-A3F1C4673D38}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
