@@ -73,6 +73,7 @@
     <Compile Include="DataModel\TId.cs" />
     <Compile Include="DataModel\ValueProperty.cs" />
     <Compile Include="Generators\SobolQuasirandomGenerator.cs" />
+    <Compile Include="Provider\IModelProvider.cs" />
     <Compile Include="Standardization\IStandardizer.cs" />
     <Compile Include="Extensibility\IResultTableFiller.cs" />
     <Compile Include="Extensibility\ISolver.cs" />
