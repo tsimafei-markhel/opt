@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using opt.Bionic.DataModel;
 using opt.Bionic.Helpers;
 using opt.DataModel;
-using opt.Xml;
+using opt.Provider;
+using opt.Provider.Xml;
 
 namespace opt.Bionic.Solver
 {
@@ -54,6 +54,9 @@ namespace opt.Bionic.Solver
 
     public sealed class BionicSolver
     {
+        // TODO: Dependency injection.
+        private readonly IModelProvider modelProvider = new XmlModelProvider();
+
         public event EventHandler<EventArgs> SolverStarting;
         public event EventHandler<EventArgs> SolverStarted;
         public event EventHandler<SolverFinishedEventArgs> SolverFinished;
@@ -179,7 +182,7 @@ namespace opt.Bionic.Solver
             // This call will wait for external application to exit
             RunCalculationApplication(exchangeFilePath, settings);
 
-            optModel = XmlModelProvider.Open(exchangeFilePath);
+            optModel = modelProvider.Load(exchangeFilePath);
             foreach (Experiment experiment in optModel.Experiments.Values)
             {
                 targetPopulation[experiment.Id].FitnessValue = experiment.CriterionValues[model.FitnessCriterion.Id];
@@ -205,10 +208,10 @@ namespace opt.Bionic.Solver
             extAppProc.WaitForExit();
         }
 
-        private static string CreateExchangeFile(Model optModel, BionicSolverSettings settings)
+        private string CreateExchangeFile(Model optModel, BionicSolverSettings settings)
         {
             string exchangeFilePath = Path.Combine(Path.GetDirectoryName(settings.CalcApplicationPath), "temp.xml");
-            XmlModelProvider.Save(optModel, exchangeFilePath);
+            modelProvider.Save(optModel, exchangeFilePath);
 
             // Wait for the file to be created and written to disk
             // TODO: Looks like a dirty hack. Maybe there is more elegant solution...

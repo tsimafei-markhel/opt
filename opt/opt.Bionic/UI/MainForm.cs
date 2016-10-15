@@ -9,7 +9,8 @@ using opt.Bionic.Solver;
 using opt.DataModel;
 using opt.Extensions;
 using opt.Helpers;
-using opt.Xml;
+using opt.Provider;
+using opt.Provider.Xml;
 
 namespace opt.Bionic.UI
 {
@@ -18,6 +19,9 @@ namespace opt.Bionic.UI
         private Model optModel;
         private BionicModel bionicModel;
         private Tray tray;
+
+        // TODO: Dependency injection.
+        private readonly IModelProvider modelProvider = new XmlModelProvider();
 
         public MainForm()
         {
@@ -64,7 +68,7 @@ namespace opt.Bionic.UI
 
             try
             {
-                optModel = XmlModelProvider.Open(optFilePath);
+                optModel = modelProvider.Load(optFilePath);
             }
             catch (Exception ex)
             {
