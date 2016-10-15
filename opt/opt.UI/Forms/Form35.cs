@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
 using System.Threading;
 using System.Windows.Forms;
 using opt.DataModel;
 using opt.Helpers;
+using opt.Provider;
+using opt.Provider.Xml;
 using opt.Text;
 using opt.UI.Helpers;
-using opt.Xml;
 
 namespace opt.UI.Forms
 {
@@ -23,6 +23,9 @@ namespace opt.UI.Forms
             get { return this._model; }
             set { this._model = value; }
         }
+
+        // TODO: Dependency injection.
+        private readonly IModelProvider modelProvider = new XmlModelProvider();
 
         private static readonly TextModelProviderSettings textProviderSettings = new TextModelProviderSettings()
         {
@@ -126,7 +129,7 @@ namespace opt.UI.Forms
             {
                 try
                 {
-                    XmlModelProvider.Save(this._model, this.dlgSaveModel.FileName);
+                    modelProvider.Save(this._model, this.dlgSaveModel.FileName);
                 }
                 catch (Exception ex)
                 {
@@ -195,17 +198,17 @@ namespace opt.UI.Forms
                     // Запустим программу на выполнение
                     ProcessStartInfo midPrgInfo = new ProcessStartInfo();
                     midPrgInfo.FileName = externalAppPath;
-                    midPrgInfo.WorkingDirectory = Path.GetDirectoryName(externalAppPath);
+                    midPrgInfo.WorkingDirectory = System.IO.Path.GetDirectoryName(externalAppPath);
                     midPrgInfo.UseShellExecute = true;
 
                     Process extAppProc = Process.Start(midPrgInfo);
                     extAppProc.EnableRaisingEvents = true;
-                    extAppProc.Exited += new EventHandler(extAppProc_Exited);
+                    extAppProc.Exited += extAppProc_Exited;
 #else
                     // Запишем файл модели
                     try
                     {
-                        XmlModelProvider.Save(this._model, dataFilePath);
+                        modelProvider.Save(this._model, dataFilePath);
                     }
                     catch (Exception ex)
                     {
@@ -317,7 +320,7 @@ namespace opt.UI.Forms
             // Возьмем модель из файла
             if (System.IO.File.Exists(this.txtDataFileName.Text.Trim()))
             {
-                this._model = XmlModelProvider.Open(this.txtDataFileName.Text.Trim());
+                this._model = modelProvider.Load(this.txtDataFileName.Text.Trim());
             }
 #endif
             // Проверим, что там программа насчитала

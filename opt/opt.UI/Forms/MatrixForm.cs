@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Windows.Forms;
 using opt.DataModel;
+using opt.Provider;
+using opt.Provider.Xml;
 using opt.UI.Exporters;
 using opt.UI.Helpers;
-using opt.Xml;
 
 namespace opt.UI.Forms
 {
@@ -15,6 +16,9 @@ namespace opt.UI.Forms
             get { return this._model; }
             set { this._model = value; }
         }
+
+        // TODO: Dependency injection.
+        private readonly IModelProvider modelProvider = new XmlModelProvider();
 
         private bool _repeatParams;
         private bool _enableSorting;
@@ -60,7 +64,7 @@ namespace opt.UI.Forms
                     }
                     else
                     {
-                        XmlModelProvider.Save(this._model, filePath);
+                        modelProvider.Save(this._model, filePath);
                     }
                 }
                 catch (Exception ex)

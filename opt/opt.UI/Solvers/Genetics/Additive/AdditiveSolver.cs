@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 using opt.DataModel;
 using opt.Helpers;
+using opt.Provider;
+using opt.Provider.Xml;
 using opt.Solvers.IntegralCriterion;
 using opt.Text;
 using opt.UI.Helpers;
-using opt.Xml;
 
 // TODO: Use Id instead of Number in the below
 
@@ -18,6 +18,9 @@ namespace opt.Solvers.Genetics.Additive
 {
     public static class AdditiveSolver
     {
+        // TODO: Dependency injection?
+        private static IModelProvider modelProvider = new XmlModelProvider();
+
         private static readonly TextModelProviderSettings textProviderSettings = new TextModelProviderSettings()
         {
             InformationFilePath = Application.StartupPath + Program.ApplicationSettings.QuantitiesFileName,
@@ -185,7 +188,7 @@ namespace opt.Solvers.Genetics.Additive
             }
 
             // Раз программа отработала, прочтем результаты из файла
-            initModel = XmlModelProvider.Open(dataFilePath);
+            initModel = modelProvider.Load(dataFilePath);
 
             // Удалим файл с данными
             if (System.IO.File.Exists(dataFilePath))
@@ -237,7 +240,7 @@ namespace opt.Solvers.Genetics.Additive
             // Запустим программу на выполнение
             ProcessStartInfo midPrgInfo = new ProcessStartInfo();
             midPrgInfo.FileName = externalAppPath;
-            midPrgInfo.WorkingDirectory = Path.GetDirectoryName(externalAppPath);
+            midPrgInfo.WorkingDirectory = System.IO.Path.GetDirectoryName(externalAppPath);
             midPrgInfo.UseShellExecute = true;
 
             Process extAppProc = Process.Start(midPrgInfo);
@@ -277,7 +280,7 @@ namespace opt.Solvers.Genetics.Additive
             // Запишем файл модели
             try
             {
-                XmlModelProvider.Save(initModel, dataFilePath);
+                modelProvider.Save(initModel, dataFilePath);
             }
             catch (Exception ex)
             {

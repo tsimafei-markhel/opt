@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using opt.DataModel;
 using opt.Generators;
+using opt.Provider;
+using opt.Provider.Xml;
 using opt.UI.Helpers;
-using opt.Xml;
 
 namespace opt.UI.Forms
 {
@@ -19,6 +20,9 @@ namespace opt.UI.Forms
             get { return this._model; }
             set { this._model = value; }
         }
+
+        // TODO: Dependency injection.
+        private readonly IModelProvider modelProvider = new XmlModelProvider();
 
         public Form25()
         {
@@ -87,7 +91,7 @@ namespace opt.UI.Forms
             {
                 try
                 {
-                    XmlModelProvider.Save(this._model, this.dlgSaveModel.FileName);
+                    modelProvider.Save(this._model, this.dlgSaveModel.FileName);
                 }
                 catch (Exception ex)
                 {

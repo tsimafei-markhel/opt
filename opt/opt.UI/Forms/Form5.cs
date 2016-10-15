@@ -2,8 +2,9 @@
 using System.Windows.Forms;
 using opt.DataModel;
 using opt.Helpers;
+using opt.Provider;
+using opt.Provider.Xml;
 using opt.UI.Helpers;
-using opt.Xml;
 
 // TODO: Rewrite SelectNextForm() - update model contents based on its state (e.g. if there is no criteria, we should clear critera values for all experiments),
 //       check other cases, not only ParameterValuesExist & CriterionValuesExist
@@ -20,6 +21,9 @@ namespace opt.UI.Forms
             get { return this._model; }
             set { this._model = value; }
         }
+
+        // TODO: Dependency injection.
+        private readonly IModelProvider modelProvider = new XmlModelProvider();
 
         public Form5()
         {
@@ -94,7 +98,7 @@ namespace opt.UI.Forms
                     {
                         try
                         {
-                            this._model = XmlModelProvider.Open(fileName);
+                            this._model = modelProvider.Load(fileName);
                         }
                         catch (Exception ex)
                         {

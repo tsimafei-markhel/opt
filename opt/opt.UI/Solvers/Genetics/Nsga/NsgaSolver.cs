@@ -7,14 +7,18 @@ using System.Threading;
 using System.Windows.Forms;
 using opt.DataModel;
 using opt.Helpers;
+using opt.Provider;
+using opt.Provider.Xml;
 using opt.Text;
 using opt.UI.Helpers;
-using opt.Xml;
 
 namespace opt.Solvers.Genetics.Nsga
 {
     public static class NsgaSolver
     {
+        // TODO: Dependency injection?
+        private static IModelProvider modelProvider = new XmlModelProvider();
+
         private static readonly TextModelProviderSettings textProviderSettings = new TextModelProviderSettings()
         {
             InformationFilePath = Application.StartupPath + Program.ApplicationSettings.QuantitiesFileName,
@@ -402,7 +406,7 @@ namespace opt.Solvers.Genetics.Nsga
             }
 
             // Раз программа отработала, прочтем результаты из файла
-            initModel = XmlModelProvider.Open(dataFilePath);
+            initModel = modelProvider.Load(dataFilePath);
 
             // Удалим файл с данными
             if (File.Exists(dataFilePath))
@@ -502,7 +506,7 @@ namespace opt.Solvers.Genetics.Nsga
             // Запишем файл модели
             try
             {
-                XmlModelProvider.Save(initModel, dataFilePath);
+                modelProvider.Save(initModel, dataFilePath);
             }
             catch (Exception ex)
             {
