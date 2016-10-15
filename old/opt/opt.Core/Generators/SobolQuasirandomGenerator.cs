@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Reflection;
-using opt.DataModel;
-using opt.DataModel.New;
 
 // TODO: Remove SuppressMessage from GenerateSobolPoints once the class is fully implemented
 
@@ -20,7 +17,7 @@ namespace opt.Generators
     /// </remarks>
     [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly",
         Justification = "Sobol and Quasirandom are parts of algorithm name")]
-    public class SobolQuasirandomGenerator : IParameterGenerator
+    public class SobolQuasirandomGenerator
     {
         // Pre-caching
         private static readonly double Log2 = Math.Log(2.0);
@@ -41,18 +38,6 @@ namespace opt.Generators
         /// <remarks>Embedded resource; Keep an eye on the file name and default
         /// assembly namespace</remarks>
         private const string DirectionNumbersFile = "opt.new-joe-kuo-6.21201.dat";
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="parameters"></param>
-        /// <param name="valueCount"></param>
-        /// <returns></returns>
-        public IEnumerable<RealValueDictionary> GenerateParameterValues(ParameterDictionary parameters, Int32 valueCount)
-        {
-            // Type check. This generator is only applicable to ContinuousParameter
-            throw new NotImplementedException();
-        }
 
         /// <summary>
         /// Generates Sobol points based on graycode order

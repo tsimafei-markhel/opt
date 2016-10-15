@@ -9,7 +9,7 @@ namespace opt.Helpers
 {
     public static class GoalReplacementHelper
     {
-        public static IDictionary<TId, Real> InvertGoal(IDictionary<TId, Real> valuesToInvert)
+        public static IDictionary<TId, double> InvertGoal(IDictionary<TId, double> valuesToInvert)
         {
             if (valuesToInvert == null)
             {
@@ -19,11 +19,11 @@ namespace opt.Helpers
             // No need to invert empty collection
             if (valuesToInvert.Count < 1)
             {
-                return new Dictionary<TId, Real>(valuesToInvert);
+                return new Dictionary<TId, double>(valuesToInvert);
             }
 
-            Dictionary<TId, Real> invertedValues = new Dictionary<TId, Real>(valuesToInvert.Count);
-            foreach (KeyValuePair<TId, Real> element in valuesToInvert)
+            Dictionary<TId, double> invertedValues = new Dictionary<TId, double>(valuesToInvert.Count);
+            foreach (KeyValuePair<TId, double> element in valuesToInvert)
             {
                 invertedValues.Add(element.Key, -element.Value);
             }

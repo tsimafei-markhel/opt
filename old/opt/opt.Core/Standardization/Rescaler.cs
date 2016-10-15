@@ -21,7 +21,7 @@ namespace opt.Standardization
         /// <remarks>Caller code has to guarantee that <paramref name="valuesToStandardize"/>
         /// does not contain <see cref="Double.NaN"/>, <see cref="Double.PositiveInfinity"/> or
         /// <see cref="Double.NegativeInfinity"/></remarks>
-        public IDictionary<TId, Real> Standardize(IDictionary<TId, Real> valuesToStandardize)
+        public IDictionary<TId, double> Standardize(IDictionary<TId, double> valuesToStandardize)
         {
             if (valuesToStandardize == null)
             {
@@ -31,26 +31,26 @@ namespace opt.Standardization
             // No need to rescale empty collection or one value
             if (valuesToStandardize.Count < 2)
             {
-                return new Dictionary<TId, Real>(valuesToStandardize);
+                return new Dictionary<TId, double>(valuesToStandardize);
             }
 
             // Pre-calculations
-            Real maxValue = valuesToStandardize.Values.Max();
-            Real minValue = valuesToStandardize.Values.Min();
+            double maxValue = valuesToStandardize.Values.Max();
+            double minValue = valuesToStandardize.Values.Min();
 
             // No need to rescale a collection of equal values
             // Note: this clause is equivalent to (variationRange == 0) check but 
             //       does not require to calculate variationRange (see below)
             if (minValue == maxValue)
             {
-                return new Dictionary<TId, Real>(valuesToStandardize);
+                return new Dictionary<TId, double>(valuesToStandardize);
             }
 
-            Real variationRange = maxValue - minValue;
+            double variationRange = maxValue - minValue;
 
             // Actual rescaling
-            Dictionary<TId, Real> rescaledValues = new Dictionary<TId, Real>(valuesToStandardize.Count);
-            foreach (KeyValuePair<TId, Real> element in valuesToStandardize)
+            Dictionary<TId, double> rescaledValues = new Dictionary<TId, double>(valuesToStandardize.Count);
+            foreach (KeyValuePair<TId, double> element in valuesToStandardize)
             {
                 rescaledValues.Add(element.Key, Rescale(element.Value, minValue, variationRange));
             }
@@ -68,7 +68,7 @@ namespace opt.Standardization
         /// <remarks>Caller code has to guarantee that a) <paramref name="minValue"/> is 
         /// less than <paramref name="valueToRescale"/> and b) <paramref name="variationRange"/> 
         /// is not zero</remarks>
-        private static Real Rescale(Real valueToRescale, Real minValue, Real variationRange)
+        private static double Rescale(double valueToRescale, double minValue, double variationRange)
         {
             return (valueToRescale - minValue) / variationRange;
         }

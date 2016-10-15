@@ -11,11 +11,11 @@ namespace opt
     public interface IStandardizer
     {
         /// <summary>
-        /// Performs standardization of a collection of <see cref="Real"/> values
+        /// Performs standardization of a collection of <see cref="double"/> values
         /// </summary>
-        /// <param name="valuesToStandardize">A collection of <see cref="Real"/> values
+        /// <param name="valuesToStandardize">A collection of <see cref="double"/> values
         /// to standardize. Each value has to have an identifier</param>
         /// <returns>A collection of standardized values</returns>
-        IDictionary<TId, Real> Standardize(IDictionary<TId, Real> valuesToStandardize);
+        IDictionary<TId, double> Standardize(IDictionary<TId, double> valuesToStandardize);
     }
 }
